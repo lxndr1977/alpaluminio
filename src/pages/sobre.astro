@@ -1,0 +1,213 @@
+---
+import CtaSection from "@/components/CtaSection.astro";
+import MediaTextSection from "@/components/MediaTextSection.astro";
+import { Image } from "astro:assets";
+import { Recycle, Ruler, BadgeCheck, MessageCircleMore } from "@lucide/astro";
+
+import {
+  SectionEyebrow,
+  SectionHeader,
+  SectionTitle,
+  SectionSubtitle,
+} from "@/components/ui/Section";
+import Layout from "@/layouts/Layout.astro";
+
+import business from "@/data/business.json";
+import ContentSection from "@/components/ContentSection.astro";
+
+import img1 from "../assets/alpa-aluminio-sobre_01.webp";
+import VideoSection2 from "@/components/VideoSection2.astro";
+import Section from "@/components/ui/Section.astro";
+import SocialProofSection from "@/components/SocialProofSection.astro";
+import DifferentialsSection from "@/components/DifferentialsSection.astro";
+
+const ctaTarget = business.whatsappNumber;
+
+
+const testimonials = [
+  {
+    quote: "Ótimo atendimento e material de excelente qualidade.",
+    author: "Eduardo Mainardi",
+    rating: 5,
+  },
+  {
+    quote: "Melhor produto e atendimento! Recomendo!",
+    author: "Lis Rodrigues",
+    rating: 5,
+  },
+  {
+    quote: "Ótimo atendimento e produto diferenciado",
+    author: "Michel Bedin",
+    rating: 5,
+  },
+  {
+    quote: "Trabalho de excelência ",
+    author: "Letícia Rosetto",
+    role: "Arquiteta",
+    rating: 5,
+  },
+];
+
+
+const differentials = [
+  {
+    icon: BadgeCheck,
+    title: "Qualidade e durabilidade",
+    description:
+      "Produtos resistentes, com excelente acabamento e longa vida útil.",
+  },
+  {
+    icon: Ruler,
+
+    title: "Soluções sob medida",
+    description:
+      "Perfis e acabamentos ideais para projetos residenciais, comerciais e industriais.",
+  },
+  {
+    icon: Recycle,
+
+    title: "Sustentabilidade",
+    description:
+      "Processos de fabricação sustentáveis e alumínio 100% reciclável",
+  },
+  {
+    icon: MessageCircleMore,
+
+    title: "Atendimento personalizado",
+    description:
+      "Soluções pensadas conforme a necessidade específica de cada projeto.",
+  },
+];
+---
+
+<Layout title="Sobre a Alpa Alumínio" description="Conheça a Alpa Alumínio">
+  <div class="pt-10">
+    <ContentSection
+      headerAlign="left"
+      theme="surface"
+      size="content"
+      eyebrow="Alpa Alumínio"
+      title=" Mais de 20 anos oferecendo soluções em alumínio para diferentes projetos "
+      titleSize="6xl"
+      subtitle="Desenvolvemos soluções inteligentes e inovadoras para projetos residenciais, comerciais e industriais, sendo capaz de oferecer o que há de melhor para todos os padrões de projetos"
+    >
+      <div
+        class="mt-8 relative aspect-[4/3] md:aspect-[16/9] md:rounded-2xl overflow-hidden group"
+      >
+        <Image
+          src={img1}
+          alt="Imagem de um projeto utilizando soluções em alumínio da Alpa Alumínio"
+          class="block w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
+    </ContentSection>
+  </div>
+
+  <MediaTextSection
+    titleSize="5xl"
+    headerAlign="center"
+    size="full"
+    imageAspect="4/3"
+    imageSrc="/images/empresa/alpa-aluminio_01.webp"
+    imageAlt="Alpa Alumínio"
+    theme="primary"
+    desktopImagePosition="right"
+    mobileImagePosition="top"
+    stickyImage={false}
+  >
+    <div slot="header">
+      <SectionHeader align="left" class="mb-6" noPadding>
+        <SectionEyebrow class="text-white">Conheça a Alpa Alumínio</SectionEyebrow>
+        <SectionTitle size="7xl" class="text-white">
+          Soluções em alumínio de qualidade mundial
+        </SectionTitle>
+      </SectionHeader>
+    </div>
+    <div slot="content">
+      <div class="text-lg text-white" data-animate="fade-up">
+        A Alpa Alumínio nasceu com o propósito de oferecer soluções completas em
+        alumínio para o mercado da construção civil e metal mecânico. Atuando
+        desde 2003, a empresa construiu uma trajetória sólida baseada em
+        qualidade, confiança e evolução constante.
+      </div>
+    </div>
+  </MediaTextSection>
+
+  <VideoSection2
+    theme="white"
+    eyebrow="Nossa estrutura"
+    title="Estrutura moderna para garantir mais eficiência no atendimento"
+    titleSize="6xl"
+    size="large"
+    mp4Src="/videos/apresentacao-alpa_02.mp4"
+    posterSrc="/images/capa-video-alpa.webp"
+    aspectRatio="9/16"
+    desktopVideoPosition="left"
+  >
+    <div slot="left" class="space-y-6 text-lg">
+      <p>
+        Para garantir eficiência e agilidade no fornecimento de produtos, a Alpa
+        Alumínio conta com uma estrutura moderna e preparada para atender
+        diferentes demandas do mercado.
+      </p>
+
+      <p>
+        Nosso armazém possui mais de 4.000m² e mantém um amplo estoque à
+        pronta-entrega, incluindo perfis e componentes em diversas cores e
+        acabamentos.
+      </p>
+
+      <p>
+        Essa capacidade operacional permite oferecer mais rapidez nos prazos,
+        melhor disponibilidade de produtos e maior segurança no atendimento aos
+        clientes.
+      </p>
+    </div>
+  </VideoSection2>
+
+    <DifferentialsSection
+    theme="secondary"
+    title="Por que escolher a Alpa Alumínio?"
+    titleSize="6xl"
+    eyebrow="Por que escolher a Alpa Alumínio?"
+    subtitle="Comprometidos com a excelência, inovação e sustentabilidade, oferecemos soluções em alumínio que se destacam pela qualidade, durabilidade e design."
+    items={differentials}
+  />
+
+  <SocialProofSection
+    title="Depoimentos de clientes"
+    subtitle="Confira relatos de clientes que confiam nos produtos da Alpa Alumínio"
+    eyebrow="Depoimentos"
+    titleSize="5xl"
+    testimonials={testimonials}
+    layout="grid"
+    highlightFirst={false}
+    theme="surface"
+    colsMobile={1}
+  />
+
+  <CtaSection
+    eyebrow="Fale conosco"
+    title="Pronto para transformar seus projetos com soluções em alumínio de alta qualidade?"
+    description="Nossa equipe de especialistas está pronta para oferecer consultoria personalizada e soluções sob medida para atender às suas necessidades."
+    ctaText="Fale com um especialista"
+    whatsappNumber={ctaTarget}
+    productName="Alpa Alumínio"
+  />
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>("section[data-bg]"),
+    );
+
+    sections.forEach((section, i) => {
+      const prev = sections[i - 1];
+      if (prev && prev.dataset.bg === section.dataset.bg) {
+        section.style.paddingTop = "64px";
+        prev.style.paddingBottom = "64px";
+      }
+    });
+  });
+</script>

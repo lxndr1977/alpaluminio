@@ -1,0 +1,71 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/utils/cn";
+
+interface Props extends HTMLAttributes<"div"> {
+  direction?: "row" | "col";
+  size?: "compact" | "content" | "large" | "container" | "full";
+  align?: "start" | "center" | "end";
+  gap?: "none" | "sm" | "md" | "lg" | "xl";
+  padding?: "none" | "sm" | "md" | "lg" | "xl";
+}
+
+const {
+  size = "container",
+  direction = "col",
+  align = "start",
+  gap = "md",
+  padding = "none",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const gapMap = {
+  none: "",
+  sm: "gap-4",
+  md: "gap-8",
+  lg: "gap-16",
+  xl: "gap-20",
+};
+const alignMap = {
+  start: "items-start",
+  center: "items-center",
+  end: "items-end",
+};
+
+const paddingYMap = {
+  none: "",
+  sm: "py-4",
+  md: "py-8",
+  lg: "py-12",
+  xl: "py-16",
+};
+
+const paddingXClass = "px-4 sm:px-6 lg:px-8";
+
+const sizeMap = {
+  compact: "max-w-3xl mx-auto",
+  content: "max-w-5xl mx-auto",
+  large: "max-w-6xl mx-auto",
+  container: "max-w-7xl xl:container mx-auto",
+  full: "w-full",
+};
+---
+
+<div
+  {...rest}
+  class={cn(
+    "flex",
+    direction === "col" ? "flex-col" : "flex-row ",
+    sizeMap[size],
+    alignMap[align],
+    gapMap[gap],
+    paddingYMap[padding],
+    paddingXClass,
+    className,
+  )}
+  data-animate="fade-up"
+  data-animate-delay="0.2"
+>
+  <slot />
+</div>

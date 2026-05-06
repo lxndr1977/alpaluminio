@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import ProductCard from "@/components/ProductCard.astro";
+
+// Busca TODOS os produtos, sem filtro de categoria
+const products = await getCollection("products");
+---
+
+<Layout
+  title="Todos os Produtos"
+  description="Confira nossa linha completa de produtos"
+>
+  <section>
+    <div class="bg-primary">
+      <div class="max-w-5xl mx-auto px-4 py-20 pt-42 text-center space-y-6">
+        <h1
+          class="text-4xl lg:text-6xl font-medium tracking-tighter text-white text-balance"
+        >
+          Soluções em alumínio para todos os projetos
+        </h1>
+
+        <p class="text-lg xl:text-xl text-white max-w-3xl mx-auto">
+          Explore nossa linha completa de produtos em alumínio com qualidade,
+          durabilidade e acabamento premium para projetos residenciais,
+          comerciais e industriais.
+        </p>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-16">
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          products.map((product) => {
+            const sections = product.data.sections ?? [];
+            const hero = sections.find((s: any) => s.id === "hero") as any;
+
+            return (
+              <ProductCard
+                name={product.data.name}
+                image={product.data.mainPhoto ?? ""}
+                link={`/produtos/${product.id}`}
+                theme="light"
+                cta="Ver Produto"
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

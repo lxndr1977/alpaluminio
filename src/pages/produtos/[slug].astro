@@ -1,0 +1,358 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import { resolveIcon } from "@/utils/resolveIcon";
+
+
+// Componentes de seção
+
+import {
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+} from "@/components/ui/Section";
+
+import HeroSection from "@/components/HeroSection.astro";
+import DifferentialsSection from "@/components/DifferentialsSection.astro";
+import ContentSection from "@/components/ContentSection.astro";
+import VideoSection from "@/components/VideoSection.astro";
+import PhotoGallery from "@/components/PhotoGallery.astro";
+import PhotoGalleryGrid from "@/components/PhotoGalleryGrid.astro";
+import TechSpecsSection from "@/components/TechSpecsSection.astro";
+import FaqSection from "@/components/FaqSection.astro";
+import DocumentationSection from "@/components/DocumentationSection.astro";
+import SocialProofSection from "@/components/SocialProofSection.astro";
+import CtaSection from "@/components/CtaSection.astro";
+import RelatedProductsSection from "@/components/RelatedProductsSection.astro";
+import StickyBar from "@/components/StickyBar.astro";
+import MediaTextSection from "@/components/MediaTextSection.astro";
+
+
+import business from "@/data/business.json";
+
+const ctaTarget = business.whatsappNumber;
+
+// ─── Geração estática de rotas ────────────────────────────────────────────────
+
+export async function getStaticPaths() {
+  const products = await getCollection("products");
+  return products.map((product) => ({
+    params: { slug: product.id },
+    props: { product },
+  }));
+}
+
+// ─── Props ────────────────────────────────────────────────────────────────────
+
+const { product } = Astro.props;
+const { name, seo, stickyBar, sections, categories, segments, mainPhoto } = product.data;
+
+const resolvedCategories = (
+  await Promise.all((categories ?? []).map((ref) => getEntry(ref)))
+).filter((c): c is NonNullable<typeof c> => c != null);
+
+const resolvedSegments = (
+  await Promise.all((segments ?? []).map((ref) => getEntry(ref)))
+).filter((s): s is NonNullable<typeof s> => s != null);
+
+// Filtra seções desabilitadas e mantém a ordem definida no JSON
+const activeSections = sections.filter((s) => s.enabled !== false);
+
+const sectionsWithData = await Promise.all(
+  activeSections.map(async (section) => {
+    if (section.id === "relatedProducts") {
+      // Busca os dados reais dos produtos usando os slugs
+      const resolvedProducts = await getRelatedProducts(section.productSlugs);
+      return { ...section, resolvedProducts };
+    }
+    return section;
+  }),
+);
+
+// Para RelatedProducts: busca os dados dos produtos relacionados
+async function getRelatedProducts(slugs: string[]) {
+  const all = await getCollection("products");
+  return slugs
+    .map((slug) => all.find((p) => p.id === slug))
+    .filter(Boolean)
+    .map((p) => ({
+      name: p!.data.name,
+      // Pega a imagem do hero da seção hero do produto relacionado
+      image:
+        (p!.data.mainPhoto),
+      link: `/produtos/${p!.id}`,
+    }));
+}
+
+const heroSection = sections.find((s) => s.id === "hero");
+const heroImage = (heroSection as any)?.image ?? "";
+---
+
+<Layout
+  title={seo?.title ?? name}
+  description={seo?.description}
+  ogImage={seo?.ogImage}
+>
+  {
+    /*
+    Itera sobre o array `sections` já ordenado e habilitado.
+    Cada seção é renderizada pelo seu `id`.
+    Adicione novos `case` aqui conforme criar novos tipos de seção.
+  */
+  }
+  {
+    sectionsWithData.map((section) => {
+      switch (section.id) {
+        case "hero":
+          return (
+            <HeroSection
+              subtitle={section.subtitle}
+              title={section.title}
+              description={section.description}
+              titleSize="7xl"
+              image={section.image}
+            />
+          );
+
+        case "differentials":
+          return (
+            <DifferentialsSection
+              eyebrow={section.eyebrow}
+              title={section.title}
+              subtitle={section.subtitle}
+              titleSize="6xl"
+              theme={section.theme}
+              items={section.items.map((item) => ({
+        ...item,
+        icon: resolveIcon(item.icon),
+      }))}
+            />
+          );
+
+        case "content":
+          return (
+            <ContentSection
+              eyebrow={section.eyebrow}
+              title={section.title}
+              subtitle={section.subtitle}
+              titleSize="6xl"
+              headerAlign="left"
+              size="compact"
+              theme={section.theme}
+            >
+              <Fragment set:html={section.body} />
+            </ContentSection>
+          );
+
+        case "video":
+          return (
+            <VideoSection
+              videoId={section.videoId}
+              title={section.title}
+              titleSize="5xl"
+              aspectRatio="4/5"
+              eyebrow={section.eyebrow}
+              theme={section.theme}
+              subtitle={section.subtitle}
+              mp4Src={section.mp4Src}
+              thumbnail={section.thumbnail}
+            />
+          );
+
+        case "photoGallery":
+          return (
+            <PhotoGallery
+              galleryId={`gallery-${Math.random().toString(36).slice(2)}`}
+              eyebrow={section.eyebrow}
+              title={section.title}
+              subtitle={section.subtitle}
+              titleSize="5xl"
+              theme={section.theme}
+              cols={section.cols}
+              aspect={section.aspect}
+              headerAlign="center"
+              photos={section.photos}
+              theme={section.theme}
+            />
+          );
+
+        case "finishesGallery":
+          return (
+            <PhotoGalleryGrid
+              eyebrow={section.eyebrow}
+              title={section.title}
+              subtitle={section.subtitle}
+              titleSize="5xl"
+              headerAlign={section.headerAlign}
+              photos={section.photos.map((p: any) => ({
+                title: p.title,
+                subtitle: p.subtitle,
+                src: p.image,
+              }))}
+              colsMobile={section.colsMobile}
+              colsTablet={section.colsTablet}
+              colsDesktop={section.colsDesktop}
+              theme={section.theme}
+              showPhotoTitle={section.showPhotoTitle}
+              showPhotoSubtitle={section.showPhotoSubtitle}
+              size={section.size}
+            />
+          );
+
+        case "techSpecs":
+          return (
+            <TechSpecsSection
+              eyebrow={section.eyebrow}
+              title={section.title}
+              subtitle={section.subtitle}
+              specGroups={section.specGroups}
+              titleSize="5xl"
+              columns={1}
+              align="center"
+              size="compact"
+              theme={section.theme}
+            />
+          );
+
+        case "faq":
+          return (
+            <FaqSection
+              eyebrow={section.eyebrow}
+              title={section.title}
+              subtitle={section.subtitle}
+              titleSize="5xl"
+              openFirst={true}
+              singleOpen={true}
+              align="center"
+              size="compact"
+              margin="none"
+              faqs={section.faqs}
+              theme={section.theme}
+            />
+          );
+
+        case "documentation":
+          return (
+            <DocumentationSection
+              title={section.title}
+              titleSize="5xl"
+              subtitle={section.subtitle}
+              documents={section.documents}
+              highlightPrimary={false}
+              theme={section.theme}
+              size={section.size}
+              columns={section.colsDesktop}
+              layout={section.layout}
+            />
+          );
+
+        case "socialProof":
+          return (
+            <SocialProofSection
+              title={section.title}
+              subtitle="Confira relatos de clientes que confiam nos produtos da Alpa Alumínio"
+              eyebrow={section.eyebrow}
+              titleSize="5xl"
+              testimonials={section.testimonials}
+              layout={section.layout}
+              highlightFirst={false}
+              theme={section.theme}
+            />
+          );
+
+        case "mediaText":
+          if (!section.image || !section.imageAlt) return null;
+
+          return (
+            <MediaTextSection
+              titleSize="5xl"
+              headerAlign="center"
+              size="container"
+              imageAspect={section.imageAspect}
+              imageSrc={section.image}
+              imageAlt={section.imageAlt}
+              theme={section.theme}
+              desktopImagePosition={section.desktopImagePosition}
+              mobileImagePosition={section.mobileImagePosition}
+              stickyImage={section.stickyImage}
+            >
+              <div slot="header">
+                <SectionHeader align="left" class="mb-6" noPadding>
+                  <SectionEyebrow>{section.eyebrow}</SectionEyebrow>
+                  <SectionTitle size="5xl">{section.title}</SectionTitle>
+                  <SectionSubtitle>{section.subtitle}</SectionSubtitle>
+                </SectionHeader>
+              </div>
+              <div slot="content">
+                <div class="text-lg" set:html={section.body} />
+              </div>
+            </MediaTextSection>
+          );
+
+        case "cta":
+          return (
+            <CtaSection
+              eyebrow={section.eyebrow}
+              title={section.title}
+              description={section.description}
+              ctaText={section.ctaText}
+              whatsappNumber={ctaTarget}
+              productName={section.productName ?? name}
+              size={section.size}
+              theme={section.theme}
+            />
+          );
+
+        case "relatedProducts":
+          return (
+            <RelatedProductsSection
+              eyebrow={section.eyebrow}
+              title={section.title}
+              subtitle={section.subtitle}
+              titleSize="5xl"
+              products={(section as any).resolvedProducts || []}
+              cols={4}
+              autoplayDelay={3000}
+              loop={true}
+              spaceBetween={24}
+              theme={section.theme}
+            />
+          );
+
+        default:
+          // Seção desconhecida — ignora silenciosamente em produção
+          return null;
+      }
+    })
+  }
+
+  {
+    stickyBar && (
+      <StickyBar
+        productName={name}
+        productImage={product.data.mainPhoto}
+        message={stickyBar.message}
+        subMessage={stickyBar.subMessage}
+        ctaLabel={stickyBar.ctaLabel}
+        ctaTarget={`https://wa.me/${ctaTarget.replace(/\D/g, "")}?text=${encodeURIComponent(`Olá! Tenho interesse em ${name}.`)}`}
+      />
+    )
+  }
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>("section[data-bg]"),
+    );
+
+    sections.forEach((section, i) => {
+      const prev = sections[i - 1];
+      if (prev && prev.dataset.bg === section.dataset.bg) {
+        section.style.paddingTop = "64px";
+        prev.style.paddingBottom = "64px";
+      }
+    });
+  });
+</script>

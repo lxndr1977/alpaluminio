@@ -1,0 +1,250 @@
+{
+  "name": "Linha Nobile",
+  "slug": "linha-nobile",
+  "segments": ["industrial"],
+  "mainPhoto": "/images/produtos/linha-nobile_main.webp",
+
+  "seo": {
+    "title": "Linha Nobile",
+    "description": "Perfil de alumínio esenvolvido para atender a obras diversas, conferindo aos projetos competitividade de mercado com equilíbrio e beleza.",
+    "ogImage": "/images/produtos/linha-nobile_main.webp"
+  },
+
+  "stickyBar": {
+    "message": "Linha Nobile",
+    "subMessage": "Solicite um orçamento",
+    "ctaLabel": "Falar com vendedor"
+  },
+
+  "sections": [
+    {
+      "id": "hero",
+      "enabled": true,
+      "subtitle": "Perfil de Alumínio",
+      "title": "Linha Nobile",
+      "description": "Desenvolvida para atender a obras diversas, conferindo aos projetos competitividade de mercado com equilíbrio e beleza.",
+      "image": "/images/produtos/linha-nobile_hero.webp"
+    },
+
+    {
+      "id": "differentials",
+      "enabled": false,
+      "eyebrow": "Diferenciais",
+      "title": "Diferenciais da Porta Dual",
+      "theme": "secondary",
+      "subtitle": "A Porta Dual foi desenvolvida para atender arquitetos, engenheiros e indústrias que precisam unir design e qualidade.",
+      "items": [
+        {
+          "title": "Perfil Único",
+          "description": "Permite acabamentos diferentes em cada face da porta."
+        },
+        {
+          "title": "Grande Dimensão",
+          "description": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "title": "Versatilidade",
+          "description": "Diversas opções de cores e revestimentos."
+        },
+        {
+          "title": "Alta Resistência",
+          "description": "Estrutura robusta para aplicações exigentes."
+        }
+      ]
+    },
+
+    {
+      "id": "content",
+      "enabled": true,
+      "theme": "surface",
+      "eyebrow": "Sobre a Linha Nobile",
+      "title": "Versatilidade e acabamento para diferentes projetos em alumínio",
+      "subtitle": "A Linha Nobile da Alpa Alumínio foi desenvolvida para atender a diferentes tipos de obras, oferecendo equilíbrio entre estética, qualidade e competitividade.",
+      "body": "<p>Com opções nas linhas 32, 40 e 65, o sistema se adapta às necessidades do projeto, mantendo um padrão de acabamento refinado e harmonia visual.</p><p>A Linha Nobile 32 se destaca pelo excelente acabamento estético e estrutura mais encorpada, sendo indicada para grandes vãos. Já as linhas 40 e 65 oferecem soluções versáteis, com foco em qualidade e economia, atendendo projetos arquitetônicos e da construção civil com eficiência.</p>"
+    },
+
+    {
+      "id": "photoGallery",
+      "enabled": false,
+      "eyebrow": "Aplicações",
+      "title": "Integração perfeita entre design e resistência",
+      "subtitle": "Veja como a Porta Dual pode ser integrada em seus projetos.",
+      "theme": "white",
+      "cols": 3,
+      "aspect": "3/4",
+      "photos": [
+        {
+          "src": "/images/porta-dual-01.png",
+          "alt": "Porta Dual aplicação 1",
+          "caption": "Aplicação residencial"
+        }
+      ]
+    },
+
+    {
+      "id": "finishesGallery",
+      "enabled": true,
+      "theme": "white",
+      "eyebrow": "Linha Nobile",
+      "title": "O equilíbrio entre beleza, qualidade e economia",
+      "subtitle": "Seu projeto com competitividade de mercado com harmonia estética e acabamento de alta qualidade..",
+      "colsDesktop": 3,
+      "colsTablet": 3,
+      "colsMobile": 1,
+      "headerAlign": "center",
+      "showPhotoTitle": false,
+      "showPhotoSubTitle": false,
+      "photos": [
+        {
+          "title": "Detalhes Linha Nobile",
+          "image": "/images/produtos/linha-nobile_01.webp"
+        },
+        {
+          "title": "Detalhes Linha Nobile",
+          "image": "/images/produtos/linha-nobile_03.webp"
+        },
+        {
+          "title": "Detalhes Linha Nobile",
+          "image": "/images/produtos/linha-nobile_02.webp"
+        }
+      ]
+    },
+    {
+      "id": "techSpecs",
+      "enabled": true,
+      "eyebrow": "Especificações Técnicas",
+      "title": "Especificações Técnicas da Linha Nobile",
+      "subtitle": "Confira as principais informações técnicas do produto.",
+      "theme": "surface",
+      "specGroups": [
+        {
+          "category": "Especificações",
+          "rows": [
+            { "param": "Bitola", "value": "25 e 32 mm" },
+            { "param": "Vista Frontal das Folhas", "value": "40 e 65 mm" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "documentation",
+      "enabled": false,
+      "title": "Documentação Técnica",
+      "subtitle": "Acesse fichas técnicas, catálogos e manuais completos do produto.",
+      "theme": "white",
+      "documents": [
+        {
+          "title": "Ficha Técnica Completa (Datasheet)",
+          "url": "#",
+          "type": "pdf",
+          "size": "4.2 MB",
+          "updatedAt": "Março 2026"
+        },
+        {
+          "title": "Manual de Instalação e Operação",
+          "url": "#",
+          "type": "pdf",
+          "size": "8.5 MB",
+          "updatedAt": "Fevereiro 2026"
+        },
+        {
+          "title": "Catálogo de Peças de Reposição",
+          "url": "#",
+          "type": "pdf",
+          "size": "12.1 MB",
+          "updatedAt": "Janeiro 2026"
+        },
+        {
+          "title": "Planilha de Cálculos de Eficiência",
+          "url": "#",
+          "type": "xls",
+          "size": "1.2 MB"
+        }
+      ]
+    },
+
+    {
+      "id": "video",
+      "enabled": false,
+      "videoId": "rQ61RGI3DFk",
+      "title": "Demonstração do Sistema ALPA",
+      "eyebrow": "Vídeo",
+      "subtitle": "Descrição do vídeo"
+    },
+
+    {
+      "id": "socialProof",
+      "enabled": false,
+      "title": "Depoimentos de Sucesso",
+      "eyebrow": "Confiança e Resultados",
+      "layout": "carousel",
+      "theme": "surface",
+      "testimonials": [
+        {
+          "quote": "A implementação das soluções ALPA reduziu nosso tempo de inatividade em 35% nos primeiros seis meses.",
+          "author": "Eng. Ricardo Mendes",
+          "role": "Diretor de Operações",
+          "company": "AutoParts Brasil",
+          "avatar": "https://i.pravatar.cc/150?u=ricardo",
+          "rating": 5
+        },
+        {
+          "quote": "A flexibilidade do hardware ALPA superou todas as nossas expectativas iniciais.",
+          "author": "Sofia Oliveira",
+          "role": "Gestora de Manutenção",
+          "company": "LogiTech S.A.",
+          "avatar": "https://i.pravatar.cc/150?u=sofia",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "enabled": false,
+      "eyebrow": "Dúvidas comuns",
+      "title": "Perguntas frequentes",
+      "theme": "white",
+      "subtitle": "Encontre respostas para as perguntas mais comuns",
+      "faqs": [
+        {
+          "question": "Qual o tamanho máximo?",
+          "answer": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "question": "Pode ter cores diferentes em cada lado?",
+          "answer": "Sim, graças ao perfil único da Porta Dual."
+        },
+        {
+          "question": "Os acessórios estão inclusos?",
+          "answer": "Alguns itens são opcionais e vendidos separadamente."
+        }
+      ]
+    },
+
+    {
+      "id": "cta",
+      "enabled": true,
+      "eyebrow": "Fale Conosco",
+      "size": "container",
+      "title": "Solicite um orçamento da Linha Nobile",
+      "description": "Fale com nossa equipe técnica e conte com suporte especializado e atendimento personalizado conforme as necessidades do seu projeto.",
+      "ctaText": "Solicitar orçamento",
+      "productName": "Linha Nobile"
+    },
+
+    {
+      "id": "relatedProducts",
+      "enabled": true,
+      "eyebrow": "Outros Produtos",
+      "title": "Conheça outras soluções em alumínio",
+      "subtitle": "Explore nossa linha produtos desenvolvidos para diferentes tipos de projetos e aplicações.",
+      "productSlugs": [
+        "linha-mundiale",
+        "linha-official",
+        "sistema-camarao-cremona",
+        "linha-grand-mundiale-125"
+      ]
+    }
+  ]
+}

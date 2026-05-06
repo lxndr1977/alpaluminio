@@ -1,0 +1,46 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/utils/cn";
+
+interface Props extends HTMLAttributes<"div"> {
+  align?: "left" | "center" | "right";
+  size?: "compact" | "content" | "large" | "container" | "full";
+  noPadding?: boolean;
+}
+
+const {
+  align = "left",
+  size = "container",
+  noPadding = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const alignMap = {
+  left: "text-left items-start",
+  center: "text-center items-center",
+  right: "text-right items-end",
+};
+
+const sizeMap = {
+  compact: "max-w-3xl mx-auto",
+  content: "max-w-5xl mx-auto",
+  large: "max-w-6xl mx-auto",
+  container: "max-w-7xl xl:container mx-auto",
+  full: "w-full",
+};
+---
+
+<div
+  {...rest}
+  class={cn(
+    "flex flex-col space-y-4 mb-18",
+    !noPadding && "px-4 sm:px-6 lg:px-8",
+    alignMap[align],
+    sizeMap[size],
+    className,
+  )}
+  data-animate="reveal"
+>
+  <slot />
+</div>

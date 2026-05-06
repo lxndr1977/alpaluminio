@@ -1,0 +1,224 @@
+{
+  "name": "Linha Mundiale",
+  "slug": "linha-mundiale",
+  "segments": ["industrial"],
+  "mainPhoto": "/images/produtos/linha-mundiale_main.webp",
+
+  "seo": {
+    "title": "Linha Mundiale: Design moderno, versatilidade e resistência | Alpa Alumínio",
+    "description": "Sistema com perfil único que permite acabamentos diferentes em cada face. Até 6 metros de altura.",
+    "ogImage": "/images/produtos/linha-mundiale_main.webp"
+  },
+
+  "stickyBar": {
+    "message": "Linha Mundiale",
+    "subMessage": "Solicite um orçamento",
+    "ctaLabel": "Falar com vendedor"
+  },
+
+  "sections": [
+    {
+      "id": "hero",
+      "enabled": true,
+      "subtitle": "Perfil de Alimínio",
+      "title": "Linha Mundiale",
+      "description": "Desenvolvida para atender às demandas especiais de obras diferenciadas, com características únicas que levam mais grandiosidade a projetos especiais",
+      "image": "/images/produtos/linha-mundiale_hero-01.webp"
+    },
+
+    {
+      "id": "differentials",
+      "enabled": false,
+      "tag": "Diferenciais",
+      "title": "Diferenciais da Porta Dual",
+      "theme": "secondary",
+      "subtitle": "A Porta Dual foi desenvolvida para atender arquitetos, engenheiros e indústrias que precisam unir design e qualidade.",
+      "items": [
+        {
+          "title": "Perfil Único",
+          "description": "Permite acabamentos diferentes em cada face da porta."
+        },
+        {
+          "title": "Grande Dimensão",
+          "description": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "title": "Versatilidade",
+          "description": "Diversas opções de cores e revestimentos."
+        },
+        {
+          "title": "Alta Resistência",
+          "description": "Estrutura robusta para aplicações exigentes."
+        }
+      ]
+    },
+
+    {
+      "id": "content",
+      "theme": "surface",
+      "enabled": true,
+      "eyebrow": "Linha Mundiale",
+      "title": "Sofisticação e funcionalidade para projetos contemporâneos",
+      "subtitle": "A Linha Mundiale foi desenvolvida para atender às demandas especiais de obras diferenciadas. Suas características únicas levam mais grandiosidade a projetos especiais.",
+      "body": ""
+    },
+
+    {
+      "id": "photoGallery",
+      "enabled": false,
+      "eyebrow": "Linha Mundiale",
+      "title": "A escolha ideal para projetos contemporâneos",
+      "subtitle": "A grandiosidade e exclusividade que seu projeto merece.",
+      "theme": "white",
+      "cols": 3,
+      "aspect": "3/4",
+      "photos": [
+        {
+          "src": "/images/porta-dual-01.png",
+          "alt": "Porta Dual aplicação 1",
+          "caption": "Aplicação residencial"
+        }
+      ]
+    },
+
+    {
+      "id": "finishesGallery",
+      "enabled": true,
+      "eyebrow": "Linha Mundiale",
+      "title": "A escolha ideal para projetos contemporâneos",
+      "subtitle": "A grandiosidade e exclusividade que seu projeto merece.",
+      "colsMobile": 1,
+      "colsDesktop": 2,
+      "photos": [
+        {
+          "title": "Detahes da Linha Mundiale",
+          "image": "/images/produtos/linha-mundiale_03.webp"
+        },
+        {
+          "title": "Detahes da Linha Mundiale",
+          "image": "/images/produtos/linha-mundiale_02.webp"
+        }
+      ]
+    },
+    {
+      "id": "techSpecs",
+      "enabled": true,
+      "eyebrow": "Especificações Técnicas",
+      "title": "Especificações Técnicas da Linha Mundiale",
+      "subtitle": "Confira as principais informações técnicas do produto.",
+      "theme": "surface",
+      "specGroups": [
+        {
+          "category": "Especificações",
+          "rows": [
+            { "param": "Bitola", "value": "32 mm" },
+            { "param": "Vista frontal das folhas", "value": "60 e 100 mm" },
+            {
+              "param": "Possibilidade de isolamento termo acústico com EPS",
+              "value": "Sim"
+            },
+            { "param": "Estrutura para grandes vãos", "value": "Sim" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "video",
+      "enabled": false,
+      "videoId": "rQ61RGI3DFk",
+      "title": "Demonstração do Sistema ALPA",
+      "eyebrow": "Vídeo",
+      "subtitle": "Descrição do vídeo"
+    },
+
+    {
+      "id": "socialProof",
+      "enabled": false,
+      "title": "Depoimentos de Sucesso",
+      "eyebrow": "Confiança e Resultados",
+      "layout": "carousel",
+      "theme": "surface",
+      "testimonials": [
+        {
+          "quote": "A implementação das soluções ALPA reduziu nosso tempo de inatividade em 35% nos primeiros seis meses.",
+          "author": "Eng. Ricardo Mendes",
+          "role": "Diretor de Operações",
+          "company": "AutoParts Brasil",
+          "avatar": "https://i.pravatar.cc/150?u=ricardo",
+          "rating": 5
+        },
+        {
+          "quote": "A flexibilidade do hardware ALPA superou todas as nossas expectativas iniciais.",
+          "author": "Sofia Oliveira",
+          "role": "Gestora de Manutenção",
+          "company": "LogiTech S.A.",
+          "avatar": "https://i.pravatar.cc/150?u=sofia",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "enabled": false,
+      "tag": "Dúvidas comuns",
+      "title": "Perguntas frequentes",
+      "subtitle": "Encontre respostas para as perguntas mais comuns",
+      "faqs": [
+        {
+          "question": "Qual o tamanho máximo?",
+          "answer": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "question": "Pode ter cores diferentes em cada lado?",
+          "answer": "Sim, graças ao perfil único da Porta Dual."
+        },
+        {
+          "question": "Os acessórios estão inclusos?",
+          "answer": "Alguns itens são opcionais e vendidos separadamente."
+        }
+      ]
+    },
+
+    {
+      "id": "cta",
+      "enabled": true,
+      "eyebrow": "Fale Conosco",
+      "size": "container",
+      "title": "Solicite um orçamento da Linha Mundiale",
+      "description": "Fale com nossa equipe técnica e conte com suporte especializado e atendimento personalizado conforme as necessidades do seu projeto.",
+      "ctaText": "Solicitar orçamento",
+      "productName": "Linha Mundiale"
+    },
+
+    {
+      "id": "documentation",
+      "enabled": false,
+      "title": "Documentação Técnica",
+      "subtitle": "Acesse fichas técnicas, catálogos e manuais completos do produto.",
+      "documents": [
+        {
+          "title": "Ficha Técnica Completa (Datasheet)",
+          "url": "#",
+          "type": "pdf",
+          "size": "4.2 MB",
+          "updatedAt": "Março 2026"
+        }
+      ]
+    },
+
+    {
+      "id": "relatedProducts",
+      "enabled": true,
+      "eyebrow": "Outros Produtos",
+      "title": "Conheça outras soluções em alumínio",
+      "subtitle": "Explore nossa linha produtos desenvolvidos para diferentes tipos de projetos e aplicações.",
+      "productSlugs": [
+        "linha-nobile",
+        "linha-official",
+        "sistema-camarao-cremona",
+        "linha-grand-mundiale-125"
+      ]
+    }
+  ]
+}

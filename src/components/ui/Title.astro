@@ -1,0 +1,64 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'h1'> {
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  size?: "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
+  color?: "default" | "muted" | "primary" | "white";
+  weight?: "normal" | "medium" | "semibold" | "bold";
+  align?: "left" | "center" | "right";
+  class?: string;
+}
+
+const {
+  as: Tag = "h2", 
+  size = "lg",
+  color = "default",
+  weight = "semibold",
+  align = "left",
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const sizeClasses: Record<NonNullable<Props['size']>, string> = {
+  sm: "text-sm",
+  base: "text-base",
+  lg: "text-lg",
+  xl: "text-xl",
+  "2xl": "text-2xl",
+  "3xl": "text-4xl",
+  "4xl": "text-5xl"
+};
+
+const colorClasses: Record<NonNullable<Props['color']>, string> = {
+  default: "text-gray-900",
+  muted: "text-gray-500",
+  primary: "text-primary",
+  white: "text-white"
+};
+
+const weightClasses: Record<NonNullable<Props['weight']>, string> = {
+  normal: "font-normal",
+  medium: "font-medium",
+  semibold: "font-semibold",
+  bold: "font-bold"
+};
+
+const alignClasses: Record<NonNullable<Props['align']>, string> = {
+  left: "text-left",
+  center: "text-center",
+  right: "text-right"
+};
+
+const classes = [
+  sizeClasses[size],
+  colorClasses[color],
+  weightClasses[weight],
+  alignClasses[align],
+  className
+];
+---
+
+<Tag class:list={classes} {...rest}>
+  <slot />
+</Tag>

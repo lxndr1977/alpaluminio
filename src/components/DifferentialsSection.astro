@@ -1,0 +1,125 @@
+---
+import {
+  Section,
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+  SectionContent,
+} from "@/components/ui/Section";
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+
+// Tipo de ícone Lucide (componente Astro)
+
+import type * as Icons from "@lucide/astro";
+
+type AstroIconComponent = (typeof Icons)[keyof typeof Icons];
+
+export interface DifferentialItem {
+  title: string;
+  description: string;
+  icon?: AstroIconComponent;
+  iconSize?: number;
+  iconStroke?: number;
+}
+
+interface Props extends SectionBaseProps {
+  items: DifferentialItem[];
+  iconSize?: number;        // Tamanho do ícone em px (padrão: 24)
+  iconStroke?: number;      // Espessura do stroke do ícone (padrão: 1.5)
+}
+
+const {
+  eyebrow = "Diferenciais",
+  title = "Nossos Diferenciais",
+  subtitle,
+  items,
+  theme = "white",
+  titleSize = "7xl",
+  headerAlign = "center",
+  margin = "none",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+  iconSize = 24,
+  iconStroke = 1.5,
+} = Astro.props;
+
+const colsMap: Record<number, string> = {
+  1: "lg:grid-cols-1",
+  2: "lg:grid-cols-2",
+  3: "lg:grid-cols-3",
+  4: "lg:grid-cols-4",
+};
+
+const lgCols = colsMap[Math.min(items.length, 4)];
+const themeColor = getTheme(theme);
+
+const lightTheme = {
+  bg: "bg-white/80",
+  border: "border-stone-100",
+  numberBg: "bg-primary/5",
+  numberText: "text-primary",
+  title: "text-primary",
+  subtitle: "text-foreground",
+};
+
+const darkTheme = {
+  bg: "bg-white/8",
+  border: "border-white/6",
+  numberBg: "bg-white/5",
+  numberText: "text-white",
+  title: "text-primary",
+  subtitle: "text-white",
+};
+
+const cardTheme =
+  theme === "primary" || theme === "secondary" ? darkTheme : lightTheme;
+---
+
+<Section
+  theme={theme}
+  size="full"
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+  margin={margin}
+>
+  <SectionHeader align={headerAlign}>
+    <SectionEyebrow color={themeColor.eyebrow}>{eyebrow}</SectionEyebrow>
+    <SectionTitle size={titleSize} color={themeColor.title}>
+      {title}
+    </SectionTitle>
+    <SectionSubtitle color={themeColor.subtitle}>{subtitle}</SectionSubtitle>
+  </SectionHeader>
+
+  <SectionContent direction="col" gap="sm" align="center" size="container">
+    <div class={`grid grid-cols-1 ${lgCols} gap-6`}>
+      {
+  items.map((item, index) => {
+    const Icon = item.icon as any; // ← cast here
+    return (
+      <div class={`${cardTheme.bg} ${cardTheme.border} border rounded-lg p-6 md:p-8`}>
+        <div class={`w-12 h-12 rounded-sm ${cardTheme.numberBg} flex items-center justify-center mb-12 lg:mb-20`}>
+          {Icon ? (
+            <Icon
+              size={item.iconSize ?? iconSize}
+              strokeWidth={item.iconStroke ?? iconStroke}
+              class={cardTheme.numberText}
+            />
+          ) : (
+            <span class={`${cardTheme.numberText} font-bold text-lg`}>
+              {(index + 1).toString().padStart(2, "0")}
+            </span>
+          )}
+        </div>
+        <h3 class={`text-xl font-bold ${cardTheme.title} mb-3`}>{item.title}</h3>
+        <p class={`lg:text-lg ${cardTheme.subtitle} leading-relaxed line-clamp-3`}>
+          {item.description}
+        </p>
+      </div>
+    );
+  })
+}
+    </div>
+  </SectionContent>
+</Section>

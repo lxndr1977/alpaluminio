@@ -1,0 +1,106 @@
+---
+import { Image } from "astro:assets";
+
+import {
+  Section,
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+  SectionContent,
+} from "@/components/ui/Section";
+
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+import ProductCard from "./ProductCard.astro";
+
+export interface Category {
+  name: string;
+  image: string | any;
+  link: string;
+}
+
+interface Props extends SectionBaseProps {
+  title?: string;
+  description?: string;
+  categories: Category[];
+  tag?: string;
+  align?: "left" | "center" | "right";
+  autoplayDelay?: number;
+  loop?: boolean;
+  spaceBetween?: number;
+  cols?: number;
+}
+
+const {
+  eyebrow,
+  title = "Produtos Relacionados",
+  subtitle = "Soluções integradas para potencializar sua produtividade industrial.",
+  categories,
+  cols: colsProp = 4,
+  theme = "white",
+  titleSize = "7xl",
+  headerAlign = "left",
+  margin = "none",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+} = Astro.props;
+
+const cols = Math.max(1, colsProp);
+
+const colsMap: Record<number, string> = {
+  1: "md:grid-cols-1",
+  2: "md:grid-cols-2",
+  3: "md:grid-cols-3",
+  4: "md:grid-cols-4",
+  5: "md:grid-cols-5",
+  6: "md:grid-cols-6",
+};
+
+const colsClass = colsMap[cols] ?? "md:grid-cols-3";
+
+const id = `related-categories-${Math.random().toString(36).slice(2, 7)}`;
+
+const themeColor = getTheme(theme);
+
+const cardVariant =
+  theme === "primary" || theme === "secondary" ? "dark" : "light";
+---
+
+<Section
+  theme={theme}
+  size="full"
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+  margin={margin}
+>
+  <SectionHeader align={headerAlign}>
+    <SectionEyebrow color={themeColor.eyebrow}>{eyebrow}</SectionEyebrow>
+    <SectionTitle size={titleSize} color={themeColor.title}
+      >{title}</SectionTitle
+    >
+    <SectionSubtitle color={themeColor.subtitle}>{subtitle}</SectionSubtitle>
+  </SectionHeader>
+
+  <SectionContent direction="col" gap="sm" align="center" size="container">
+    <div class="relative w-full">
+      <div class="overflow-hidden rounded-lg" id={`${id}-category`}>
+        <div class={`grid grid-cols-1 ${colsClass} gap-10 md:gap-8 rounded-lg`}>
+          {
+            categories.map((product, index) => (
+              <div class=" h-auto">
+                <ProductCard
+                  name={product.name}
+                  image={product.image}
+                  link={product.link}
+                  theme={cardVariant}
+                  cta="Ver produtos"
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </SectionContent>
+</Section>

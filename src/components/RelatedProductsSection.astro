@@ -1,0 +1,237 @@
+---
+import { Image } from "astro:assets";
+
+import {
+  Section,
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+  SectionContent,
+} from "@/components/ui/Section";
+
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+import ProductCard from "./ProductCard.astro";
+import Button from "./ui/Button.astro";
+
+export interface RelatedProduct {
+  name: string;
+  image: string | any;
+  link: string;
+}
+
+interface Props extends SectionBaseProps {
+  title?: string;
+  description?: string;
+  products: RelatedProduct[];
+  tag?: string;
+  align?: "left" | "center" | "right";
+  autoplayDelay?: number;
+  loop?: boolean;
+  spaceBetween?: number;
+  cols?: number;
+  showMoreButton?: boolean;       // <-- NOVO
+  moreProductsLink?: string;      // <-- NOVO
+  moreProductsLabel?: string;     // <-- NOVO (label customizável, opcional)
+}
+
+const {
+  eyebrow,
+  title = "Produtos Relacionados",
+  subtitle = "Soluções integradas para potencializar sua produtividade industrial.",
+  products,
+  cols: colsProp = 3,
+  theme = "white",
+  titleSize = "7xl",
+  headerAlign = "left",
+  autoplayDelay = 4000,
+  loop = true,
+  spaceBetween = 16,
+  margin = "none",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+  showMoreButton = false,
+  moreProductsLink = "/produtos",
+  moreProductsLabel = "Ver mais produtos",
+} = Astro.props;
+
+const cols = Math.max(1, colsProp);
+
+const id = `related-products-${Math.random().toString(36).slice(2, 7)}`;
+
+const themeColor = getTheme(theme);
+
+const lightTheme = {
+  cardWrapper:
+    "border-neutral-200 bg-white hover:-translate-y-2 hover:shadow-md",
+  imageBg: "bg-gray-100",
+  titleText: "text-foreground group-hover:text-primary",
+  ctaText: "text-primary",
+};
+
+const darkTheme = {
+  cardWrapper:
+    "border-white/10 bg-white/5 hover:-translate-y-2 hover:shadow-md hover:border-white/20",
+  imageBg: "bg-white/5",
+  titleText: "text-white group-hover:text-primary",
+  ctaText: "text-primary",
+};
+
+const cardTheme =
+  theme === "primary" || theme === "secondary" ? darkTheme : lightTheme;
+
+const cardVariant =
+  theme === "primary" || theme === "secondary" ? "dark" : "light";
+
+// Botão claro ou escuro dependendo do tema da section
+const isDarkSection = theme === "primary" || theme === "secondary";
+---
+
+<Section
+  theme={theme}
+  size="full"
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+  margin={margin}
+>
+  <SectionHeader align={headerAlign}>
+    <SectionEyebrow color={themeColor.eyebrow}>{eyebrow}</SectionEyebrow>
+    <SectionTitle size={titleSize} color={themeColor.title}
+      >{title}</SectionTitle
+    >
+    <SectionSubtitle color={themeColor.subtitle}>{subtitle}</SectionSubtitle>
+  </SectionHeader>
+
+  <SectionContent direction="col" gap="sm" align="center" size="container">
+    <div class="relative w-full">
+      <div
+        class="swiper overflow-hidden rounded-lg"
+        id={`${id}-swiper`}
+        data-gallery-id={id}
+        data-gallery-cols={cols}
+        data-autoplay-delay={autoplayDelay}
+        data-loop={String(loop)}
+        data-space-between={spaceBetween}
+      >
+        <div class="swiper-wrapper rounded-lg">
+          {
+            products.map((product) => (
+              <div class="swiper-slide h-auto">
+                <ProductCard
+                  name={product.name}
+                  image={product.image}
+                  link={product.link}
+                  theme={cardVariant}
+                  cta="Ver detalhes"
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <button
+        id={`${id}-prev`}
+        type="button"
+        aria-label="Anterior"
+        class={`hidden md:flex absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-20 flex h-12 w-12 items-center justify-center rounded-full border shadow-lg transition-all duration-200 active:scale-95 disabled:opacity-0 ${themeColor.swiper.navButton}`}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg
+        >
+      </button>
+
+      <button
+        id={`${id}-next`}
+        type="button"
+        aria-label="Próximo"
+        class={`hidden md:flex absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-20 flex h-12 w-12 items-center justify-center rounded-full border shadow-lg transition-all duration-200 active:scale-95 disabled:opacity-0 ${themeColor.swiper.navButton}`}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg
+        >
+      </button>
+    </div>
+
+    <div
+      id={`${id}-pagination`}
+      class="pagination-el mt-1 hidden md:flex items-center justify-center gap-2"
+    >
+    </div>
+
+    {/* Botão "Ver mais produtos" */}
+    {
+      showMoreButton && (
+        <div class="mt-8 flex justify-center">
+          
+          <Button  href={moreProductsLink}
+          >
+            {moreProductsLabel}
+           
+          </Button>
+        </div>
+      )
+    }
+  </SectionContent>
+</Section>
+
+<style
+  define:vars={{
+    dotInactive: themeColor.swiper.dotInactive,
+    dotActive: themeColor.swiper.dotActive,
+  }}
+>
+  .swiper {
+    padding-bottom: 12px;
+  }
+  .swiper-slide {
+    height: auto;
+  }
+  .pagination-el :global(.swiper-pagination-bullet) {
+    width: 8px;
+    height: 8px;
+    background-color: var(--dotInactive);
+    opacity: 0.5;
+    border-radius: 99px;
+    transition: all 0.3s;
+  }
+  .pagination-el :global(.swiper-pagination-bullet-active) {
+    width: 28px;
+    background-color: var(--dotActive);
+    opacity: 1;
+  }
+  .swiper :global(.aspect-img) {
+    aspect-ratio: var(--aspect);
+  }
+</style>
+
+<script define:vars={{ id }}>
+  window.__relatedProductsIds = window.__relatedProductsIds || {};
+  window.__relatedProductsIds[id] = true;
+  document.currentScript.dataset.relatedProductsId = id;
+</script>
+
+<script>
+  import {
+    initGalleries,
+    registerGalleryListeners,
+  } from "../scripts/gallery-swiper";
+  registerGalleryListeners();
+  initGalleries();
+</script>

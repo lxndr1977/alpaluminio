@@ -1,0 +1,416 @@
+---
+import { Play } from "@lucide/astro";
+import {
+  Section,
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+  SectionContent,
+} from "@/components/ui/Section";
+
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+import Button from "./ui/Button.astro";
+import { cn } from "@/utils/cn";
+
+interface Props extends SectionBaseProps {
+  // Fonte do vídeo — informe apenas uma das três opções
+  videoSrc?: string; // MP4 sem thumbnail
+  mp4Src?: string; // MP4 com thumbnail
+  videoId?: string; // YouTube
+  posterSrc?: string; // Poster/thumbnail (para mp4Src ou videoSrc)
+
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+
+  // Layout
+  videoPosition?: "left" | "right"; // posição do vídeo no desktop
+  mobileOrder?: "video-first" | "text-first"; // ordem no mobile
+
+  // Proporção do vídeo
+  aspectRatio?: "4/3" | "4/5" | "16/9" | "9/16" | "1/1" | "3/2" | "2/3" | "3/4";
+
+  desktopVideoPosition?: "left" | "right";
+  mobileVideoPosition?: "top" | "bottom";
+}
+
+const {
+  theme = "white",
+  videoSrc,
+  mp4Src,
+  videoId,
+  posterSrc,
+  eyebrow,
+  title,
+  subtitle,
+  titleSize = "7xl",
+  ctaLabel,
+  ctaHref,
+  margin = "none",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+  size = "container",
+  headerAlign = "left",
+  videoPosition = "left",
+  mobileOrder = "video-first",
+  aspectRatio = "9/16",
+  desktopVideoPosition = "right",
+  mobileVideoPosition = "top",
+} = Astro.props;
+
+const themeColor = getTheme(theme);
+const uniqueId = `reel-${Math.random().toString(36).substring(2, 9)}`;
+
+// ── Tipo de vídeo ────────────────────────────────────────────────────────────
+const isYoutube = Boolean(videoId);
+const isMp4WithThumb = Boolean(mp4Src);
+const isMp4Plain = Boolean(videoSrc) && !isMp4WithThumb && !isYoutube;
+
+const activeSrc = mp4Src || videoSrc || "";
+
+const youtubeThumbnail = isYoutube
+  ? posterSrc || `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+  : posterSrc;
+
+// ── Aspect ratio ─────────────────────────────────────────────────────────────
+const aspectClassMap: Record<string, string> = {
+  "16/9": "aspect-video",
+  "4/3": "aspect-[4/3]",
+  "4/5": "aspect-[4/5]",
+  "3/4": "aspect-[3/4]",
+  "9/16": "aspect-[9/16]",
+  "1/1": "aspect-square",
+  "3/2": "aspect-[3/2]",
+  "2/3": "aspect-[2/3]",
+};
+const aspectClass = aspectClassMap[aspectRatio] ?? "aspect-[9/16]";
+
+const isPortrait = ["9/16", "4/5", "2/3", "3/4"].includes(aspectRatio);
+const thumbBgFit = isPortrait ? "bg-contain bg-no-repeat bg-white" : "bg-cover";
+const objectFit = isPortrait ? "object-contain" : "object-cover";
+
+const mobileClasses =
+  mobileVideoPosition === "top" ? "flex-col-reverse" : "flex-col";
+const desktopClasses =
+  desktopVideoPosition === "left" ? "md:flex-row-reverse" : "md:flex-row";
+
+// Largura máxima do bloco de vídeo segundo proporção
+const videoMaxW = isPortrait ? "max-w-[320px] sm:max-w-[380px]" : "max-w-full";
+---
+
+<Section
+  id={uniqueId}
+  theme={theme}
+  size="full"
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+  margin={margin}
+>
+  <SectionContent
+    direction="row"
+    class={cn(
+      "flex-col lg:flex-row flex flex-1 w-full justify-center items-center gap-20",
+      { mobileClasses },
+      { desktopClasses },
+    )}
+    size={size}
+  >
+    {/* ── Bloco do vídeo ───────────────────────────────────────────── */}
+    <div
+      class={cn(
+        "flex justify-center",
+        isPortrait ? "flex-none w-[320px] sm:w-[380px]" : "flex-1 w-full",
+      )}
+      data-animate="fade-up"
+    >
+      <div class={cn("w-full", videoMaxW)}>
+        <div class={cn("relative rounded-2xl overflow-hidden", aspectClass)}>
+          {/* YouTube */}
+          {
+            isYoutube && (
+              <div
+                class="absolute inset-0 group"
+                data-yt-container
+                data-video-id={videoId}
+                data-video-title={title}
+              >
+                <button
+                  type="button"
+                  class={cn(
+                    "absolute inset-0 w-full h-full flex items-center justify-center",
+                    "bg-center transition-transform duration-700 group-hover:scale-105",
+                    thumbBgFit,
+                  )}
+                  style={`background-image: url(${youtubeThumbnail}); background-size: cover`}
+                  aria-label={
+                    title ? `Reproduzir vídeo: ${title}` : "Reproduzir vídeo"
+                  }
+                  data-yt-play-btn
+                >
+                  <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500" />
+                  <span class="relative z-10 w-14 h-14 rounded-full bg-primary flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-lg">
+                    <Play class="w-6 h-6 text-white fill-white ml-0.5" />
+                  </span>
+                </button>
+              </div>
+            )
+          }
+
+          {/* MP4 com thumbnail */}
+          {
+            isMp4WithThumb && (
+              <div
+                class="absolute inset-0 group"
+                data-mp4-container
+                data-mp4-src={mp4Src}
+                data-object-fit={objectFit}
+              >
+                <button
+                  type="button"
+                  class={cn(
+                    "absolute inset-0 w-full h-full flex items-center justify-center",
+                    "bg-center transition-transform duration-700 group-hover:scale-105",
+                    thumbBgFit,
+                  )}
+                  style={`background-image: url(${youtubeThumbnail}); background-size: cover`}
+                  aria-label={
+                    title ? `Reproduzir vídeo: ${title}` : "Reproduzir vídeo"
+                  }
+                  data-mp4-play-btn
+                >
+                  <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500" />
+                  <span class="relative z-10 w-14 h-14 rounded-full bg-primary flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-lg">
+                    <Play class="w-6 h-6 text-white fill-white ml-0.5" />
+                  </span>
+                </button>
+              </div>
+            )
+          }
+
+          {/* MP4 simples (sem thumbnail) */}
+          {
+            isMp4Plain && (
+              <>
+                <video
+                  id={`${uniqueId}-video`}
+                  class={cn("absolute inset-0 w-full h-full block", objectFit)}
+                  poster={posterSrc}
+                  loop
+                  playsinline
+                  preload="none"
+                >
+                  <source src={videoSrc} type="video/mp4" />
+                </video>
+
+                <button
+                  id={`${uniqueId}-toggle`}
+                  aria-label="Reproduzir vídeo"
+                  class="absolute inset-0 flex items-center justify-center group z-10"
+                >
+                  <span
+                    id={`${uniqueId}-icon`}
+                    class="w-14 h-14 rounded-full bg-primary flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-lg"
+                  >
+                    <Play class="w-6 h-6 text-white fill-white ml-0.5" />
+                  </span>
+                </button>
+              </>
+            )
+          }
+        </div>
+      </div>
+    </div>
+
+    {/* ── Bloco de texto ───────────────────────────────────────────── */}
+    <div class={cn("flex flex-col flex-1 w-full")}>
+      <SectionHeader align={headerAlign} noPadding class="mb-6">
+        <SectionEyebrow color={themeColor.eyebrow}>{eyebrow}</SectionEyebrow>
+        <SectionTitle size={titleSize} color={themeColor.title}
+          >{title}</SectionTitle
+        >
+        <SectionSubtitle color={themeColor.subtitle}>{subtitle}</SectionSubtitle
+        >
+      </SectionHeader>
+
+      <slot name="left" />
+
+      {
+        ctaLabel && ctaHref && (
+          <div class="shrink-0 mt-3">
+            <Button variant="white" href={ctaHref} class="shrink-0">
+              {ctaLabel}
+            </Button>
+          </div>
+        )
+      }
+    </div>
+  </SectionContent>
+</Section>
+
+<script define:vars={{ uniqueId }}>
+  // ─── Núcleo de controle (play / pause / pause-on-scroll) ──────────────────
+  function initVideoControls(video, iconEl) {
+    if (video.dataset.initialized) return;
+    video.dataset.initialized = "true";
+
+    const show = () => {
+      iconEl.style.opacity = "1";
+      iconEl.style.pointerEvents = "auto";
+    };
+    const hide = () => {
+      iconEl.style.opacity = "0";
+      iconEl.style.pointerEvents = "none";
+    };
+
+    const handleToggle = () => {
+      if (video.paused) {
+        video
+          .play()
+          .then(hide)
+          .catch((err) => console.error("Erro ao dar play:", err));
+      } else {
+        video.pause();
+        show();
+      }
+    };
+
+    video.addEventListener("click", handleToggle);
+    iconEl.addEventListener("click", handleToggle);
+
+    new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting && !video.paused) {
+            video.pause();
+            show();
+          }
+        });
+      },
+      { threshold: 0.1 },
+    ).observe(video);
+  }
+
+  // ─── Ícone Play criado via JS (para os casos com thumbnail) ──────────────
+  function createIconOverlay() {
+    const wrapper = document.createElement("span");
+    wrapper.className =
+      "absolute inset-0 flex items-center justify-center z-10";
+    wrapper.style.opacity = "0";
+    wrapper.style.pointerEvents = "none";
+    wrapper.innerHTML = `
+      <span class="w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-lg
+                   transition-all duration-300 hover:scale-110 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+             fill="white" stroke="white" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" class="ml-0.5">
+          <polygon points="5 3 19 12 5 21 5 3"/>
+        </svg>
+      </span>`;
+    return wrapper;
+  }
+
+  // ─── Setup ───────────────────────────────────────────────────────────────
+  function setupPlayers() {
+    // 1. YouTube — troca thumbnail por iframe ao clicar
+    document.querySelectorAll("[data-yt-container]").forEach((container) => {
+      if (container.dataset.initialized) return;
+      container.dataset.initialized = "true";
+
+      const btn = container.querySelector("[data-yt-play-btn]");
+      const ytId = container.getAttribute("data-video-id");
+      const ytTitle =
+        container.getAttribute("data-video-title") || "YouTube video";
+
+      btn?.addEventListener("click", () => {
+        const iframe = document.createElement("iframe");
+        iframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1`;
+        iframe.setAttribute("frameborder", "0");
+        iframe.setAttribute(
+          "allow",
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+        );
+        iframe.setAttribute("allowfullscreen", "true");
+        iframe.setAttribute("title", ytTitle);
+        iframe.classList.add("absolute", "inset-0", "w-full", "h-full");
+        container.innerHTML = "";
+        container.appendChild(iframe);
+      });
+    });
+
+    // 2. MP4 com thumbnail — ao clicar substitui por vídeo + aplica controles
+    document.querySelectorAll("[data-mp4-container]").forEach((container) => {
+      if (container.dataset.initialized) return;
+      container.dataset.initialized = "true";
+
+      const btn = container.querySelector("[data-mp4-play-btn]");
+      const src = container.getAttribute("data-mp4-src");
+      const fitCls =
+        container.getAttribute("data-object-fit") || "object-cover";
+
+      btn?.addEventListener("click", () => {
+        const video = document.createElement("video");
+        video.src = src;
+        video.loop = true;
+        video.playsInline = true;
+        video.classList.add("absolute", "inset-0", "w-full", "h-full", fitCls);
+
+        const iconEl = createIconOverlay();
+
+        container.innerHTML = "";
+        container.appendChild(video);
+        container.appendChild(iconEl);
+
+        initVideoControls(video, iconEl);
+
+        video.play().catch((err) => {
+          console.error("Erro ao dar play:", err);
+          iconEl.style.opacity = "1";
+          iconEl.style.pointerEvents = "auto";
+        });
+      });
+    });
+
+    // 3. MP4 simples — elementos já no DOM, mesmo padrão do Componente 1
+    const video = document.getElementById(`${uniqueId}-video`);
+    const toggleBtn = document.getElementById(`${uniqueId}-toggle`);
+    const iconEl = document.getElementById(`${uniqueId}-icon`);
+
+    if (video && toggleBtn && iconEl) {
+      // Reutiliza initVideoControls; o botão wrapper também aciona o toggle
+      initVideoControls(video, iconEl);
+      toggleBtn.addEventListener("click", () => {
+        if (video.paused) {
+          video
+            .play()
+            .then(() => {
+              iconEl.style.opacity = "0";
+              iconEl.style.pointerEvents = "none";
+            })
+            .catch(console.error);
+        } else {
+          video.pause();
+          iconEl.style.opacity = "1";
+          iconEl.style.pointerEvents = "auto";
+        }
+      });
+    }
+  }
+
+  setupPlayers();
+  document.addEventListener("astro:page-load", setupPlayers);
+  document.addEventListener("astro:after-swap", setupPlayers);
+</script>
+
+<style>
+  [data-mp4-container] video,
+  [data-mp4-container] span,
+  [data-yt-container] span {
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+</style>

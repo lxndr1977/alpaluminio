@@ -1,0 +1,329 @@
+---
+import { Star } from '@lucide/astro';
+
+import {
+  Section,
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+  SectionContent,
+} from "@/components/ui/Section";
+
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+
+export interface Testimonial {
+  quote: string;
+  author: string;
+  role?: string;
+  company?: string;
+  avatar?: string;
+  rating?: number;
+}
+
+interface Props extends SectionBaseProps {
+  id?: string;
+  testimonials: Testimonial[];
+  layout?: 'carousel' | 'grid';
+  highlightFirst?: boolean;
+  autoplayDelay?: number;
+  loop?: boolean;
+  cols?: number;
+  colsMobile?: number;
+  colsTablet?:number;
+  colsDesktop?: number;
+}
+
+const {
+  id = "social-proof",
+  eyebrow,
+  title = "O que nossos clientes dizem",
+  subtitle,
+  titleSize = "7xl",
+  headerAlign = "left",
+  testimonials = [],
+  layout = 'grid',
+  highlightFirst = false,
+  theme = "white",
+  autoplayDelay = 4000,
+  loop = true,
+    colsMobile = 2,
+  colsTablet = 3,
+  colsDesktop = 4,
+  cols = 3,
+  margin = "none",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+} = Astro.props;
+
+if (testimonials.length === 0) return null;
+
+const galleryId = `social-proof-${id}`;
+const swiperId = `${galleryId}-swiper`;
+
+
+const themeColor = getTheme(theme);
+
+const lightTheme = {
+  headingText: "text-dark",
+  cardBg: "bg-white border-stone-100 shadow-sm",
+  quoteText: "text-stone-600",
+  authorText: "text-dark",
+  roleText: "text-stone-500",
+  starInactive: "text-stone-300",
+  navButton: "border-stone-200 text-stone-700 hover:bg-stone-100 bg-white",
+  dotInactive: "#d4d4d8",
+  dotActive: "var(--color-primary)",
+};
+
+const darkTheme = {
+  headingText: "text-white",
+  cardBg: "bg-white/5 border-white/10",
+  quoteText: "text-white/80",
+  authorText: "text-white",
+  roleText: "text-white/60",
+  starInactive: "text-white/20",
+  navButton: "border-white/20 text-white hover:bg-white/10 bg-stone-900",
+  dotInactive: "#ffffff40",
+  dotActive: "var(--color-primary)",
+};
+
+const cardTheme = (theme === "primary" || theme === "secondary") ? darkTheme : lightTheme;
+---
+
+<Section id={id} theme={theme} size="full" paddingTop={paddingTop} paddingBottom={paddingBottom} margin={margin}>
+  <SectionHeader align={headerAlign}>
+    <SectionEyebrow color={themeColor.eyebrow}>{eyebrow}</SectionEyebrow>
+    <SectionTitle size={titleSize} color={themeColor.title}>{title}</SectionTitle>
+    <SectionSubtitle color={themeColor.subtitle}>{subtitle}</SectionSubtitle>
+  </SectionHeader>
+
+  <SectionContent direction="col" gap="sm" align="center" size="container">
+    {layout === 'grid' ? (
+      <div class="custom-testimonial-grid grid gap-6 w-full"       
+      style={`--cols-mobile: ${colsMobile}; --cols-tablet: ${colsTablet}; --cols-desktop: ${colsDesktop};`}
+>
+                {testimonials.map((testimonial, index) => (
+          <div
+            class:list={[
+              "group relative p-8 rounded-xl border transition-all duration-300 flex flex-col justify-between",
+              cardTheme.cardBg,
+              highlightFirst && index === 0 ? "md:col-span-2 lg:col-span-2" : ""
+            ]}
+          >
+            {testimonial.rating && (
+              <div class="flex gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    class:list={[
+                      "w-4 h-4",
+                      i < (testimonial.rating || 0) ? "text-yellow-400 fill-yellow-400" : cardTheme.starInactive
+                    ]}
+                  />
+                ))}
+              </div>
+            )}
+
+            <blockquote class:list={[
+              "mb-8 italic leading-relaxed",
+              cardTheme.quoteText,
+              highlightFirst && index === 0 ? "text-xl md:text-2xl" : "text-base"
+            ]}>
+              "{testimonial.quote}"
+            </blockquote>
+
+            <div class="flex items-center gap-4">
+              {testimonial.avatar && (
+                <img
+                  src={testimonial.avatar}
+                  alt={testimonial.author}
+                  class="w-12 h-12 rounded-full object-cover border-2 border-primary/20"
+                />
+              )}
+              <div>
+                <cite class:list={[
+                  "not-italic font-bold block",
+                  cardTheme.authorText
+                ]}>
+                  {testimonial.author}
+                </cite>
+                {(testimonial.role || testimonial.company) && (
+                  <span class:list={[
+                    "text-sm block",
+                    cardTheme.roleText
+                  ]}>
+                    {[testimonial.role, testimonial.company].filter(Boolean).join(' @ ')}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+    ) : (
+  <Fragment>      <div class="relative group w-full">
+        <!-- Swiper container seguindo o mesmo padrão do PhotoGallery -->
+        <div
+          class="swiper overflow-hidden rounded-xl"
+          id={swiperId}
+          data-gallery-id={galleryId}
+          data-gallery-cols={cols}
+          data-autoplay-delay={autoplayDelay}
+          data-loop={String(loop)}
+          data-space-between={24}
+        >
+          <div class="swiper-wrapper">
+            {testimonials.map((testimonial) => (
+              <div class="swiper-slide h-auto">
+                <div
+                  class:list={[
+                    "h-full p-8 rounded-xl border transition-all duration-300",
+                    cardTheme.cardBg
+                  ]}
+                >
+                  {testimonial.rating && (
+                    <div class="flex gap-1 mb-6">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          class:list={[
+                            "w-4 h-4",
+                            i < (testimonial.rating || 0) ? "text-yellow-400 fill-yellow-400" : cardTheme.starInactive
+                          ]}
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  <blockquote class:list={[
+                    "mb-8 italic leading-relaxed",
+                    cardTheme.quoteText
+                  ]}>
+                    "{testimonial.quote}"
+                  </blockquote>
+
+                  <div class="flex items-center gap-4">
+                    {testimonial.avatar && (
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.author}
+                        class="w-12 h-12 rounded-full object-cover border-2 border-primary/20"
+                      />
+                    )}
+                    <div>
+                      <cite class:list={[
+                        "not-italic font-bold block",
+                        cardTheme.authorText
+                      ]}>
+                        {testimonial.author}
+                      </cite>
+                      {(testimonial.role || testimonial.company) && (
+                        <span class:list={[
+                          "text-sm block",
+                          cardTheme.roleText
+                        ]}>
+                          {[testimonial.role, testimonial.company].filter(Boolean).join(' @ ')}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button
+          id={`${galleryId}-prev`}
+          type="button"
+          aria-label="Anterior"
+          class:list={[
+            "hidden md:flex md:absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-20",
+            "flex h-12 w-12 items-center justify-center rounded-full border shadow-lg",
+            "transition-all duration-200 active:scale-95 disabled:opacity-0",
+            cardTheme.navButton
+          ]}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+
+        <button
+          id={`${galleryId}-next`}
+          type="button"
+          aria-label="Próximo"
+          class:list={[
+            "hidden md:flex md:absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-20",
+            "flex h-12 w-12 items-center justify-center rounded-full border shadow-lg",
+            "transition-all duration-200 active:scale-95 disabled:opacity-0",
+            cardTheme.navButton
+          ]}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Paginação — mesmo padrão do PhotoGallery -->
+      <div
+        id={`${galleryId}-pagination`}
+        class="pagination-el mt-8 flex items-center justify-center gap-2"
+      >
+      </div>
+       </Fragment>
+    )}
+  </SectionContent>
+</Section>
+
+  
+<style
+  define:vars={{
+    dotInactive: themeColor.swiper.dotInactive,
+    dotActive: themeColor.swiper.dotActive,
+  }}
+>
+  .swiper { padding-bottom: 12px; }
+  .swiper-slide { height: auto; }
+  .pagination-el :global(.swiper-pagination-bullet) {
+    width: 8px;
+    height: 8px;
+    background-color: var(--dotInactive);
+    opacity: 0.5;
+    border-radius: 99px;
+    transition: all 0.3s;
+  }
+  .pagination-el :global(.swiper-pagination-bullet-active) {
+    width: 28px;
+    background-color: var(--dotActive);
+    opacity: 1;
+  }
+    .custom-testimonial-grid {
+    grid-template-columns: repeat(var(--cols-mobile), minmax(0, 1fr));
+  }
+  @media (min-width: 768px) {
+    .custom-testimonial-grid {
+      grid-template-columns: repeat(var(--cols-tablet), minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .custom-testimonial-grid {
+      grid-template-columns: repeat(var(--cols-desktop), minmax(0, 1fr));
+    }
+  }
+</style>
+
+<script>
+  import {
+    initGalleries,
+    registerGalleryListeners,
+  } from "../scripts/gallery-swiper";
+
+  // Só inicializa se houver um swiper na página
+  if (document.querySelector('.swiper')) {
+    registerGalleryListeners();
+    initGalleries();
+  }
+</script>

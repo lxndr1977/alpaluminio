@@ -1,0 +1,134 @@
+---
+import {
+  Section,
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+  SectionContent,
+} from "@/components/ui/Section";
+
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+
+interface SpecRow {
+  param: string;
+  value: string;
+}
+
+interface SpecGroup {
+  category: string;
+  rows: SpecRow[];
+}
+
+interface Props extends SectionBaseProps {
+  specGroups: SpecGroup[];
+  columns?: 1 | 2 | 3;
+  align?: "left" | "center" | "right";
+}
+
+const {
+  eyebrow = "Perguntas Frequentes",
+  title = "",
+  subtitle = "",
+  titleSize = "7xl",
+  specGroups,
+  columns = 2,
+  headerAlign = "center",
+  margin = "none",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+  size = "container",
+  theme = "white",
+} = Astro.props;
+
+// Divide os grupos em colunas de forma equilibrada
+const cols: SpecGroup[][] = Array.from({ length: columns }, () => []);
+specGroups.forEach((group, i) => {
+  cols[i % columns].push(group);
+});
+
+const gridClass: Record<number, string> = {
+  1: "grid-cols-1",
+  2: "grid-cols-1 lg:grid-cols-2",
+  3: "grid-cols-1 lg:grid-cols-3",
+};
+
+const themeColor = getTheme(theme);
+
+const lightTheme = {
+  categoryBorder: "border-primary",
+  categoryText: "text-primary",
+  rowBorder: "border-border-subtle",
+  paramText: "text-foreground-subtle",
+  valueText: "text-foreground",
+};
+
+const darkTheme = {
+  categoryBorder: "border-white/20",
+  categoryText: "text-white",
+  rowBorder: "border-white/10",
+  paramText: "text-white/60",
+  valueText: "text-white",
+};
+
+const cardTheme = (theme === "primary" || theme === "secondary") ? darkTheme : lightTheme;
+---
+
+<Section
+  theme={theme}
+  size="full"
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+  margin={margin}
+>
+  <SectionHeader align={headerAlign} size={size}>
+    <SectionEyebrow color={themeColor.eyebrow}>{eyebrow}</SectionEyebrow>
+    <SectionTitle size={titleSize} color={themeColor.title}
+      >{title}
+    </SectionTitle>
+    <SectionSubtitle color={themeColor.subtitle}>{subtitle}</SectionSubtitle>
+  </SectionHeader>
+
+  <SectionContent direction="col" gap="sm" align="center" size={size}>
+    <!-- Spec Table -->
+    <div
+      class:list={[
+        "grid gap-8 lg:gap-12 fade-up delay-1 mx-auto w-full",
+        gridClass[columns],
+        size,
+      ]}
+    >
+      {
+        cols.map((colGroups) => (
+          <div class="flex flex-col gap-8">
+            {colGroups.map((group) => (
+              <div>
+                <div class:list={["flex items-center gap-3 mb-4 pb-2 border-b-1", cardTheme.categoryBorder]}>
+                  <span class:list={["text-sm font-bold uppercase tracking-[0.16em]", cardTheme.categoryText]}>
+                    {group.category}
+                  </span>
+                </div>
+                <div class="flex flex-col">
+                  {group.rows.map((row, i) => (
+                    <div
+                      class:list={[
+                        "flex flex-col md:flex-row justify-between items-baseline py-3 gap-4",
+                        i < group.rows.length - 1 && `border-b ${cardTheme.rowBorder}`,
+                      ]}
+                    >
+                      <span class:list={["shrink-0", cardTheme.paramText]}>{row.param}</span>
+                      <span class:list={["font-semibold text-right", cardTheme.valueText]}>
+                        {row.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </SectionContent>
+</Section>

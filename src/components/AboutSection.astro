@@ -1,0 +1,117 @@
+---
+import Section from "./ui/Section.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  text: string;
+  image: ImageMetadata;
+  metrics: Array<{ value: string; label: string }>;
+}
+
+const { id, eyebrow = "Institucional", title, text, image, metrics } = Astro.props;
+---
+
+<Section id={id} class="bg-white">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+    <!-- Content Column -->
+    <div class="order-2 lg:order-1 reveal" data-reveal-direction="left">
+      {eyebrow && (
+        <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-primary mb-4 block border-b border-primary/20 pb-1 w-fit">
+          {eyebrow}
+        </span>
+      )}
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-8 leading-[1.1]">
+        {title}
+      </h2>
+      <p class="text-lg text-gray-500 leading-relaxed max-w-xl">
+        {text}
+      </p>
+
+      {metrics && metrics.length > 0 && (
+        <div class="grid grid-cols-2 gap-8 md:gap-12 mt-12 md:mt-16">
+          {metrics.map((metric) => (
+            <div class="group">
+              <div class="text-4xl md:text-5xl font-extrabold text-primary tracking-tighter transition-transform duration-300 group-hover:translate-x-1">
+                {metric.value}
+              </div>
+              <div class="text-xs text-gray-400 mt-2 uppercase tracking-[0.15em] font-semibold">
+                {metric.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <!-- Image Column -->
+    <div class="order-1 lg:order-2 reveal" data-reveal-direction="right">
+      <div class="relative">
+        <!-- Decorative elements -->
+        <div class="absolute -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-accent/5 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="aspect-[4/5] overflow-hidden rounded-sm shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] relative group">
+          <Image 
+            src={image} 
+            alt={title} 
+            class="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+          />
+          <!-- Glass Overlay for depth -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-40"></div>
+          <div class="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-sm"></div>
+        </div>
+        
+        <!-- Subtle detail box -->
+        <div class="absolute -bottom-6 -right-6 bg-white p-6 shadow-xl rounded-sm hidden md:block border border-gray-100 reveal delay-300">
+           <div class="w-12 h-1 bg-primary mb-4"></div>
+           <p class="text-[10px] uppercase font-bold tracking-widest text-dark/40">Qualidade Garantida</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  /* Reveal Animation Utility */
+  .reveal {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal[data-reveal-direction="left"] {
+    transform: translateX(-40px);
+  }
+
+  .reveal[data-reveal-direction="right"] {
+    transform: translateX(40px);
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translate(0);
+  }
+</style>
+
+<script>
+  // Simple intersection observer for reveal animations
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  };
+
+  const observerOptions = {
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+  });
+</script>

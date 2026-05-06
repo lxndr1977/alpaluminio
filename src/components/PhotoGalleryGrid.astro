@@ -1,0 +1,173 @@
+---
+import { Image } from "astro:assets";
+import {
+  Section,
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+  SectionContent,
+} from "@/components/ui/Section";
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+
+interface Photo {
+  title: string;
+  subtitle?: string;
+  src: ImageMetadata | string;
+}
+
+interface Props extends SectionBaseProps {
+  aspect?: "4/3" | "3/4" | "16/9" | "9/16" | "1/1" | "3/2" | "2/3";
+  photos: Photo[];
+  colsMobile?: number;
+  colsTablet?: number;
+  colsDesktop?: number;
+  showPhotoTitle?: boolean;
+  showPhotoSubtitle?: boolean;
+  headerAlign?: "left" | "center" | "right";
+}
+
+const {
+  headerAlign = "center",
+  eyebrow,
+  title = "",
+  subtitle = "",
+  photos,
+  colsMobile = 2,
+  colsTablet = 3,
+  colsDesktop = 4,
+  theme = "white",
+  titleSize = "7xl",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+  margin = "none",
+  showPhotoTitle = true,
+  showPhotoSubtitle = true,
+  size = "container",
+} = Astro.props;
+
+const nav = getTheme(theme);
+
+if (photos.length === 0) return;
+
+const showPhotoInfo = showPhotoTitle || showPhotoSubtitle;
+
+const lightTheme = {
+  cardBorder: "border-gray-100",
+  cardHover: "hover:shadow-lg hover:shadow-primary/8 hover:border-gray-200",
+  cardFocus: "focus:ring-primary/30 focus:ring-offset-2",
+  infoBg: "bg-white",
+  infoBorder: "border-gray-100",
+  titleText: "text-dark",
+  subtitleText: "text-gray-500",
+};
+
+const darkTheme = {
+  cardBorder: "border-white/10",
+  cardHover: "hover:shadow-lg hover:shadow-primary/8 hover:border-white/20",
+  cardFocus:
+    "focus:ring-primary/30 focus:ring-offset-2 focus:ring-offset-transparent",
+  infoBg: "bg-white/5",
+  infoBorder: "border-white/10",
+  titleText: "text-white",
+  subtitleText: "text-white/60",
+};
+
+const cardTheme =
+  theme === "primary" || theme === "secondary" ? darkTheme : lightTheme;
+---
+
+<Section
+  theme={theme}
+  size={size}
+  margin={margin}
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+>
+  <SectionHeader align={headerAlign}>
+    <SectionEyebrow color={nav.eyebrow}>{eyebrow}</SectionEyebrow>
+    <SectionTitle size={titleSize} color={nav.title}>{title}</SectionTitle>
+    <SectionSubtitle color={nav.subtitle}>{subtitle}</SectionSubtitle>
+  </SectionHeader>
+  <SectionContent direction="col" gap="sm" align="center" size="container">
+    <div
+      class="custom-gallery-grid grid gap-4 md:gap-6 fade-up delay-1"
+      style={`--cols-mobile: ${colsMobile}; --cols-tablet: ${colsTablet}; --cols-desktop: ${colsDesktop};`}
+    >
+      {
+        photos.map((opt, i) => (
+          <button
+            type="button"
+            class:list={[
+              "gallery-item group relative rounded-sm overflow-hidden border transition-all duration-300 hover:-translate-y-1 cursor-pointer focus:outline-none focus:ring-2",
+              cardTheme.cardBorder,
+              cardTheme.cardHover,
+              cardTheme.cardFocus,
+            ]}
+            data-index={i}
+          >
+            <div class="aspect-square overflow-hidden">
+              {typeof opt.src === "string" ? (
+                <img
+                  src={opt.src}
+                  alt={opt.title}
+                  class="w-full aspect-img object-cover rounded-lg transition-transform duration-500 hover:scale-105"
+                />
+              ) : (
+                <Image
+                  src={opt.src}
+                  alt={opt.title}
+                  width={800}
+                  height={600}
+                  class="w-full aspect-img object-cover rounded-lg transition-transform duration-500 hover:scale-105"
+                />
+              )}
+            </div>
+            {showPhotoInfo && (
+              <div
+                class:list={[
+                  "px-3 py-3 text-center border-t",
+                  cardTheme.infoBorder,
+                  cardTheme.infoBg,
+                ]}
+              >
+                {showPhotoTitle && (
+                  <span
+                    class:list={[
+                      "text-sm font-semibold block",
+                      cardTheme.titleText,
+                    ]}
+                  >
+                    {opt.title}
+                  </span>
+                )}
+                {showPhotoSubtitle && opt.subtitle && (
+                  <span class:list={["text-sm mt-0.5", cardTheme.subtitleText]}>
+                    {opt.subtitle}
+                  </span>
+                )}
+              </div>
+            )}
+          </button>
+        ))
+      }
+    </div>
+  </SectionContent>
+</Section>
+
+<style>
+  .custom-gallery-grid {
+    grid-template-columns: repeat(var(--cols-mobile), minmax(0, 1fr));
+  }
+  @media (min-width: 768px) {
+    .custom-gallery-grid {
+      grid-template-columns: repeat(var(--cols-tablet), minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .custom-gallery-grid {
+      grid-template-columns: repeat(var(--cols-desktop), minmax(0, 1fr));
+    }
+  }
+</style>

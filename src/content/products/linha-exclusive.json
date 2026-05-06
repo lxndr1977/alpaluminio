@@ -1,0 +1,315 @@
+{
+  "name": "Linha Exclusive",
+  "slug": "linha-exclusive",
+  "segments": ["industrial"],
+  "mainPhoto": "/images/produtos/linha-exclusive_main.webp",
+
+
+  "seo": {
+    "title": "Linha Exclusive | Alpa Alumínio",
+    "description": "Solução inovadora com acabamento em mini lambri envernizado e marco regulável, que favorece a sensação de amplitude.",
+    "ogImage": "/images/produtos/linha-exclusive_main.webp"
+  },
+
+  "stickyBar": {
+    "message": "Linha Exclusive",
+    "subMessage": "Solicite um orçamento",
+    "ctaLabel": "Falar com vendedor"
+  },
+
+  "sections": [
+    {
+      "id": "hero",
+      "enabled": true,
+      "subtitle": "Porta de Alumínio",
+      "title": "Linha Exclusive",
+      "description": "Porta pivotante com acabamento em mini lambri envernizado e marco regulável, que favorece a sensação de amplitude. Reúne o requinte da madeira com a funcionalidade do alumínio.",
+      "image": "/images/produtos/linha-exclusive_hero.webp"
+    },
+
+    {
+      "id": "differentials",
+      "enabled": false,
+      "eyebrow": "Diferenciais",
+      "title": "Diferenciais da Porta Dual",
+      "theme": "secondary",
+      "subtitle": "A Porta Dual foi desenvolvida para atender arquitetos, engenheiros e indústrias que precisam unir design e qualidade.",
+      "items": [
+        {
+          "title": "Perfil Único",
+          "description": "Permite acabamentos diferentes em cada face da porta."
+        },
+        {
+          "title": "Grande Dimensão",
+          "description": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "title": "Versatilidade",
+          "description": "Diversas opções de cores e revestimentos."
+        },
+        {
+          "title": "Alta Resistência",
+          "description": "Estrutura robusta para aplicações exigentes."
+        }
+      ]
+    },
+    {
+      "id": "content",
+      "theme": "surface",
+      "enabled": true,
+      "eyebrow": "Sobre a Linha Exclusive",
+      "title": "Design sofisticado com acabamento em alumínio",
+      "subtitle": "A Linha Exclusive combina o requinte da madeira com a funcionalidade e durabilidade do alumínio, oferecendo uma solução com alto valor estético para projetos que buscam sofisticação.",
+      "image": "/images/produtos/linha-exclusive_01.webp",
+      "body": "<p></p>"
+    },
+
+        {
+      "id": "mediaText",
+      "enabled": true,
+      "eyebrow": "Linha Exclusive",
+      "title": "Estética refinada e segurança",
+      "subtitle": "A porta pivotante revestida em lambri americano se destaca como uma solução inovadora, unindo estética refinada e segurança, ideal para projetos que valorizam design e acabamento de alto padrão.",
+      "image": "/images/produtos/linha-exclusive_08.webp",
+      "imageAlt": "Imagem ilustrativa do produto",
+      "stickyImage": true,
+      "imageAspect": "4/3",
+      "desktopImagePosition": "left",
+      "mobileImagePosition": "top",
+      "body": "<p>Com acabamento em mini lambri envernizado e marco regulável, o sistema contribui para melhor adaptação ao vão e favorece a sensação de amplitude nos ambientes.</p>"
+    },
+
+
+    {
+      "id": "photoGallery",
+      "enabled": true,
+      "eyebrow": "Aplicações",
+      "title": "Integração entre design sofisticado e funcionalidade",
+      "subtitle": "Veja como a Linha Exclusive pode ser aplicada em diferentes projetos.",
+      "theme": "white",
+      "cols": 4,
+      "aspect": "3/4",
+      "photos": [
+        {
+          "src": "/images/produtos/linha-exclusive_01.webp",
+          "alt": "Porta Dual aplicação 1",
+          "caption": "Aplicação residencial"
+        },
+        {
+          "src": "/images/produtos/linha-exclusive_02.webp",
+          "alt": "Porta Dual aplicação 2",
+          "caption": "Aplicação comercial"
+        },
+        {
+          "src": "/images/produtos/linha-exclusive_03.webp",
+          "alt": "Porta Dual aplicação 3",
+          "caption": "Aplicação industrial"
+        },
+        {
+          "src": "/images/produtos/linha-exclusive_04.webp",
+          "alt": "Porta Dual aplicação 3",
+          "caption": "Aplicação industrial"
+        },
+        {
+          "src": "/images/produtos/linha-exclusive_05.webp",
+          "alt": "Porta Dual aplicação 3",
+          "caption": "Aplicação industrial"
+        }
+      ]
+    },
+
+    {
+      "id": "finishesGallery",
+      "enabled": false,
+      "eyebrow": "Acabamentos",
+      "title": "Confira a variedade de acabamentos para personalizar seu projeto",
+      "subtitle": "Escolha o acabamento ideal para seu projeto.",
+      "photos": [
+        {
+          "title": "Branco Brilhante",
+          "subtitle": "RAL 9003",
+          "image": "/images/custom-branco-brilhante.png"
+        },
+        {
+          "title": "Branco Fosco",
+          "subtitle": "RAL 9003",
+          "image": "/images/custom-branco-fosco.png"
+        },
+        {
+          "title": "Cinza Metálico",
+          "subtitle": "VXS 15026",
+          "image": "/images/custom-cinza-metalico.png"
+        },
+        {
+          "title": "Preto Fosco",
+          "subtitle": "RAL 9005",
+          "image": "/images/custom-preto-fosco.png"
+        },
+        {
+          "title": "Vermelho Brilhante",
+          "subtitle": "RAL 3002",
+          "image": "/images/custom-vermelho-brilhante.png"
+        },
+        {
+          "title": "Amarelo Brilhante",
+          "subtitle": "RAL 1003",
+          "image": "/images/custom-amarelo-brilhante.png"
+        }
+      ]
+    },
+    {
+      "id": "techSpecs",
+      "enabled": false,
+      "eyebrow": "Especificações Técnicas",
+      "title": "Especificações Técnicas da Porta Dual",
+      "subtitle": "Perfis, pesos e acessórios detalhados.",
+      "theme": "surface",
+      "specGroups": [
+        {
+          "category": "Perfis e Pesos",
+          "rows": [
+            { "param": "781309", "value": "0,880 kg/m" },
+            { "param": "781308", "value": "1,902 kg/m" },
+            { "param": "781352", "value": "0,094 kg/m" }
+          ]
+        },
+        {
+          "category": "Dimensões Máximas",
+          "rows": [
+            { "param": "Altura", "value": "6 metros" },
+            { "param": "Largura", "value": "2 metros" }
+          ]
+        },
+        {
+          "category": "Acessórios",
+          "rows": [
+            { "param": "Puxador 1000x800 - PUX-1000", "value": "Preto / Inox" },
+            { "param": "Cilindro CIL100", "value": "Não incluso multiponto" },
+            { "param": "Dobradiça", "value": "DOB-751" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "documentation",
+      "enabled": false,
+      "title": "Documentação Técnica",
+      "subtitle": "Acesse fichas técnicas, catálogos e manuais completos do produto.",
+      "documents": [
+        {
+          "title": "Ficha Técnica Completa (Datasheet)",
+          "url": "#",
+          "type": "pdf",
+          "size": "4.2 MB",
+          "updatedAt": "Março 2026"
+        },
+        {
+          "title": "Manual de Instalação e Operação",
+          "url": "#",
+          "type": "pdf",
+          "size": "8.5 MB",
+          "updatedAt": "Fevereiro 2026"
+        },
+        {
+          "title": "Catálogo de Peças de Reposição",
+          "url": "#",
+          "type": "pdf",
+          "size": "12.1 MB",
+          "updatedAt": "Janeiro 2026"
+        },
+        {
+          "title": "Planilha de Cálculos de Eficiência",
+          "url": "#",
+          "type": "xls",
+          "size": "1.2 MB"
+        }
+      ]
+    },
+
+    {
+      "id": "video",
+      "enabled": true,
+      "mp4Src": "/videos/linha-exclusive-apresentacao.mp4",
+      "eyebrow": "Linha Exclusive",
+      "title": "Acabamento sofisticado aliado à funcionalidade do alumínio",
+      "subtitle": "Veja os detalhes de acabamento e aplicação da Linha Exclusive",
+      "thumbnail": "/images/produtos/linha-exclusive_06.webp",
+      "aspectRatio": "4/5"
+    },
+
+    {
+      "id": "socialProof",
+      "enabled": false,
+      "title": "Depoimentos de Sucesso",
+      "eyebrow": "Confiança e Resultados",
+      "layout": "carousel",
+      "theme": "surface",
+      "testimonials": [
+        {
+          "quote": "A implementação das soluções ALPA reduziu nosso tempo de inatividade em 35% nos primeiros seis meses.",
+          "author": "Eng. Ricardo Mendes",
+          "role": "Diretor de Operações",
+          "company": "AutoParts Brasil",
+          "avatar": "https://i.pravatar.cc/150?u=ricardo",
+          "rating": 5
+        },
+        {
+          "quote": "A flexibilidade do hardware ALPA superou todas as nossas expectativas iniciais.",
+          "author": "Sofia Oliveira",
+          "role": "Gestora de Manutenção",
+          "company": "LogiTech S.A.",
+          "avatar": "https://i.pravatar.cc/150?u=sofia",
+          "rating": 5
+        }
+      ]
+    },
+
+    {
+      "id": "faq",
+      "enabled": false,
+      "eyebrow": "Dúvidas comuns",
+      "title": "Perguntas frequentes",
+      "subtitle": "Encontre respostas para as perguntas mais comuns",
+      "faqs": [
+        {
+          "question": "Qual o tamanho máximo?",
+          "answer": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "question": "Pode ter cores diferentes em cada lado?",
+          "answer": "Sim, graças ao perfil único da Porta Dual."
+        },
+        {
+          "question": "Os acessórios estão inclusos?",
+          "answer": "Alguns itens são opcionais e vendidos separadamente."
+        }
+      ]
+    },
+
+    {
+      "id": "cta",
+      "enabled": true,
+      "eyebrow": "Fale Conosco",
+      "size": "container",
+      "title": "Solicite um orçamento da Linha Exclusive",
+      "description": "Fale com nossa equipe técnica e solicite um orçamento da Linha Exclusive, com suporte técnico personalizado para o seu projeto.",
+      "ctaText": "Solicitar orçamento",
+      "productName": "Linha Exclusive"
+    },
+
+    {
+      "id": "relatedProducts",
+      "enabled": true,
+      "eyebrow": "Outros Produtos",
+      "title": "Conheça outras soluções em alumínio",
+      "subtitle": "Explore nossa linha produtos desenvolvidos para diferentes tipos de projetos e aplicações.",
+      "productSlugs": [
+        "porta-dual",
+        "linha-nobile",
+        "linha-mundiale",
+        "linha-official"
+      ]
+    }
+  ]
+}

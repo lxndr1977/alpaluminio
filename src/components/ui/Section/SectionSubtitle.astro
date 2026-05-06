@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/utils/cn";
+
+interface Props extends HTMLAttributes<"p"> {
+  color?:
+    | "white"
+    | "primary"
+    | "secondary"
+    | "foreground"
+    | "muted"
+    | "surface";
+}
+
+const colorMap: Record<string, string> = {
+  white: "text-white",
+  primary: "text-primary",
+  secondary: "text-secondary",
+  foreground: "text-foreground",
+  muted: "text-foreground-muted",
+  subtle: "text-foreground-subtle",
+};
+
+const { color = "foreground", class: className, ...rest } = Astro.props;
+---
+
+<p
+  {...rest}
+  class={cn(
+    "text-xl md:text-2xl tracking-tight max-w-3xl",
+    className,
+    colorMap[color],
+  )}
+>
+  <slot />
+</p>

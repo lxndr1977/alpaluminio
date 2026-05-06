@@ -1,0 +1,284 @@
+{
+  "name": "Linha Lambris",
+  "slug": "linha-lambris",
+  "segments": ["industrial"],
+  "mainPhoto": "/images/produtos/lambris_main.webp",
+
+  "seo": {
+    "title": "Linha Lambris | Alpa Alumínio",
+    "description": "Sistema com perfil único que permite acabamentos diferentes em cada face. Até 6 metros de altura.",
+    "ogImage": "/images/produtos/linha-lambris_01.webp"
+  },
+
+  "stickyBar": {
+    "message": "Lambris",
+    "subMessage": "Solicite um orçamento",
+    "ctaLabel": "Falar com vendedor"
+  },
+
+  "sections": [
+    {
+      "id": "hero",
+      "enabled": true,
+      "title": "Lambris",
+      "description": "Sistema com perfil único que permite acabamentos diferentes em cada face. Até 6 metros de altura.",
+      "image": "/images/produtos/linha-lambris_01.webp"
+    },
+    {
+      "id": "differentials",
+      "enabled": false,
+      "tag": "Diferenciais",
+      "title": "Diferenciais da Porta Dual",
+      "theme": "secondary",
+      "subtitle": "A Porta Dual foi desenvolvida para atender arquitetos, engenheiros e indústrias que precisam unir design e qualidade.",
+      "items": [
+        {
+          "title": "Perfil Único",
+          "description": "Permite acabamentos diferentes em cada face da porta."
+        },
+        {
+          "title": "Grande Dimensão",
+          "description": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "title": "Versatilidade",
+          "description": "Diversas opções de cores e revestimentos."
+        },
+        {
+          "title": "Alta Resistência",
+          "description": "Estrutura robusta para aplicações exigentes."
+        }
+      ]
+    },
+
+    {
+      "id": "content",
+      "theme": "white",
+      "enabled": true,
+      "eyebrow": "Sobre o produto",
+      "title": "Apresente o produto de forma clara e atrativa",
+      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "image": "/images/produtos/product-placeholder.webp",
+      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+    },
+
+    {
+      "id": "photoGallery",
+      "enabled": false,
+      "eyebrow": "Aplicações",
+      "title": "Integração perfeita entre design e resistência",
+      "subtitle": "Veja como a Porta Dual pode ser integrada em seus projetos.",
+      "theme": "white",
+      "cols": 3,
+      "aspect": "3/4",
+      "photos": [
+        {
+          "src": "/images/produtos/sistema-camarao-cremona_01.webp",
+          "alt": "Porta Dual aplicação 1",
+          "caption": "Aplicação residencial"    
+        },
+        {
+          "src": "/images/produtos/sistema-camarao-cremona_02.webp",
+          "alt": "Porta Dual aplicação 2",
+          "caption": "Aplicação comercial"
+        },
+        {
+          "src": "/images/produtos/sistema-camarao-cremona_03.webp",
+          "alt": "Porta Dual aplicação 3",
+          "caption": "Aplicação industrial"
+        },
+          {
+          "src": "/images/produtos/sistema-camarao-cremona_04.webp",
+          "alt": "Porta Dual aplicação 3",
+          "caption": "Aplicação industrial"
+        },
+        {
+          "src": "/images/produtos/sistema-camarao-cremona_05.webp",
+          "alt": "Porta Dual aplicação 3",
+          "caption": "Aplicação industrial"
+        }
+      ]
+    },
+   
+    {
+      "id": "finishesGallery",
+      "enabled": false,
+      "eyebrow": "Acabamentos",
+      "title": "Confira a variedade de acabamentos para personalizar seu projeto",
+      "subtitle": "Escolha o acabamento ideal para seu projeto.",
+      "photos": [
+        {
+          "title": "Branco Brilhante",
+          "subtitle": "RAL 9003",
+          "image": "/images/custom-branco-brilhante.png"
+        },
+        {
+          "title": "Branco Fosco",
+          "subtitle": "RAL 9003",
+          "image": "/images/custom-branco-fosco.png"
+        },
+        {
+          "title": "Cinza Metálico",
+          "subtitle": "VXS 15026",
+          "image": "/images/custom-cinza-metalico.png"
+        },
+        {
+          "title": "Preto Fosco",
+          "subtitle": "RAL 9005",
+          "image": "/images/custom-preto-fosco.png"
+        },
+        {
+          "title": "Vermelho Brilhante",
+          "subtitle": "RAL 3002",
+          "image": "/images/custom-vermelho-brilhante.png"
+        },
+        {
+          "title": "Amarelo Brilhante",
+          "subtitle": "RAL 1003",
+          "image": "/images/custom-amarelo-brilhante.png"
+        }
+      ]
+    },
+      {
+      "id": "techSpecs",
+      "enabled": false,
+      "eyebrow": "Especificações Técnicas",
+      "title": "Especificações Técnicas da Porta Dual",
+      "subtitle": "Perfis, pesos e acessórios detalhados.",
+      "theme": "surface",
+      "specGroups": [
+        {
+          "category": "Perfis e Pesos",
+          "rows": [
+            { "param": "781309", "value": "0,880 kg/m" },
+            { "param": "781308", "value": "1,902 kg/m" },
+            { "param": "781352", "value": "0,094 kg/m" }
+          ]
+        },
+        {
+          "category": "Dimensões Máximas",
+          "rows": [
+            { "param": "Altura", "value": "6 metros" },
+            { "param": "Largura", "value": "2 metros" }
+          ]
+        },
+        {
+          "category": "Acessórios",
+          "rows": [
+            { "param": "Puxador 1000x800 - PUX-1000", "value": "Preto / Inox" },
+            { "param": "Cilindro CIL100", "value": "Não incluso multiponto" },
+            { "param": "Dobradiça", "value": "DOB-751" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "video",
+      "enabled": false,
+      "videoId": "rQ61RGI3DFk",
+      "title": "Demonstração do Sistema ALPA",
+      "eyebrow": "Vídeo",
+      "subtitle": "Descrição do vídeo"
+    },
+    {
+      "id": "socialProof",
+      "enabled": false,
+      "title": "Depoimentos de Sucesso",
+      "eyebrow": "Confiança e Resultados",
+      "layout": "carousel",
+      "theme": "surface",
+      "testimonials": [
+        {
+          "quote": "A implementação das soluções ALPA reduziu nosso tempo de inatividade em 35% nos primeiros seis meses.",
+          "author": "Eng. Ricardo Mendes",
+          "role": "Diretor de Operações",
+          "company": "AutoParts Brasil",
+          "avatar": "https://i.pravatar.cc/150?u=ricardo",
+          "rating": 5
+        },
+        {
+          "quote": "A flexibilidade do hardware ALPA superou todas as nossas expectativas iniciais.",
+          "author": "Sofia Oliveira",
+          "role": "Gestora de Manutenção",
+          "company": "LogiTech S.A.",
+          "avatar": "https://i.pravatar.cc/150?u=sofia",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "enabled": false,
+      "tag": "Dúvidas comuns",
+      "title": "Perguntas frequentes",
+      "subtitle": "Encontre respostas para as perguntas mais comuns",
+      "faqs": [
+        {
+          "question": "Qual o tamanho máximo?",
+          "answer": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "question": "Pode ter cores diferentes em cada lado?",
+          "answer": "Sim, graças ao perfil único da Porta Dual."
+        },
+        {
+          "question": "Os acessórios estão inclusos?",
+          "answer": "Alguns itens são opcionais e vendidos separadamente."
+        }
+      ]
+    },
+
+    {
+      "id": "cta",
+      "enabled": true,
+      "tag": "Fale Conosco",
+      "title": "Ainda tem dúvidas sobre a Porta Dual?",
+      "whatsappNumber": "+5511999999999",
+      "productName": "Porta Dual"
+    },
+    {
+      "id": "documentation",
+      "enabled": false,
+      "title": "Documentação Técnica",
+      "subtitle": "Acesse fichas técnicas, catálogos e manuais completos do produto.",
+      "documents": [
+        {
+          "title": "Ficha Técnica Completa (Datasheet)",
+          "url": "#",
+          "type": "pdf",
+          "size": "4.2 MB",
+          "updatedAt": "Março 2026"
+        },
+        {
+          "title": "Manual de Instalação e Operação",
+          "url": "#",
+          "type": "pdf",
+          "size": "8.5 MB",
+          "updatedAt": "Fevereiro 2026"
+        },
+        {
+          "title": "Catálogo de Peças de Reposição",
+          "url": "#",
+          "type": "pdf",
+          "size": "12.1 MB",
+          "updatedAt": "Janeiro 2026"
+        },
+        {
+          "title": "Planilha de Cálculos de Eficiência",
+          "url": "#",
+          "type": "xls",
+          "size": "1.2 MB"
+        }
+      ]
+    },
+    {
+      "id": "relatedProducts",
+      "enabled": true,
+      "eyebrow": "Produtos",
+      "title": "Confira outros produtos",
+      "subtitle": "Explore nossa linha completa.",
+      "productSlugs": ["porta-dual", "porta-teste"]
+    }
+  ]
+}

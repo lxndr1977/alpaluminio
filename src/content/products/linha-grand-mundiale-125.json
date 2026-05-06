@@ -1,0 +1,247 @@
+{
+  "name": "Linha Grand Mundiale 125",
+  "slug": "linha-grand-mundiale-125",
+  "segments": ["industrial"],
+  "mainPhoto": "/images/produtos/linha-grand-mundiale-125_main.webp",
+
+  "seo": {
+    "title": "Linha Grand Mundiale 125 | Alpa Alumínio",
+    "description": "Sistema com perfil único que permite acabamentos diferentes em cada face. Até 6 metros de altura.",
+    "ogImage": "/images/produtos/linha-grand-mundiale-125_main.webp"
+  },
+
+  "stickyBar": {
+    "message": "Linha Grand Mundiale 125",
+    "subMessage": "Solicite um orçamento",
+    "ctaLabel": "Falar com vendedor"
+  },
+
+  "sections": [
+    {
+      "id": "hero",
+      "enabled": true,
+      "subtitle": "Perfil em Alumínio",
+      "title": "Linha Grand Mundiale 125",
+      "description": "A Linha Gran Mundiale 125 proporciona mais liberdade criativa ao arquiteto, disponibilizando esquadria de dimensões variadas com vedação acústica, fecho Cremona multiponto roldanas que atendam a demanda do projeto.",
+      "image": "/images/produtos/linha-grand-mundiale-125_hero.webp"
+    },
+
+    {
+      "id": "differentials",
+      "enabled": false,
+      "tag": "Diferenciais",
+      "title": "Diferenciais da Porta Dual",
+      "theme": "secondary",
+      "subtitle": "A Porta Dual foi desenvolvida para atender arquitetos, engenheiros e indústrias que precisam unir design e qualidade.",
+      "items": [
+        {
+          "title": "Perfil Único",
+          "description": "Permite acabamentos diferentes em cada face da porta."
+        },
+        {
+          "title": "Grande Dimensão",
+          "description": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "title": "Versatilidade",
+          "description": "Diversas opções de cores e revestimentos."
+        },
+        {
+          "title": "Alta Resistência",
+          "description": "Estrutura robusta para aplicações exigentes."
+        }
+      ]
+    },
+
+    {
+      "id": "content",
+      "theme": "surface",
+      "enabled": true,
+      "eyebrow": "Linha Grand Mundiale 125",
+      "title": "Tecnologia para grandes projetos. Liberdade criativa para o arquiteto.",
+      "subtitle": "A Linha Gran Mundiale 125 proporciona mais liberdade criativa ao arquiteto, disponibilizando esquadrias de dimensões variadas com vedação acústica, fecho Cremona multiponto roldanas que atendam a demanda do projeto.",
+      "body": ""
+    },
+
+    {
+      "id": "photoGallery",
+      "enabled": false,
+      "eyebrow": "Aplicações",
+      "title": "Integração perfeita entre design e resistência",
+      "subtitle": "Veja como a Porta Dual pode ser integrada em seus projetos.",
+      "theme": "white",
+      "cols": 3,
+      "aspect": "3/4",
+      "photos": [
+        {
+          "src": "/images/porta-dual-01.png",
+          "alt": "Porta Dual aplicação 1",
+          "caption": "Aplicação residencial"
+        }
+      ]
+    },
+
+    {
+      "id": "finishesGallery",
+      "enabled": true,
+      "eyebrow": "Linha Grand Mundiale 125",
+      "title": "Mais liberdade criativa para o arquiteto",
+      "subtitle": "Dimensões variadas conforme a demanda do projeto.",
+      "colsDesktop": 3,
+      "colsTablet": 2,
+      "colsMobile": 1,
+      "photos": [
+        {
+          "title": "Detalhes da Linha Grand Mundiale 125",
+          "image": "/images/produtos/linha-grand-mundiale-125_02.webp"
+        },
+                {
+          "title": "Detalhes da Linha Grand Mundiale 125",
+          "image": "/images/produtos/linha-grand-mundiale-125_04.webp"
+        },
+        {
+          "title": "Detalhes da Linha Grand Mundiale 125",
+          "image": "/images/produtos/linha-grand-mundiale-125_03.webp"
+        }
+      ]
+    },
+    {
+      "id": "techSpecs",
+      "enabled": true,
+      "eyebrow": "Especificações Técnicas",
+      "title": "Especificações Técnicas da Linha Grand Mundiale 125",
+      "subtitle": "Confira as principais informações técnicas do produto.",
+      "theme": "surface",
+      "specGroups": [
+        {
+          "category": "Especificações",
+          "rows": [
+            { "param": "Bitola", "value": "32 mm" },
+            { "param": "Vista Frontal das Folhas", "value": "125 mm" },
+            { "param": "Vedação Acústica", "value": "Fecho Cremona e Rondana Strong" },
+            { "param": "Acessórios de Desempenho e Segurança", "value": "Sim" },
+            { "param": "Cores", "value": "Preto, Fosco e Aço Cortem" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "video",
+      "enabled": false,
+      "videoId": "rQ61RGI3DFk",
+      "title": "Demonstração do Sistema ALPA",
+      "eyebrow": "Vídeo",
+      "subtitle": "Descrição do vídeo"
+    },
+
+    {
+      "id": "socialProof",
+      "enabled": false,
+      "title": "Depoimentos de Sucesso",
+      "eyebrow": "Confiança e Resultados",
+      "layout": "carousel",
+      "theme": "surface",
+      "testimonials": [
+        {
+          "quote": "A implementação das soluções ALPA reduziu nosso tempo de inatividade em 35% nos primeiros seis meses.",
+          "author": "Eng. Ricardo Mendes",
+          "role": "Diretor de Operações",
+          "company": "AutoParts Brasil",
+          "avatar": "https://i.pravatar.cc/150?u=ricardo",
+          "rating": 5
+        },
+        {
+          "quote": "A flexibilidade do hardware ALPA superou todas as nossas expectativas iniciais.",
+          "author": "Sofia Oliveira",
+          "role": "Gestora de Manutenção",
+          "company": "LogiTech S.A.",
+          "avatar": "https://i.pravatar.cc/150?u=sofia",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "enabled": false,
+      "tag": "Dúvidas comuns",
+      "title": "Perguntas frequentes",
+      "subtitle": "Encontre respostas para as perguntas mais comuns",
+      "faqs": [
+        {
+          "question": "Qual o tamanho máximo?",
+          "answer": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "question": "Pode ter cores diferentes em cada lado?",
+          "answer": "Sim, graças ao perfil único da Porta Dual."
+        },
+        {
+          "question": "Os acessórios estão inclusos?",
+          "answer": "Alguns itens são opcionais e vendidos separadamente."
+        }
+      ]
+    },
+
+    {
+      "id": "cta",
+      "enabled": true,
+      "eyebrow": "Fale Conosco",
+      "size": "container",
+      "title": "Solicite um orçamento da Linha Grand Mundiale 125",
+      "description": "Fale com nossa equipe técnica e conte com suporte especializado e atendimento personalizado conforme as necessidades do seu projeto.",
+      "ctaText": "Solicitar orçamento",
+      "productName": "Linha Grand Mundiale 125"
+    },
+
+    {
+      "id": "documentation",
+      "enabled": false,
+      "title": "Documentação Técnica",
+      "subtitle": "Acesse fichas técnicas, catálogos e manuais completos do produto.",
+      "documents": [
+        {
+          "title": "Ficha Técnica Completa (Datasheet)",
+          "url": "#",
+          "type": "pdf",
+          "size": "4.2 MB",
+          "updatedAt": "Março 2026"
+        },
+        {
+          "title": "Manual de Instalação e Operação",
+          "url": "#",
+          "type": "pdf",
+          "size": "8.5 MB",
+          "updatedAt": "Fevereiro 2026"
+        },
+        {
+          "title": "Catálogo de Peças de Reposição",
+          "url": "#",
+          "type": "pdf",
+          "size": "12.1 MB",
+          "updatedAt": "Janeiro 2026"
+        },
+        {
+          "title": "Planilha de Cálculos de Eficiência",
+          "url": "#",
+          "type": "xls",
+          "size": "1.2 MB"
+        }
+      ]
+    },
+
+   {
+      "id": "relatedProducts",
+      "enabled": true,
+      "eyebrow": "Outros Produtos",
+      "title": "Conheça outras soluções em alumínio",
+      "subtitle": "Explore nossa linha produtos desenvolvidos para diferentes tipos de projetos e aplicações.",
+      "productSlugs": [
+        "linha-mundiale",
+        "linha-official",
+        "sistema-camarao-cremona",
+        "linha-nobile"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import ProductCard from "@/components/ProductCard.astro";
+
+export async function getStaticPaths() {
+  const categories = await getCollection("categories");
+  const products = await getCollection("products");
+
+  return categories.map((category) => {
+    const categoryProducts = products.filter((product) =>
+      product.data.categories?.some((ref) => ref.id === category.id)
+    );
+    return {
+      params: { slug: category.id },
+      props: { category, products: categoryProducts },
+    };
+  });
+}
+
+const { category, products } = Astro.props;
+
+if (!category) return Astro.redirect("/404");
+
+const { name, description } = category.data;
+---
+
+<Layout title={name} description={description}>
+  <section class="container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold">{name}</h1>
+    {description && <p class="mt-4 text-muted">{description}</p>}
+
+    <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {products.map((product) => {
+        const sections = product.data.sections ?? [];
+        const hero = sections.find((s: any) => s.id === "hero") as any;
+
+        return (
+          <ProductCard
+            name={product.data.name}
+            image={hero?.image ?? ""}
+            link={`/produtos/${product.id}`}
+            theme="light"
+            cta="Ver Produto"
+          />
+        );
+      })}
+    </div>
+  </section>
+</Layout>

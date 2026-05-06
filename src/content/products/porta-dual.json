@@ -1,0 +1,385 @@
+{
+  "name": "Porta Dual",
+  "slug": "porta-dual",
+  "segments": ["industrial"],
+  "mainPhoto": "/images/produtos/porta-dual_main.webp",
+
+
+  "seo": {
+    "title": "Porta Dual em Alumínio | Perfis com Acabamento Duplo até 6m | ALPA",
+    "description": "Conheça a Porta Dual: perfil de alumínio com acabamentos diferentes em cada face. Ideal para projetos industriais e arquitetônicos. Até 6m. Solicite orçamento.",
+    "keywords": [
+      "porta dual",
+      "perfil de aluminio porta",
+      "porta aluminio industrial",
+      "porta grande aluminio",
+      "porta com acabamento duplo",
+      "perfil estrutural aluminio porta"
+    ]
+  },
+
+  "stickyBar": {
+    "message": "Porta Dual",
+    "subMessage": "Solicite um orçamento",
+    "ctaLabel": "Falar com vendedor"
+  },
+
+  "sections": [
+    {
+      "id": "hero",
+      "enabled": true,
+      "title": "Porta Dual",
+      "description": "A Porta Dual é um sistema com perfil de alumínio único que combina design moderno, versatilidade e resistência, além de permitir acabamentos diferentes em cada face.",
+      "image": "/images/produtos/porta-dual_hero.webp"
+    },
+
+    {
+      "id": "differentials",
+      "enabled": true,
+      "eyebrow": "Benefícios",
+      "title": "Por que escolher a Porta Dual",
+      "subtitle": "Descubra as vantagens exclusivas do nosso sistema de porta com acabamento duplo.",
+      "items": [
+        {
+          "title": "Liberdade de design",
+          "description": "Personalize cada face conforme o ambiente."
+        },
+        {
+          "title": "Redução de custo",
+          "description": "Evite estruturas duplicadas ou soluções complexas."
+        },
+        {
+          "title": "Alta durabilidade",
+          "description": "Resistência superior do alumínio estrutural."
+        },
+        {
+          "title": "Valorização do projeto",
+          "description": "Solução diferenciada que agrega valor estético."
+        }
+      ]
+    },
+
+    {
+      "id": "content",
+      "theme": "surface",
+      "enabled": false,
+      "eyebrow": "Sobre o produto",
+      "title": "Apresente o produto de forma clara e atrativa",
+      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "image": "/images/produtos/product-placeholder.webp",
+      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+    },
+
+    {
+      "id": "photoGallery",
+      "enabled": true,
+      "eyebrow": "Aplicações",
+      "title": "Porta Dual em diferentes aplicações",
+      "subtitle": "Veja como o sistema se adapta a projetos industriais e arquitetônicos com diferentes acabamentos.",
+      "cols": 3,
+      "photos": [
+        {
+          "src": "/images/produtos/porta-dual-04.webp",
+          "alt": "porta de aluminio grande para galpao industrial com acabamento externo diferenciado",
+          "caption": "Aplicação em galpão industrial com grande vão"
+        },
+        {
+          "src": "/images/produtos/porta-dual-01.webp",
+          "alt": "porta dual com acabamento diferente em cada lado em projeto arquitetonico",
+          "caption": "Acabamentos distintos em cada face da porta"
+        },
+        {
+          "src": "/images/produtos/porta-dual-02.webp",
+          "alt": "porta de aluminio moderna para fachada comercial com design personalizado",
+          "caption": "Uso em fachada comercial moderna"
+        },
+        {
+          "src": "/images/produtos/porta-dual-03.webp",
+          "alt": "porta de aluminio grande com estrutura resistente para projetos de grande porte",
+          "caption": "Solução para projetos de grande porte"
+        }
+      ]
+    },
+    {
+      "id": "finishesGallery",
+      "enabled": true,
+      "eyebrow": "Acabamentos",
+      "title": "Opções de acabamento disponíveis",
+      "subtitle": "Confira as opções de acabamento disponíveis para a Porta Dual.",
+      "colsDesktop": 5,
+      "colsTablet": 3,
+      "colsMobile": 2,
+      "photos": [
+        {
+          "title": "Branco Brilhante",
+          "subtitle": "RAL 9003",
+          "image": "/images/produtos/porta-dual-acabamento-branco-brilhante.webp"
+        },
+        {
+          "title": "Branco Fosco",
+          "subtitle": "RAL 9003",
+          "image": "/images/produtos/porta-dual-acabamento-branco-fosco.webp"
+        },
+        {
+          "title": "Branco Brilhante",
+          "subtitle": "RAL 9016",
+          "image": "/images/produtos/porta-dual-acabamento-branco-brilhante.webp"
+        },
+        {
+          "title": "Bege Brilhante",
+          "subtitle": "RAL 1015",
+          "image": "/images/produtos/porta-dual-acabamento-bege-brilhante.webp"
+        },
+        {
+          "title": "Cinza Brilhante",
+          "subtitle": "RAL 7037",
+          "image": "/images/produtos/porta-dual-acabamento-cinza-brilhante.webp"
+        },
+        {
+          "title": "Cinza Metálico",
+          "subtitle": "VXS 15026",
+          "image": "/images/produtos/porta-dual-acabamento-cinza-metalico.webp"
+        },
+        {
+          "title": "Azul Brilhante",
+          "subtitle": "RAL 5013",
+          "image": "/images/produtos/porta-dual-acabamento-azul-brilhante-01.webp"
+        },
+        {
+          "title": "Azul Brilhante",
+          "subtitle": "RAL 5015",
+          "image": "/images/produtos/porta-dual-acabamento-azul-brilhante-02.webp"
+        },
+        {
+          "title": "Verde Brilhante",
+          "subtitle": "RAL 6001",
+          "image": "/images/produtos/porta-dual-acabamento-verde-brilhante-01.webp"
+        },
+        {
+          "title": "Verde Brilhante",
+          "subtitle": "RAL 6005",
+          "image": "/images/produtos/porta-dual-acabamento-verde-brilhante-02.webp"
+        },
+        {
+          "title": "Amarelo Brilhante",
+          "subtitle": "RAL 1003",
+          "image": "/images/produtos/porta-dual-acabamento-amarelo-brilhante.webp"
+        },
+        {
+          "title": "Vermelho Brilhante",
+          "subtitle": "RAL 3002",
+          "image": "/images/produtos/porta-dual-acabamento-vermelho-brilhante.webp"
+        },
+        {
+          "title": "Vinho Brilhante",
+          "subtitle": "RAL 3005",
+          "image": "/images/produtos/porta-dual-acabamento-vinho-brilhante.webp"
+        },
+        {
+          "title": "Preto Brilhante",
+          "subtitle": "RAL 9005",
+          "image": "/images/produtos/porta-dual-acabamento-preto-fosco.webp"
+        },
+        {
+          "title": "Preto Fosco",
+          "subtitle": "RAL 9005",
+          "image": "/images/produtos/porta-dual-acabamento-preto-fosco.webp"
+        },
+        {
+          "title": "Pintura Bronze",
+          "subtitle": "1001",
+          "image": "/images/produtos/porta-dual-acabamento-pintura-bronze.webp"
+        },
+        {
+          "title": "Pintura Bronze",
+          "subtitle": "1002",
+          "image": "/images/produtos/porta-dual-acabamento-pintura-bronze-01.webp"
+        },
+        {
+          "title": "Pintura Bronze",
+          "subtitle": "1003",
+          "image": "/images/produtos/porta-dual-acabamento-pintura-bronze-02.webp"
+        },
+        {
+          "title": "Marrom Fosco",
+          "subtitle": "RAL 8014",
+          "image": "/images/produtos/porta-dual-acabamento-marrom-fosco.webp"
+        },
+        {
+          "title": "Cambará Amadeirado",
+          "subtitle": "05-4395",
+          "image": "/images/produtos/porta-dual-acabamento-cambara-amadeirado.webp"
+        },
+        {
+          "title": "Cambará Amadeirado",
+          "subtitle": "10-4395",
+          "image": "/images/produtos/porta-dual-acabamento-cambara-amadeirado-02.webp"
+        },
+        {
+          "title": "Cerejeira Amadeirado",
+          "subtitle": "05-4701",
+          "image": "/images/produtos/porta-dual-acabamento-cerejeira-amadeirado.webp"
+        },
+        {
+          "title": "Cerejeira Amadeirado",
+          "subtitle": "10-4701",
+          "image": "/images/produtos/porta-dual-acabamento-cerejeira-amadeirado-02.webp"
+        }
+      ],
+      "size": "content"
+    },
+    {
+      "id": "techSpecs",
+      "enabled": true,
+      "eyebrow": "Especificações Técnicas",
+      "title": "Informações técnicas da Porta Dual",
+      "subtitle": "Perfis, pesos e acessórios detalhados.",
+      "specGroups": [
+        {
+          "category": "Perfis e Pesos",
+          "rows": [
+            { "param": "781309", "value": "0,880 kg/m" },
+            { "param": "781308", "value": "1,902 kg/m" },
+            { "param": "781352", "value": "0,094 kg/m" },
+            { "param": "VS-2004", "value": "0,117 kg/m" },
+            { "param": "CG-104", "value": "0,802 kg/m" }
+          ]
+        },
+        {
+          "category": "Componentes",
+          "rows": [
+            { "param": "Lambris Ripados 781365", "value": "1,149 kg/m" },
+            { "param": "Lambris Ripados 781350", "value": "1,201 kg/m" },
+            { "param": "Lambris Ripados 781394", "value": "1,046 kg/m" }
+          ]
+        },
+        {
+          "category": "Dimensões Máximas",
+          "rows": [
+            { "param": "Altura", "value": "6 metros" },
+            { "param": "Largura", "value": "2 metros" }
+          ]
+        },
+        {
+          "category": "Acessórios",
+          "rows": [
+            { "param": "Puxador 1000x800 - PUX-1000", "value": "Preto / Inox" },
+            { "param": "Cilindro CIL100", "value": "Não incluso multiponto" },
+            { "param": "Escovas superior e inferior", "value": "5x7 / 5x10" },
+            {
+              "param": "Borracha de vedação - GUA2081",
+              "value": "Vedação de marco"
+            },
+            { "param": "Dobradiça", "value": "DOB-751" },
+            { "param": "Pivoltante", "value": "PIV-1501" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "documentation",
+      "enabled": false,
+      "title": "Documentação",
+      "subtitle": "Disponibilize materiais técnicos e comerciais.",
+      "size": "compact",
+      "layout": "list",
+      "documents": [
+        {
+          "title": "Nome do documento",
+          "url": "#",
+          "type": "pdf",
+          "size": "X MB"
+        }
+      ]
+    },
+
+    {
+      "id": "mediaText",
+      "enabled": false,
+      "eyebrow": "Módulo Media + Texto",
+      "title": "Título do bloco (ex: benefício principal do produto)",
+      "subtitle": "Subtítulo curto explicando para quem é ou o que resolve",
+      "image": "/images/produtos/porta-dual-fita-led.webp",
+      "imageAlt": "Imagem ilustrativa do produto",
+      "stickyImage": true,
+      "desktopImagePosition": "right",
+      "mobileImagePosition": "top",
+      "body": "<p>Este é um bloco do tipo <strong>Media + Texto</strong>. Substitua este conteúdo com informações do seu produto ou serviço.</p><p>Você pode usar este espaço para descrever benefícios, aplicações, diferenciais ou qualquer informação relevante.</p>"
+    },
+
+
+    {
+      "id": "video",
+      "enabled": false,
+      "videoId": "rQ61RGI3DFk",
+      "title": "Demonstração do Sistema ALPA",
+      "eyebrow": "Vídeo",
+      "subtitle": "Descrição do vídeo"
+    },
+
+    {
+      "id": "socialProof",
+      "theme": "surface",
+      "enabled": false,
+      "title": "Depoimentos de clientes",
+      "eyebrow": "Prova social",
+      "testimonials": [
+        {
+          "quote": "Adicione aqui depoimentos de clientes.",
+          "author": "Nome do cliente",
+          "role": "Cargo",
+          "company": "Empresa",
+          "rating": 5,
+          "avatar": "https://i.pravatar.cc/150?u=sofia"
+        }
+      ]
+    },
+
+    {
+      "id": "faq",
+      "enabled": true,
+      "eyebrow": "Dúvidas comuns",
+      "title": "Perguntas frequentes",
+      "subtitle": "Responda as principais dúvidas dos clientes.",
+      "faqs": [
+        {
+          "question": "Qual o tamanho máximo?",
+          "answer": "Até 6 metros de altura e 2 metros de largura."
+        },
+        {
+          "question": "Pode ter cores diferentes em cada lado?",
+          "answer": "Sim, graças ao perfil único da Porta Dual."
+        },
+        {
+          "question": "Os acessórios estão inclusos?",
+          "answer": "Alguns itens são opcionais e vendidos separadamente."
+        }
+      ]
+    },
+
+    {
+      "id": "cta",
+      "enabled": true,
+      "eyebrow": "Fale Conosco",
+      "size": "container",
+      "title": "Solicite um orçamento da Porta Dual",
+      "description": "Fale com nossa equipe técnica e solicite um orçamento da Porta Dual, com suporte técnico personalizado para o seu projeto.",
+      "ctaText": "Solicitar orçamento",
+      "productName": "Porta Dual"
+    },
+
+    {
+      "id": "relatedProducts",
+      "enabled": true,
+      "eyebrow": "Outros Produtos",
+      "title": "Conheça outras soluções em alumínio",
+      "subtitle": "Explore nossa linha produtos desenvolvidos para diferentes tipos de projetos e aplicações.",
+      "productSlugs": [
+        "linha-exclusive",
+        "linha-nobile",
+        "linha-mundiale",
+        "linha-official"
+      ]
+    }
+  ]
+}

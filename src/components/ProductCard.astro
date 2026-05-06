@@ -1,0 +1,101 @@
+---
+import { Image } from "astro:assets";
+
+export interface Props {
+  cta: string;
+  name: string;
+  image: string | any;
+  link: string;
+  theme?: "light" | "dark";
+}
+
+const { cta, name, image, link, theme = "light" } = Astro.props;
+
+const lightTheme = {
+  cardWrapper: "border-neutral-200 bg-white ",
+  imageBg: "bg-gray-100",
+  titleText: "text-foreground",
+  ctaText: "text-primary",
+};
+
+const darkTheme = {
+  cardWrapper:
+    "border-white/10 bg-white ",
+  imageBg: "bg-white/5",
+  titleText: "text-stone-800",
+  ctaText: "text-primary",
+};
+
+const cardTheme = theme === "dark" ? darkTheme : lightTheme;
+---
+
+<!-- 👇 group agora fica aqui, no wrapper estático -->
+<div class=" my-5">
+  <div
+    class:list={[
+      "group relative flex flex-col h-full border rounded-lg  group-hover:text-primary hover:shadow-md transition-all duration-300 hover:-translate-y-1 group-hover:shadow-md",
+      cardTheme.cardWrapper,
+    ]}
+  >
+    <a href={link} class=" h-full no-underline  hover:-translate-y-1">
+      <div class="h-full flex flex-col !p-0  border-none shadow-none">
+        <!-- Imagem -->
+        <div class:list={["aspect-[1/1] overflow-hidden", cardTheme.imageBg]}>
+          {
+            typeof image === "string" ? (
+              <img
+                src={image}
+                alt={name}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 "
+                loading="lazy"
+              />
+            ) : (
+              <Image
+                src={image}
+                alt={name}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 "
+              />
+            )
+          }
+        </div>
+        <!-- Conteúdo -->
+        <div class="p-8 flex flex-col flex-grow">
+          <h3
+            class:list={[
+              "text-xl font-bold transition-colors duration-300",
+              cardTheme.titleText,
+            ]}
+          >
+            {name}
+          </h3>
+          <!-- CTA -->
+          <div
+            class:list={[
+              "w-full mt-auto pt-6 flex items-center font-bold text-xs uppercase tracking-wider transition-colors",
+              cardTheme.ctaText,
+            ]}
+          >
+            <span>{cta}</span>
+
+            <div class="transition-transform duration-300 group-hover:translate-x-2">
+
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4 ml-2 "
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

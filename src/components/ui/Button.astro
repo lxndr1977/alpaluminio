@@ -1,0 +1,38 @@
+---
+interface Props {
+  variant?: 'primary' | 'outline' | 'white' | 'secondary' | 'foreground';
+  size?: 'sm' | 'base' | 'lg' | 'xl';
+  href?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const { variant = 'primary', size = 'base', href, class: className, ...rest } = Astro.props;
+
+const variants = {
+  primary: 'bg-primary text-white hover:bg-primary/90 hover:-translate-y-0.5 shadow-sm',
+  outline: 'bg-transparent border border-white/30 text-white hover:border-white/70 hover:bg-white/5',
+  white: 'bg-white text-secondary font-bold hover:bg-gray-50 hover:-translate-y-0.5 shadow-md shadow-black/20',
+  secondary: 'bg-secondary text-white hover:bg-secondary/90 hover:-translate-y-0.5 shadow-sm',
+  foreground: 'bg-foreground text-white hover:bg-foreground/90 hover:-translate-y-1 active:translate-y-0 shadow-sm',
+};
+
+const sizes = {
+  sm: 'text-sm',
+  base: 'text-base',
+  lg: 'text-lg',
+  xl: 'text-xl',
+};
+
+const base = 'inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-semibold transition-all duration-200 cursor-pointer';
+---
+
+{href ? (
+  <a href={href} class:list={[base, variants[variant], sizes[size], className]} {...rest}>
+    <slot />
+  </a>
+) : (
+  <button class:list={[base, variants[variant], sizes[size], className]} {...rest}>
+    <slot />
+  </button>
+)}

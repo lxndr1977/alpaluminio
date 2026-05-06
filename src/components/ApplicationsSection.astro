@@ -1,0 +1,288 @@
+---
+import Section from './ui/Section.astro';
+import { Image } from 'astro:assets';
+import { Maximize2, X, ChevronLeft, ChevronRight } from '@lucide/astro';
+
+interface Application {
+  image: string | ImageMetadata;
+  alt: string;
+  title?: string;
+  description?: string;
+
+}
+
+interface Props {
+  applications: Application[];
+  enableLightbox?: boolean;
+  aspectRatio?: string;
+    paddingBottom?: boolean;
+  paddingTop?: boolean;
+}
+
+const {
+  applications,
+  enableLightbox = true,
+  aspectRatio = '4/5',
+  paddingBottom = true,
+  paddingTop = true,
+} = Astro.props;
+
+if (!applications || applications.length === 0) return null;
+---
+
+<Section
+  id="applications"
+  class="bg-gray-50/50"
+  tag="Aplicações"
+  title="Integração perfeita entre design e resistência"
+  description="Veja como a Porta Dual pode ser integrada em seus projetoss."
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-animate="fade-up" data-animate-delay={0.4}>
+    {applications.map((app, index) => (
+      <div
+        class="application-card group relative bg-white rounded-sm overflow-hidden border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+      >
+        <div
+          class:list={[
+            "relative overflow-hidden",
+            enableLightbox ? "cursor-pointer" : ""
+          ]}
+          style={`aspect-ratio: ${aspectRatio};`}
+          data-lightbox-trigger={enableLightbox ? index : undefined}
+        >
+          {typeof app.image === 'string' ? (
+            <img
+              src={app.image}
+              alt={app.alt}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+          ) : (
+            <Image
+              src={app.image}
+              alt={app.alt}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          )}
+
+          {enableLightbox && (
+            <div class="absolute inset-0 bg-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-white/90 text-primary flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300 shadow-lg">
+                <Maximize2 class="w-6 h-6" />
+              </div>
+            </div>
+          )}
+        </div>
+
+        {(app.title || app.description) && (
+          <div class="p-6">
+            {app.title && <h3 class="text-xl font-bold mb-2 text-dark">{app.title}</h3>}
+            {app.description && <p class="text-gray-600 text-sm leading-relaxed line-clamp-2">{app.description}</p>}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</Section>
+
+{enableLightbox && (
+  <div
+    id="applications-lightbox"
+    class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/95 backdrop-blur-sm opacity-0 transition-opacity duration-300"
+    role="dialog"
+    aria-modal="true"
+  >
+    <!-- Close Button -->
+    <button
+      id="lightbox-close-btn"
+      class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 z-[110] cursor-pointer"
+      aria-label="Fechar"
+    >
+      <X class="w-8 h-8" />
+    </button>
+
+    <!-- Navigation -->
+    <button
+      id="lightbox-prev-btn"
+      class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-4 z-[110] cursor-pointer"
+      aria-label="Anterior"
+    >
+      <ChevronLeft class="w-10 h-10" />
+    </button>
+
+    <button
+      id="lightbox-next-btn"
+      class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-4 z-[110] cursor-pointer"
+      aria-label="Próximo"
+    >
+      <ChevronRight class="w-10 h-10" />
+    </button>
+
+    <!-- Main Content Container (clickable to close) -->
+    <div id="lightbox-overlay" class="absolute inset-0 z-[105] flex items-center justify-center p-4 md:p-12">
+        <div class="relative w-full h-full flex flex-col items-center justify-center pointer-events-none">
+          <div class="relative max-w-5xl max-h-[75vh] w-full flex items-center justify-center pointer-events-auto">
+            <img
+              id="lightbox-display-img"
+              src=""
+              alt=""
+              class="max-w-full max-h-full object-contain shadow-2xl transition-all duration-300 opacity-0 scale-95"
+            />
+          </div>
+
+          <div id="lightbox-display-info" class="mt-8 text-center max-w-2xl px-6 pointer-events-auto opacity-0 translate-y-4 transition-all duration-300">
+            <h4 id="lightbox-display-title" class="text-white text-2xl font-bold mb-2"></h4>
+            <p id="lightbox-display-desc" class="text-white/70 text-base"></p>
+          </div>
+        </div>
+    </div>
+  </div>
+)}
+
+<script>
+  /**
+   * Encapsulates the lightbox logic to be initialized safely.
+   * This works with and without Astro ViewTransitions.
+   */
+  function setupApplicationsLightbox() {
+    const lightbox = document.getElementById('applications-lightbox');
+    if (!lightbox) return;
+
+    // Selectors
+    const triggers = document.querySelectorAll('[data-lightbox-trigger]');
+    const closeBtn = document.getElementById('lightbox-close-btn');
+    const prevBtn = document.getElementById('lightbox-prev-btn');
+    const nextBtn = document.getElementById('lightbox-next-btn');
+    const overlay = document.getElementById('lightbox-overlay');
+    const imgElement = document.getElementById('lightbox-display-img') as HTMLImageElement | null;
+    const infoElement = document.getElementById('lightbox-display-info');
+    const titleElement = document.getElementById('lightbox-display-title');
+    const descElement = document.getElementById('lightbox-display-desc');
+
+    if (!triggers.length || !imgElement) return;
+
+    let currentIndex = 0;
+
+    // Extract data from the DOM items for the lightbox
+    const galleryItems = Array.from(triggers).map(trigger => {
+      const card = trigger.closest('.application-card');
+      const img = trigger.querySelector('img');
+      const title = card?.querySelector('h3');
+      const desc = card?.querySelector('p');
+
+      return {
+        src: img?.src || '',
+        alt: img?.alt || '',
+        title: title?.textContent?.trim() || '',
+        description: desc?.textContent?.trim() || ''
+      };
+    });
+
+    function updateDisplay(index: number) {
+      if (!imgElement || !titleElement || !descElement || !infoElement) return;
+
+      currentIndex = (index + galleryItems.length) % galleryItems.length;
+      const item = galleryItems[currentIndex];
+
+      // Animation sequence
+      imgElement.classList.add('opacity-0', 'scale-95');
+      infoElement.classList.add('opacity-0', 'translate-y-4');
+
+      setTimeout(() => {
+        imgElement.src = item.src;
+        imgElement.alt = item.alt;
+        titleElement.textContent = item.title;
+        descElement.textContent = item.description;
+
+        imgElement.classList.remove('opacity-0', 'scale-95');
+        infoElement.classList.remove('opacity-0', 'translate-y-4');
+      }, 200);
+    }
+
+    function openLightbox(index: number) {
+      updateDisplay(index);
+      lightbox?.classList.remove('hidden');
+      lightbox?.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+
+      setTimeout(() => {
+        lightbox?.classList.remove('opacity-0');
+        lightbox?.classList.add('opacity-100');
+      }, 10);
+    }
+
+    function closeLightbox() {
+      lightbox?.classList.remove('opacity-100');
+      lightbox?.classList.add('opacity-0');
+
+      setTimeout(() => {
+        lightbox?.classList.add('hidden');
+        lightbox?.classList.remove('flex');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    // Event Listeners for triggers
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const indexStr = trigger.getAttribute('data-lightbox-trigger');
+        const index = parseInt(indexStr || '0', 10);
+        openLightbox(index);
+      });
+    });
+
+    // Close and Navigation Listeners
+    closeBtn?.addEventListener('click', closeLightbox);
+
+    overlay?.addEventListener('click', (e) => {
+      if (e.target === overlay) closeLightbox();
+    });
+
+    prevBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      updateDisplay(currentIndex - 1);
+    });
+
+    nextBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      updateDisplay(currentIndex + 1);
+    });
+
+    // Global Keyboard Listeners (attached only when open is also a valid pattern,
+    // but for simplicity we'll just check if hidden)
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (lightbox?.classList.contains('hidden')) return;
+
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') updateDisplay(currentIndex - 1);
+      if (e.key === 'ArrowRight') updateDisplay(currentIndex + 1);
+    };
+
+    document.addEventListener('keydown', handleKeydown);
+
+    // Touch support
+    let touchStartX = 0;
+    lightbox?.addEventListener('touchstart', (e) => {
+      touchStartX = (e as TouchEvent).changedTouches[0].screenX;
+    }, {passive: true});
+
+    lightbox?.addEventListener('touchend', (e) => {
+      const touchEndX = (e as TouchEvent).changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) updateDisplay(currentIndex + 1);
+        else updateDisplay(currentIndex - 1);
+      }
+    }, {passive: true});
+  }
+
+  // Initialize on first load
+  setupApplicationsLightbox();
+
+  // Support for ViewTransitions if added later
+  document.addEventListener('astro:page-load', setupApplicationsLightbox);
+</script>

@@ -1,0 +1,109 @@
+---
+type LucideIcon = (_props: Record<string, unknown>) => unknown;
+
+export interface InfoItem {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  items: InfoItem[];
+  theme?: "white" | "surface" | "primary" | "secondary";
+}
+
+const { items, theme = "surface" } = Astro.props;
+
+const themeClasses: Record<string, string> = {
+  white: "bg-white text-foreground",
+  surface: "bg-surface text-foreground",
+  primary: "bg-primary text-primary-foreground",
+  secondary: "bg-secondary text-secondary-foreground",
+};
+
+const borderClasses: Record<string, string> = {
+  white: "border-border",
+  surface: "border-border",
+  primary: "border-primary-foreground/20",
+  secondary: "border-secondary-foreground/20",
+};
+
+const mutedClasses: Record<string, string> = {
+  white: "text-muted-foreground",
+  surface: "text-muted-foreground",
+  primary: "text-primary-foreground/70",
+  secondary: "text-secondary-foreground/70",
+};
+
+const iconClasses: Record<string, string> = {
+  white: "text-primary",
+  surface: "text-primary",
+  primary: "text-primary-foreground",
+  secondary: "text-primary",
+};
+---
+
+<section
+  data-bg={theme}
+  class:list={["w-full  py-6 lg:py-8", themeClasses[theme], borderClasses[theme]]}
+>
+  <div class="container mx-auto px-4">
+    <div class="relative">
+      <!-- Setas: visíveis só no mobile -->
+      <button class="infobar-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 p-1 text-foreground/40 hover:text-foreground transition-colors lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button class="infobar-next absolute right-0 top-1/2 -translate-y-1/2 z-10 p-1 text-foreground/40 hover:text-foreground transition-colors lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+
+      <div class="swiper infobar-swiper lg:!overflow-visible">
+        <div class="swiper-wrapper lg:!flex lg:!transform-none">
+          {items.map((item) => (
+            <div class="swiper-slide lg:!w-auto lg:flex-1">
+              <div class="flex flex-col items-center gap-4 justify-center lg:justify-center px-8 lg:px-0">
+                <span class:list={["mt-0.5 shrink-0", iconClasses[theme]]}>
+                  <item.icon size={32} stroke-width={1.5} />
+                </span>
+                <div>
+                  <p class="text-center font-semibold leading-snug">{item.title}</p>
+                  <p class:list={["text-center leading-snug mt-0.5", mutedClasses[theme]]}>
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Autoplay } from "swiper/modules";
+
+  new Swiper(".infobar-swiper", {
+    modules: [Navigation, Autoplay],
+    slidesPerView: 1,
+    centeredSlides: true,
+    loop: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      prevEl: ".infobar-prev",
+      nextEl: ".infobar-next",
+    },
+    breakpoints: {
+      1024: {
+        slidesPerView: 4,
+        centeredSlides: false,
+        loop: false,
+        autoplay: false,
+      },
+    },
+  });
+</script>

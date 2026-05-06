@@ -1,23 +1,137 @@
+---
+import "../styles/global.css";
+import NavHeader from "../components/NavHeader.astro";
+import WhatsappButton from "../components/WhatsappButton.astro";
+import CookieConsent from "../components/CookieConsent.astro";
+import Footer from "../components/Footer.astro";
+
+
+import business from "@/data/business.json";
+
+const whatsappNumber = business.whatsappNumber;
+
+
+const footerMenuLinks = [
+  { label: "Início", href: "#" },
+  { label: "Catálogo", href: "/produtos" },
+];
+
+const footerInstitutionalLinks = [
+  { label: "Quem Somos", href: "/sobre" },
+  { label: "Fale Conosco", href: "/contato" },
+  { label: "Política de Privacidade", href: "/politica-de-privacidade" },
+];
+
+const footerContacts = {
+  phone: "(54) 3226-8000",
+  whatsapp: "(54) 3226-8000",
+  email: "alpa@alpaaluminio.com.br",
+  address: "Rua Beethoven, 2259 - São José, Caxias do Sul - RS, 95032-320",
+  businessHours: "Seg - Sex: 08:00 - 18:00",
+};
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Alpa Alumínio</title>
+  </head>
+  <body>
+    <NavHeader />
+    <main class="relative">
+      <slot />
+    </main>
+    <WhatsappButton phoneNumber={whatsappNumber} />
+    <CookieConsent position="center" />
+
+    <Footer
+      companyName="ALPA Alumínio."
+      cnpj="00.000.000/0001-00"
+      logo="/logo-alpa-aluminio.svg"
+      menuLinks={footerMenuLinks}
+      institutionalLinks={footerInstitutionalLinks}
+      contacts={footerContacts}
+    />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .section {
+  padding: 80px 0;
+}
+
+.section + .section {
+  margin-top: 40px;
+}
+
+/* se cores iguais → remove espaço */
+.section[data-bg="same"] + .section[data-bg="same"] {
+  margin-top: 0;
+}
 </style>
+
+<script>
+  import Lenis from "lenis";
+  import "lenis/dist/lenis.css";
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initAnimations = () => {
+    const elements = document.querySelectorAll("[data-animate]");
+
+    elements.forEach((el) => {
+      const type = el.getAttribute("data-animate");
+      const delay = Number(el.getAttribute("data-animate-delay")) || 0;
+
+      const config = {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          once: true,
+        },
+        opacity: 1,
+        duration: 1.3,
+        ease: "power4.out",
+        delay: delay,
+        y: 0,
+        filter: "blur(0px)",
+      };
+
+      if (type === "fade") {
+        gsap.set(el, { y: 0 });
+      }
+
+      gsap.to(el, config);
+    });
+  };
+
+  initAnimations();
+
+  document.addEventListener("astro:after-swap", initAnimations);
+</script>

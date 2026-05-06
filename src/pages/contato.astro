@@ -1,0 +1,191 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+const contacts = {
+  phone: "(54) 3226-8000",
+  whatsapp: "(54) 3226-8000",
+  email: "alpa@alpaaluminio.com.br",
+  address: "Rua Beethoven, 2259 - São José, Caxias do Sul - RS, 95032-320",
+  businessHours: "Seg - Sex: 08:00 - 18:00",
+  instagram: "https://instagram.com/alpaaluminio",
+  facebook: "https://www.facebook.com/alpaaluminio",
+};
+---
+
+<Layout title="Fale com a Alpa Alumínio" description="Fale com a Alpa Alumínio">
+  <section class="bg-white pt-36 pb-28 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-20">
+        <!-- ESQUERDA -->
+        <div class="lg:sticky lg:top-32 h-fit">
+          <p
+            class="text-primary text-xs font-semibold tracking-[0.2em] uppercase mb-5"
+          >
+            Contato
+          </p>
+
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter leading-none text-foreground max-w-xl"
+          >
+            Fale com nossa equipe
+          </h1>
+
+          <p
+            class="mt-8 text-lg leading-relaxed text-foreground-subtle max-w-lg"
+          >
+            Entre em contato para solicitar um orçamento, tirar dúvidas ou
+            receber atendimento da nossa equipe técnica.
+          </p>
+
+          <!-- Redes -->
+          <div class="flex items-center gap-3 mt-10">
+            <a
+              href={contacts.instagram}
+              target="_blank"
+              aria-label="Instagram"
+              class="size-11 rounded-full  bg-stone-100 flex items-center justify-center text-primary hover:border-primary hover:text-primary transition-colors"
+            >
+              <svg
+                class="size-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 24 24"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                <path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                ></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+
+            <a
+              href={contacts.facebook}
+              target="_blank"
+              aria-label="Facebook"
+              class="size-11 rounded-full  bg-stone-100 flex items-center justify-center text-primary hover:border-primary hover:text-primary transition-colors"
+            >
+              <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- DIREITA -->
+        <div class="border border-stone-200 rounded-3xl overflow-hidden">
+          <!-- Telefone -->
+          <div class="px-8 lg:px-10 py-8 border-b border-stone-200">
+            <p
+              class="text-xs uppercase tracking-[0.18em] text-foreground-subtle mb-3"
+            >
+              Telefone
+            </p>
+
+            <a
+              href="tel:+555432268000"
+              class="text-3xl lg:text-4xl font-medium tracking-tight text-primary hover:text-primary transition-colors"
+            >
+              {contacts.phone}
+            </a>
+          </div>
+
+          <!-- Whatsapp -->
+          <div class="px-8 lg:px-10 py-8 border-b border-stone-200">
+            <p
+              class="text-xs uppercase tracking-[0.18em] text-foreground-subtle mb-3"
+            >
+              WhatsApp
+            </p>
+
+            <a
+              href="https://wa.me/555432268000"
+              target="_blank"
+              class="text-3xl lg:text-4xl font-medium tracking-tight text-primary hover:opacity-80 transition-opacity"
+            >
+              {contacts.whatsapp}
+            </a>
+          </div>
+
+          <!-- Email -->
+          <div class="px-8 lg:px-10 py-8 border-b border-stone-200">
+            <p
+              class="text-xs uppercase tracking-[0.18em] text-foreground-subtle mb-3"
+            >
+              E-mail
+            </p>
+
+            <a
+              href={`mailto:${contacts.email}`}
+              class="text-lg lg:text-xl font-medium text-foreground hover:text-primary transition-colors break-all"
+            >
+              {contacts.email}
+            </a>
+          </div>
+
+          <!-- Endereço -->
+          <div class="px-8 lg:px-10 py-8 border-b border-stone-200">
+            <div
+              class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6"
+            >
+              <div>
+                <p
+                  class="text-xs uppercase tracking-[0.18em] text-foreground-subtle mb-3"
+                >
+                  Endereço
+                </p>
+
+                <p
+                  class="text-lg leading-relaxed text-foreground max-w-md font-medium"
+                >
+                  {contacts.address}
+                </p>
+              </div>
+
+              <a
+                href="https://maps.google.com/?q=Rua+Beethoven,+2259,+Caxias+do+Sul"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-70 transition-opacity whitespace-nowrap"
+              >
+                Ver no mapa
+
+                <svg
+                  class="size-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Horário -->
+          <div class="px-8 lg:px-10 py-8">
+            <p
+              class="text-xs uppercase tracking-[0.18em] text-foreground-subtle mb-3"
+            >
+              Horário de atendimento
+            </p>
+
+            <p class="text-lg font-medium text-foreground">
+              {contacts.businessHours}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

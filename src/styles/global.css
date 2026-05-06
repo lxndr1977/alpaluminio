@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-fade';
+@source "../src";
+
+
+@theme {
+  /* Tipografia */
+  --font-sans: "Albert Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Marca */
+  --color-primary: #00AADB;
+  --color-primary-hover: #0099C7;
+  --color-primary-foreground: #FFFFFF;
+
+  --color-accent: #00D4F0;
+  --color-accent-hover: #00BFDB;
+  --color-accent-foreground: #0D0F14;
+
+  --color-secondary: #1A1D26;
+  --color-secondary-hover: #252830;
+  --color-secondary-foreground: #FFFFFF;
+
+  /* Neutros (derivados do seu --color-dark) */
+  --color-dark: #0D0F14;
+
+  --color-background: #FFFFFF;
+  --color-surface: #F5F5F5;
+  --color-surface-raised: #EBEBEB;
+  --color-border: #D4D4D4;
+  --color-border-subtle: #E8E8E8;
+
+  /* Texto */
+  --color-foreground: oklch(21.6% 0.006 56.043);
+  --color-foreground-muted: oklch(37.4% 0.01 67.558);
+  --color-foreground-subtle: oklch(44.4% 0.011 73.639);
+
+  /* Texto sobre fundo escuro */
+  --color-foreground-inverse: #FFFFFF;
+
+  /* Semânticas */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-info: #00AADB;
+  /* reutiliza primary */
+
+  /* Gradientes */
+  --background-image-gradient-industrial: linear-gradient(135deg, #00AADB 0%, #0088B0 100%);
+  --background-image-gradient-dark: linear-gradient(135deg, #0D0F14 0%, #1A1D26 100%);
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-gray-900 bg-white;
+  }
+}
+
+/* Animations from Design System */
+.fade-up {
+  opacity: 0;
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delay-1 {
+  animation-delay: 100ms;
+}
+
+.delay-2 {
+  animation-delay: 200ms;
+}
+
+.delay-3 {
+  animation-delay: 300ms;
+}
+
+.delay-4 {
+  animation-delay: 400ms;
+}
+
+.delay-5 {
+  animation-delay: 500ms;
+}
+
+.delay-6 {
+  animation-delay: 600ms;
+}
+
+
+
+
+[data-animate] {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Aplica transform apenas em quem precisa subir */
+[data-animate="reveal"],
+[data-animate="fade-up"] {
+  transform: translateY(30px);
+}
+
+/* Aplica blur apenas no premium */
+[data-animate="reveal"] {
+  filter: blur(10px);
+}

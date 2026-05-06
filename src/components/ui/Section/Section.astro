@@ -1,0 +1,78 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/utils/cn";
+
+interface Props extends HTMLAttributes<"section"> {
+  theme?: "white" | "primary" | "secondary" | "transparent" | "surface";
+  size?: "compact" | "content" | "large" | "container" | "full";
+  paddingBottom?: "none" | "sm" | "md" | "lg" | "xl";
+  paddingTop?: "none" | "sm" | "md" | "lg" | "xl";
+  margin?: "none" | "sm" | "md" | "lg" | "xl";
+}
+
+const {
+  theme = "white",
+  size = "container",
+  paddingTop = "md",
+  paddingBottom = "md",
+  margin = "none",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const themeMap = {
+  white: "bg-white",
+  primary: "bg-primary",
+  secondary: "bg-secondary",
+  transparent: "bg-transparent",
+  surface: "bg-surface",
+};
+
+const sizeMap = {
+  compact: "max-w-3xl",
+  content: "max-w-5xl",
+  large: "max-w-6xl",
+  container: "max-w-7xl xl:container",
+  full: "w-full",
+};
+
+const paddingTopMap = {
+  none: "",
+  sm: "pt-4 md:pt-8",
+  md: "pt-8 md:pt-16",
+  lg: "pt-12 md:pt-24",
+  xl: "pt-16 md:pt-32",
+};
+
+const paddingBottomMap = {
+  none: "",
+  sm: "pb-4 md:pb-8",
+  md: "pb-8 md:pb-16",
+  lg: "pb-12 md:pb-24",
+  xl: "pb-16 md:pb-32",
+};
+
+const marginMap = {
+  none: "",
+  sm: "my-4 md:my-8",
+  md: "my-8 md:my-16",
+  lg: "my-12 md:my-24",
+  xl: "my-16 md:my-32",
+};
+---
+
+<section
+  {...rest}
+  data-bg={theme}
+  class={cn(
+    "mx-auto",
+    paddingTopMap[paddingTop],
+    paddingBottomMap[paddingBottom],
+    marginMap[margin],
+    themeMap[theme],
+    sizeMap[size],
+    className,
+  )}
+>
+  <slot />
+</section>

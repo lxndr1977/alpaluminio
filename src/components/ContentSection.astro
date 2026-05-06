@@ -1,0 +1,66 @@
+---
+import {
+  Section,
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+  SectionContent,
+} from "@/components/ui/Section";
+
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+
+interface Props extends SectionBaseProps {
+  tag?: string;
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Nossos Diferenciais",
+  eyebrow = "Vídeo Demonstrativo",
+  subtitle = "",
+  titleSize = "7xl",
+  headerAlign = "center",
+  margin = "none",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+  size = "container",
+  theme = "white",
+} = Astro.props;
+
+const themeColor = getTheme(theme);
+
+const lightTheme = {
+  prose: "prose-stone",
+};
+
+const darkTheme = {
+  prose: "prose-invert",
+};
+
+const cardTheme = (theme === "primary" || theme === "secondary") ? darkTheme : lightTheme;
+---
+
+<Section
+  theme={theme}
+  size="full"
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+  margin={margin}
+>
+  <SectionHeader align={headerAlign} size={size} class="mb-8">
+    <SectionEyebrow color={themeColor.eyebrow}>{eyebrow}</SectionEyebrow>
+    <SectionTitle size={titleSize} color={themeColor.title}
+      >{title}
+    </SectionTitle>
+    <SectionSubtitle color={themeColor.subtitle}>{subtitle}</SectionSubtitle>
+  </SectionHeader>
+
+  <SectionContent direction="col" gap="sm" align="center" size={size}>
+    <div class:list={["prose max-w-none text-lg space-y-6", cardTheme.prose]}>
+      <slot />
+    </div> 
+  </SectionContent>
+</Section>

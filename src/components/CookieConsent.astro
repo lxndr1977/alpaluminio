@@ -1,0 +1,79 @@
+---
+import { Cookie } from '@lucide/astro';
+import Button from './ui/Button.astro';
+
+interface Props {
+  position?: 'left' | 'right' | 'center';
+  privacyPolicyUrl?: string;
+}
+
+const { 
+  position = 'right',
+  privacyPolicyUrl = '/politica-de-privacidade'
+} = Astro.props;
+
+const positionClasses = {
+  left: 'bottom-0 left-0 md:bottom-8 md:left-8',
+  right: 'bottom-0 right-0 md:bottom-8 md:right-8',
+  center: 'bottom-0 left-0 right-0 md:left-1/2 md:-translate-x-1/2 md:right-auto md:bottom-8'
+};
+---
+
+<div id="cookie-consent" class:list={[
+  "fixed z-[100] w-full md:w-auto p-4 md:p-0 pointer-events-none translate-y-full transition-all duration-500 ease-out hidden",
+  positionClasses[position]
+]}>
+  <div class:list={[
+    "pointer-events-auto w-full md:w-auto",
+    position === 'center' ? 'max-w-lg mx-auto' : 'max-w-lg ml-auto'
+  ]}>
+    <div class="bg-white/95 backdrop-blur-md border border-gray-200/50 rounded-xl p-3 md:p-4 shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center gap-4 relative overflow-hidden group">
+      
+      <div class="bg-primary/10 p-2 rounded-lg flex-shrink-0 transition-transform duration-500 group-hover:scale-110">
+        <Cookie class="w-4 h-4 text-primary" />
+      </div>
+      
+      <div class="flex-grow">
+        <p class="text-gray-800 text-sm leading-tight">
+          Nós usamos cookies para melhorar sua experiência.
+          <a href={privacyPolicyUrl} class="text-primary hover:underline font-medium">Saiba mais</a>
+        </p>
+      </div>
+
+      <div class="flex-shrink-0">
+        <Button id="btn-accept-cookies" variant="primary" class="!py-1.5 !px-3 text-sm !h-8 uppercase tracking-wider font-bold whitespace-nowrap shadow-sm">
+          Entendi
+        </Button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const cookieConsent = document.getElementById('cookie-consent');
+  const btnAccept = document.getElementById('btn-accept-cookies');
+
+  function showBanner() {
+    cookieConsent.classList.remove('hidden');
+    void cookieConsent.offsetWidth;
+    cookieConsent.classList.remove('translate-y-full');
+    cookieConsent.classList.add('translate-y-0');
+  }
+
+  function hideBanner() {
+    cookieConsent.classList.add('translate-y-full');
+    cookieConsent.classList.remove('translate-y-0');
+    setTimeout(() => {
+      cookieConsent.classList.add('hidden');
+    }, 500);
+  }
+
+  if (!localStorage.getItem('cookie-consent')) {
+    setTimeout(showBanner, 2000);
+  }
+
+  btnAccept?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'dismissed');
+    hideBanner();
+  });
+</script>

@@ -1,0 +1,90 @@
+---
+interface Props {
+  id?: string;
+  isDark?: boolean;
+  class?: string;
+  tag?: string;
+  title?: string;
+  description?: string;
+  paddingTop?: boolean;
+  paddingBottom?: boolean;
+  align?: "left" | "center" | "right";
+  [key: string]: any;
+}
+
+const {
+  id,
+  isDark = false,
+  class: className,
+  tag,
+  title,
+  description,
+  align = "center",
+  paddingTop = true,
+  paddingBottom = true,
+  ...rest
+} = Astro.props;
+
+
+const paddingClass = [
+  paddingTop ? 'pt-24 lg:pt-32' : '',
+  paddingBottom ? 'pb-24 lg:pb-32' : '',
+].join(' ');
+
+const hasHeader = tag || title || description;
+
+const alignClass = {
+  left: "text-left items-start",
+  center: "text-center items-center max-w-4xl  mx-auto",
+  right: "text-right items-end",
+}[align];
+
+const descAlignClass = {
+  left: "mr-auto",
+  center: "mx-auto ",
+  right: "ml-auto",
+}[align];
+---
+
+<section
+  id={id}
+  {...rest}
+  class:list={[
+    paddingClass,
+    "w-full",
+    isDark ? "bg-dark text-white" : "bg-white text-dark",
+    className,
+  ]}
+>
+  <div class="max-w-7xl xl:container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="" data-animate="reveal" >
+      {
+        hasHeader && (
+          <div class:list={["flex flex-col mb-16 fade-up", alignClass]}>
+            {tag && (
+              <span class="inline-block py-1 px-3 mb-4 text-sm lg:text-md font-bold tracking-[0.26em] uppercase text-primary">
+                {tag}
+              </span>
+            )}
+            {title && (
+              <h2 class="mb-6 text-4xl md:text-6xl font-semibold tracking-tighter text-stone-700 text-balance">
+                {title}
+              </h2>
+            )}
+            {description && (
+              <p
+                class:list={[
+                  "text-lg xl:text-xl text-stone-600 max-w-2xl",
+                  descAlignClass,
+                ]}
+              >
+                {description}
+              </p>
+            )}
+          </div>
+        )
+      }
+    </div>
+    <slot />
+  </div>
+</section>

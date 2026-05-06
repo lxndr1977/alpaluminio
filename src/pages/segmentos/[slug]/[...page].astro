@@ -1,0 +1,188 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import ProductCard from "@/components/ProductCard.astro";
+import {
+  Section,
+  SectionContent,
+  SectionEyebrow,
+  SectionHeader,
+  SectionSubtitle,
+  SectionTitle,
+} from "@/components/ui/Section";
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: (data: any[], options: any) => any[];
+}) {
+  const PAGE_SIZE = 9;
+  const segments = await getCollection("segments");
+  const products = await getCollection("products");
+
+  return segments.flatMap((segment) => {
+    const segmentProducts = products.filter((product) =>
+      product.data.segments?.some((ref) => ref.id === segment.id),
+    );
+
+    const paths = paginate(segmentProducts, {
+      params: { slug: segment.id },
+      props: { segment },
+      pageSize: PAGE_SIZE,
+    });
+
+    console.log(
+      `[${segment.id}] produtos: ${segmentProducts.length} → ${paths.length} páginas`,
+    );
+    return paths;
+  });
+}
+
+const { segment, page } = Astro.props;
+const { name, description } = segment.data;
+---
+
+<Layout title={name} description={description}>
+  <Section class="container mx-auto pt-32 md:pt-40 md:pb-32">
+    <SectionHeader align="center">
+      <SectionEyebrow color="primary">Segmentos</SectionEyebrow>
+      <SectionTitle size="7xl">{name}</SectionTitle>
+      {description && <SectionSubtitle>{description}</SectionSubtitle>}
+    </SectionHeader>
+
+    <SectionContent>
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
+        {
+          page.data.map((product: any) => {
+            const sections = product.data.sections ?? [];
+            const hero = sections.find((s: any) => s.id === "hero") as any;
+
+            return (
+              <ProductCard
+                name={product.data.name}
+                image={hero?.image ?? ""}
+                link={`/produtos/${product.id}`}
+                theme="light"
+                cta="Ver produtos"
+              />
+            );
+          })
+        }
+      </div>
+
+      {
+        page.lastPage > 1 && (
+          <nav
+            class="mt-12 flex items-center justify-center gap-2"
+            aria-label="Paginação"
+          >
+            {page.url.prev ? (
+              <a
+                href={page.url.prev}
+                class="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 text-sm font-medium transition hover:bg-neutral-100"
+                aria-label="Página anterior"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </a>
+            ) : (
+              <span class="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 text-sm opacity-30 cursor-not-allowed">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </span>
+            )}
+
+            {Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
+              (pageNum) => (
+                <a
+                  href={
+                    pageNum === 1
+                      ? `/segmentos/${segment.id}`
+                      : `/segmentos/${segment.id}/${pageNum}`
+                  }
+                  class:list={[
+                    "flex h-10 w-10 items-center justify-center rounded-lg border text-sm font-medium transition",
+                    pageNum === page.currentPage
+                      ? "border-primary bg-primary text-white"
+                      : "border-neutral-200 hover:bg-neutral-100",
+                  ]}
+                  aria-current={
+                    pageNum === page.currentPage ? "page" : undefined
+                  }
+                >
+                  {pageNum}
+                </a>
+              ),
+            )}
+
+            {page.url.next ? (
+              <a
+                href={page.url.next}
+                class="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 text-sm font-medium transition hover:bg-neutral-100"
+                aria-label="Próxima página"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </a>
+            ) : (
+              <span class="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 text-sm opacity-30 cursor-not-allowed">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </span>
+            )}
+          </nav>
+        )
+      }
+
+      <p class="mt-4 text-center text-sm text-muted">
+        Página {page.currentPage} de {page.lastPage} — {page.total} produto{
+          page.total !== 1 ? "s" : ""
+        }
+      </p>
+    </SectionContent>
+  </Section>
+</Layout>

@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+
+const categories = await getCollection("categories");
+---
+
+<Layout title="Categorias">
+  <section class="container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold">Categorias</h1>
+    <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      {categories.map((cat) => (
+        <a href={`/categorias/${cat.id}`} class="rounded-xl border p-6 hover:shadow transition text-center">
+          {cat.data.image && (
+            <img src={cat.data.image} alt={cat.data.name} class="mx-auto mb-3 h-12 w-12 object-contain" />
+          )}
+          <span class="font-medium">{cat.data.name}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

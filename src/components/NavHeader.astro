@@ -1,0 +1,172 @@
+---
+import Button from "./ui/Button.astro";
+import { TextAlignEnd, X } from "@lucide/astro";
+
+import business from "@/data/business.json";
+
+const whatsappNumber = business.whatsappNumber;
+
+const { 
+  phoneNumber, 
+  message = "Olá! Gostaria de saber mais sobre os produtos da ALPA." 
+} = Astro.props;
+
+const sanitizedNumber = whatsappNumber.replace(/\D/g, '');
+const whatsappUrl = `https://wa.me/${sanitizedNumber}?text=${encodeURIComponent(message)}`;
+
+const navLinks = [
+  { name: "Catálogo de Produtos", href: "/produtos" },
+  { name: "Sobre nós", href: "/sobre" },
+  { name: "Fale Conosco", href: "/contato" },
+];
+---
+
+<header
+  id="main-header"
+  class="fixed top-0 left-0 w-full z-50 bg-white backdrop-blur-md border-b border-stone-100 h-20 transition-transform duration-300 translate-y-0"
+>
+  <div class="max-w-7xl xl:container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 group">
+      <img src="/logo-alpa-aluminio.svg" alt="Logo ALPA" class="h-10 md:h-12" />
+    </a>
+
+    <!-- Desktop Menu -->
+    <nav class="hidden lg:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a href={link.href} class="font-medium text-dark hover:text-primary transition-colors text-base">
+          {link.name}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Desktop CTA -->
+    <div class="hidden lg:block">
+      <Button href={whatsappUrl} variant="primary">
+        <!-- WhatsApp SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.385-4.437 9.884-9.886 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        Solicite um orçamento
+      </Button>
+    </div>
+
+    <!-- Mobile Menu Button (só o hamburger, sem o X) -->
+    <button
+      id="mobile-menu-button"
+      class="lg:hidden p-2 text-dark hover:bg-gray-100 rounded-sm transition-colors"
+      aria-label="Abrir Menu"
+    >
+      <TextAlignEnd class="w-6 h-6" />
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu Drawer (fullscreen) -->
+<div
+  id="mobile-drawer"
+  class="fixed inset-0 bg-white z-[9999] lg:hidden flex flex-col transition-transform duration-300 translate-x-full"
+>
+  <!-- Drawer Header: Logo + Botão Fechar -->
+  <div class="flex items-center justify-between px-4 sm:px-6 h-20 border-b border-stone-100 shrink-0">
+    <a href="/" class="flex items-center gap-2">  
+      <img src="/logo-alpa-aluminio.svg" alt="Logo ALPA" class="h-10" />
+    </a>
+    <button
+      id="mobile-close-button"
+      class="p-2 text-dark hover:bg-gray-100 rounded-sm transition-colors"
+      aria-label="Fechar Menu"
+    >
+      <X class="w-6 h-6" />
+    </button>
+  </div>
+
+  <!-- Nav Links -->
+  <nav class="flex flex-col flex-1 px-4 sm:px-6 pt-4 overflow-y-auto">
+    {navLinks.map((link) => (
+      
+      <a  href={link.href}
+        class="text-xl font-semibold text-dark hover:text-primary transition-colors py-5 border-b border-stone-100 mobile-link"
+      >
+        {link.name}
+      </a>
+    ))}
+  </nav>
+
+  <!-- CTA fixo no rodapé do drawer -->
+  <div class="p-4 sm:p-6 shrink-0">
+    <Button href={whatsappUrl} variant="primary" class="w-full justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.385-4.437 9.884-9.886 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      Entre em contato
+    </Button>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.getElementById("main-header");
+    const stickyBar = document.getElementById("sticky-bar");
+
+    let lastScrollY = window.scrollY;
+    const scrollThreshold = 520;
+    const scrollDelta = 5;
+
+    const setStickyBar = (transform) => {
+      if (stickyBar) stickyBar.style.transform = transform;
+    };
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+      if (Math.abs(currentScrollY - lastScrollY) < scrollDelta) return;
+
+      if (currentScrollY > scrollThreshold) {
+        if (currentScrollY > lastScrollY) {
+          header.style.transform = "translateY(-100%)";
+          header.classList.remove("shadow-lg", "shadow-black/10");
+          setStickyBar("translateY(0)");
+        } else {
+          header.style.transform = "translateY(0)";
+          header.classList.add("shadow-lg", "shadow-black/10");
+          setStickyBar("translateY(100%)");
+        }
+      } else {
+        header.style.transform = "translateY(0)";
+        header.classList.remove("shadow-lg", "shadow-black/10");
+        setStickyBar("translateY(100%)");
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    // ── Mobile Menu Toggle ──
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileCloseButton = document.getElementById("mobile-close-button");
+    const mobileDrawer = document.getElementById("mobile-drawer");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    let isMenuOpen = false;
+
+    function openMenu() {
+      isMenuOpen = true;
+      mobileDrawer.classList.remove("translate-x-full");
+      mobileDrawer.classList.add("translate-x-0");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+      isMenuOpen = false;
+      mobileDrawer.classList.add("translate-x-full");
+      mobileDrawer.classList.remove("translate-x-0");
+      document.body.style.overflow = "";
+    }
+
+    mobileMenuButton.addEventListener("click", openMenu);
+    mobileCloseButton.addEventListener("click", closeMenu);
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  });
+</script>

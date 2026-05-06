@@ -1,0 +1,189 @@
+---
+import { ChevronDown } from "@lucide/astro";
+
+import {
+  Section,
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+  SectionContent,
+} from "@/components/ui/Section";
+
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props extends SectionBaseProps {
+  tag?: string;
+  title?: string;
+  description?: string;
+  align?: "left" | "center" | "right";
+  faqs: FAQItem[];
+  openFirst?: boolean;
+  singleOpen?: boolean;
+}
+
+const {
+  eyebrow = "Perguntas Frequentes",
+  title = "",
+  subtitle = "",
+  theme = "white",
+  titleSize = "7xl",
+  faqs = [],
+  headerAlign = "left",
+  openFirst = false,
+  singleOpen = false,
+  margin = "none",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+  size = "container",
+} = Astro.props;
+
+if (!faqs?.length) return null;
+
+const sectionId = `faq-${Math.random().toString(36).substring(2, 9)}`;
+
+const themeColor = getTheme(theme);
+
+const lightTheme = {
+  divider: "divide-gray-200 border-gray-200",
+  questionText: "text-gray-900",
+  questionHover: "group-hover:text-primary",
+  chevronColor: "text-gray-500",
+  answerText: "text-gray-600",
+};
+
+const darkTheme = {
+  divider: "divide-white/10 border-white/10",
+  questionText: "text-white",
+  questionHover: "group-hover:text-primary",
+  chevronColor: "text-white/50",
+  answerText: "text-white/70",
+};
+
+const cardTheme = (theme === "primary" || theme === "secondary") ? darkTheme : lightTheme;
+---
+
+<Section
+  theme={theme}
+  size="full"
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+  margin={margin}
+>
+  <SectionHeader align={headerAlign} size={size} class="mb-6">
+    <SectionEyebrow color={themeColor.eyebrow}>{eyebrow}</SectionEyebrow>
+    <SectionTitle size={titleSize} color={themeColor.title}
+      >{title}
+    </SectionTitle>
+    <SectionSubtitle color={themeColor.subtitle}>{subtitle}</SectionSubtitle>
+  </SectionHeader>
+
+  <SectionContent
+    direction="col"
+    gap="sm"
+    align="center"
+    size={size}
+    data-faq-section
+    data-single-open={singleOpen.toString()}
+  >
+    <div class="w-full">
+      <div class:list={["mt-8 divide-y border-t", cardTheme.divider]}>
+        {
+          faqs.map((faq, index) => {
+            const itemId = `${sectionId}-item-${index}`;
+            const isDefaultOpen = openFirst && index === 0;
+
+            return (
+              <div class="py-4 xl:text-xl" data-faq-item>
+                <button
+                  type="button"
+                  class="w-full flex items-center justify-between text-left group py-2"
+                  aria-expanded={isDefaultOpen ? "true" : "false"}
+                  aria-controls={itemId}
+                  data-faq-button
+                >
+                  <span class:list={["font-medium transition-colors", cardTheme.questionText, cardTheme.questionHover]}>
+                    {faq.question}
+                  </span>
+                  <ChevronDown class:list={["w-5 h-5 transition-transform duration-300 icon-chevron", cardTheme.chevronColor]} />
+                </button>
+
+                <div
+                  id={itemId}
+                  class="faq-content overflow-hidden transition-all duration-300 ease-in-out"
+                  style={isDefaultOpen ? "max-height: none;" : "max-height: 0;"}
+                  data-faq-content
+                >
+                  <div class="pb-4 pr-12">
+                    <p class:list={["leading-relaxed", cardTheme.answerText]}>{faq.answer}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </SectionContent>
+</Section>
+
+<style>
+  [aria-expanded="true"] .icon-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-content {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  [aria-expanded="true"] + .faq-content {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 8px;
+  }
+</style>
+
+<script>
+  function setupFaq() {
+    const sections = document.querySelectorAll("[data-faq-section]");
+
+    sections.forEach((section) => {
+      const buttons =
+        section.querySelectorAll<HTMLButtonElement>("[data-faq-button]");
+      const isSingleOpen = section.getAttribute("data-single-open") === "true";
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const isOpen = btn.getAttribute("aria-expanded") === "true";
+          const content = btn.nextElementSibling as HTMLElement;
+
+          if (isSingleOpen && !isOpen) {
+            buttons.forEach((otherBtn) => {
+              if (otherBtn !== btn) {
+                otherBtn.setAttribute("aria-expanded", "false");
+                (otherBtn.nextElementSibling as HTMLElement).style.maxHeight =
+                  "0";
+              }
+            });
+          }
+
+          const newState = !isOpen;
+          btn.setAttribute("aria-expanded", newState.toString());
+          content.style.maxHeight = newState
+            ? `${content.scrollHeight}px`
+            : "0";
+        });
+      });
+    });
+  }
+
+  setupFaq();
+  document.addEventListener("astro:after-swap", setupFaq);
+</script>

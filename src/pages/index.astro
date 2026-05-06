@@ -1,11 +1,323 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import DifferentialsSection from "../components/DifferentialsSection.astro";
+import { Image } from "astro:assets";
+import heroImg from "../assets/alpa-aluminio-hero-home_02.webp";
+import ContentSection from "@/components/ContentSection.astro";
+import CtaSection from "@/components/CtaSection.astro";
+import { Recycle, Ruler, BadgeCheck, MessageCircleMore } from "@lucide/astro";
+import business from "@/data/business.json";
+import SocialProofSection from "@/components/SocialProofSection.astro";
+import PhotoGallery from "@/components/PhotoGallery.astro";
+import InfoBar from "@/components/InfoBar.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import VideoSection2 from "@/components/VideoSection2.astro";
+
+const ctaTarget = business.whatsappNumber;
+
+import img1 from "../assets/alpa-aluminio-sobre_01.webp";
+import RelatedProductsSection from "@/components/RelatedProductsSection.astro";
+import Categories from "@/components/Categories.astro";
+
+const differentials = [
+  {
+    icon: BadgeCheck,
+    title: "Qualidade e durabilidade",
+    description:
+      "Produtos resistentes, com excelente acabamento e longa vida útil.",
+  },
+  {
+    icon: Ruler,
+
+    title: "Soluções sob medida",
+    description:
+      "Perfis e acabamentos ideais para projetos residenciais, comerciais e industriais.",
+  },
+  {
+    icon: Recycle,
+
+    title: "Sustentabilidade",
+    description:
+      "Processos de fabricação sustentáveis e alumínio 100% reciclável",
+  },
+  {
+    icon: MessageCircleMore,
+
+    title: "Atendimento personalizado",
+    description:
+      "Soluções pensadas conforme a necessidade específica de cada projeto.",
+  },
+];
+
+const featuredProducts = [
+  {
+    name: "Sistema Camarão Cremona",
+    image: "/images/produtos/sistema-camarao-cremona_main.webp",
+    link: "/produtos/sistema-camarao-cremona",
+  },
+
+  {
+    name: "Porta Dual",
+    image: "/images/produtos/porta-dual_main.webp",
+    link: "/produtos/porta-dual",
+  },
+  {
+    name: "Linha Exclusive",
+    image: "/images/produtos/linha-exclusive_main.webp",
+    link: "/produtos/linha-exclusive",
+  },
+  {
+    name: "Linha Grand Mundiale 125",
+    image: "/images/produtos/linha-grand-mundiale-125_main.webp",
+    link: "/produtos/linha-grand-mundiale-125",
+  },
+  {
+    name: "Linha Mundiale",
+    image: "/images/produtos/linha-mundiale_main.webp",
+    link: "/produtos/linha-mundiale",
+  },
+  {
+    name: "Linha Official",
+    image: "/images/produtos/linha-official_main.webp",
+    link: "/produtos/linha-official",
+  },
+];
+
+const categoriesComImagem = [
+  {
+    name: "Perfis",
+    link: "#",
+    image: "/images/produtos/product-placeholder.webp",
+  },
+  {
+    name: "Lambris",
+    link: "#",
+    image: "/images/produtos/product-placeholder.webp",
+  },
+  {
+    name: "Ripados",
+    link: "#",
+    image: "/images/produtos/product-placeholder.webp",
+  },
+  {
+    name: "Componentes",
+    link: "#",
+    image: "/images/produtos/product-placeholder.webp",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Ótimo atendimento e material de excelente qualidade.",
+    author: "Eduardo Mainardi",
+    rating: 5,
+  },
+  {
+    quote: "Melhor produto e atendimento! Recomendo!",
+    author: "Lis Rodrigues",
+    rating: 5,
+  },
+  {
+    quote: "Ótimo atendimento e produto diferenciado",
+    author: "Michel Bedin",
+    rating: 5,
+  },
+  {
+    quote: "Trabalho de excelência ",
+    author: "Letícia Rosetto",
+    role: "Arquiteta",
+    rating: 5,
+  },
+];
+
+const photos = [
+  {
+    src: "/images/projetos/projeto-alpa-aluminio_04.webp",
+    alt: "porta dual com acabamento diferente em cada lado em projeto arquitetonico",
+    caption: "Acabamentos distintos em cada face da porta",
+  },
+  {
+    src: "/images/projetos/projeto-alpa-aluminio_08.webp",
+    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
+    caption: "Uso em fachada comercial moderna",
+  },
+  {
+    src: "/images/projetos/projeto-alpa-aluminio_01.webp",
+    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
+    caption: "Uso em fachada comercial moderna",
+  },
+  {
+    src: "/images/projetos/projeto-alpa-aluminio_02.webp",
+    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
+    caption: "Uso em fachada comercial moderna",
+  },
+  {
+    src: "/images/projetos/projeto-alpa-aluminio_03.webp",
+    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
+    caption: "Uso em fachada comercial moderna",
+  },
+  {
+    src: "/images/projetos/projeto-alpa-aluminio_05.webp",
+    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
+    caption: "Uso em fachada comercial moderna",
+  },
+  {
+    src: "/images/projetos/projeto-alpa-aluminio_06.webp",
+    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
+    caption: "Uso em fachada comercial moderna",
+  },
+];
+
+import { Headset, Package, Clock, Award } from "@lucide/astro";
+
+const infoItems = [
+  {
+    icon: Headset,
+    title: "Suporte Especializado",
+    description: "Em projetos de alumínio",
+  },
+  {
+    icon: Package,
+    title: "Estoque Imediato",
+    description: "Produtos para pronta entrega",
+  },
+  {
+    icon: Clock,
+    title: "Agilidade na Entrega",
+    description: "Para todo o Brasil",
+  },
+  {
+    icon: Award,
+    title: "Qualidade Garantida",
+    description: "Alumínio de alta durabilidade",
+  },
+];
 ---
 
 <Layout>
-	<Welcome />
+  <HeroSection
+    subtitle="Alpa Alumínio"
+    title="Soluções em alumínio para diferentes aplicações"
+    titleSize="7xl"
+    description="Desenvolvemos sistemas em alumínio que unem resistência, versatilidade e alto padrão de acabamento. Encontre a solução ideal para projetos de todos os portes."
+    image={heroImg}
+    ctaText="Fale com um especialista"
+  />
+  
+  <InfoBar items={infoItems} theme="secondary" />
+
+  <RelatedProductsSection
+    eyebrow="Nossos Produtos"
+    title="Soluções em alumínio"
+    subtitle="Dispomos em nosso catálogo soluções inteligentes e inovadoras para projetos residenciais, comerciais e industriais."
+    products={featuredProducts}
+    cols={4}
+    theme="white"
+    titleSize="6xl"
+    showMoreButton
+    moreProductsLink="/produtos"
+    moreProductsLabel="Ver catálogo completo"
+  />
+
+  <Categories
+    eyebrow="Categorias"
+    title="Explore nossa linha em alumínio"
+    subtitle="Descubra produtos em alumínio com qualidade, design e durabilidade para cada necessidade do seu projeto."
+    categories={categoriesComImagem}
+    theme="white"
+  />
+
+  <PhotoGallery
+    galleryId={`gallery-${Math.random().toString(36).slice(2)}`}
+    eyebrow="Projetos que usam Alpa Alumínio"
+    title="Sofisticação e funcionalidade para seus projetos"
+    subtitle="Nossos produtos oferecem o que há de melhor no mercado de alumínio para todos os padrões de arquitetura. Confira alguns casos de sucesso."
+    titleSize="5xl"
+    cols={2}
+    aspect="16/9"
+    headerAlign="center"
+    photos={photos}
+    theme="surface"
+  />
+
+  <VideoSection2
+    theme="white"
+    eyebrow="O que fazemos"
+    title="Conectamos boas escolhas a bons projetos"
+    subtitle="A Alpa Alumínio conecta as melhores escolhas em perfis de alumínio para esquadrias, fachadas e revestimentos, garantindo mais qualidade e fluidez na execução do seu projeto."
+    titleSize="6xl"
+    size="large"
+    mp4Src="/videos/apresentacao-alpa.mp4"
+    posterSrc="/images/capa-video-alpa.webp"
+    aspectRatio="9/16"
+    desktopVideoPosition="left"
+  />
+
+  <DifferentialsSection
+    theme="secondary"
+    title="Por que escolher a Alpa Alumínio?"
+    titleSize="6xl"
+    eyebrow="Por que escolher a Alpa Alumínio?"
+    subtitle="Comprometidos com a excelência, inovação e sustentabilidade, oferecemos soluções em alumínio que se destacam pela qualidade, durabilidade e design."
+    items={differentials}
+  />
+
+  <SocialProofSection
+    title="Depoimentos de clientes"
+    subtitle="Confira relatos de clientes que confiam nos produtos da Alpa Alumínio"
+    eyebrow="Depoimentos"
+    titleSize="5xl"
+    testimonials={testimonials}
+    layout="grid"
+    highlightFirst={false}
+    theme="surface"
+    colsMobile={1}
+  />
+
+  <CtaSection
+    eyebrow="Fale conosco"
+    title="Pronto para transformar seus projetos com soluções em alumínio de alta qualidade?"
+    description="Nossa equipe de especialistas está pronta para oferecer consultoria personalizada e soluções sob medida para atender às suas necessidades."
+    ctaText="Fale com um especialista"
+    whatsappNumber={ctaTarget}
+    productName="Alpa Alumínio"
+  />
+
+
+  <ContentSection
+    headerAlign="left"
+    size="content"
+    eyebrow="Alpa Alumínio"
+    title="Inovação e Qualidade em Soluções de Alumínio"
+    titleSize="6xl"
+    subtitle="Há mais de 20 anos atuando no mercado de alumíinio, oferecemos soluções inteligentes e inovadoras para projetos residenciais, comerciais e industriais, sendo capaz de oferecer o que há de melhor para todos os padrões de projetos"
+  >
+    <div
+      class="mt-8 relative aspect-[4/3] md:aspect-[16/9] md:rounded-2xl overflow-hidden group"
+    >
+      <Image
+        src={img1}
+        alt="Imagem de um projeto utilizando soluções em alumínio da Alpa Alumínio"
+        class="block w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+    </div>
+  </ContentSection>
+
 </Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>("section[data-bg]"),
+    );
+
+    sections.forEach((section, i) => {
+      const prev = sections[i - 1];
+      if (prev && prev.dataset.bg === section.dataset.bg) {
+        section.style.paddingTop = "64px";
+        prev.style.paddingBottom = "64px";
+      }
+    });
+  });
+</script>

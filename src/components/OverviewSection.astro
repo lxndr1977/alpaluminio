@@ -1,0 +1,421 @@
+---
+import Section from "./ui/Section.astro";
+import * as icons from "@lucide/astro";
+
+interface Attribute {
+  icon: string;
+  label: string;
+  detail: string;
+}
+
+interface Props {
+  tag?: string;
+  title: string;
+  description: string;
+  attributes: Attribute[];
+  cols?: number;
+  colsMd?: number;
+  colsLg?: number;
+  carouselMobile?: boolean;
+  carouselTablet?: boolean;
+  carouselDesktop?: boolean;
+  arrowsMobile?: boolean;
+  arrowsTablet?: boolean;
+  arrowsDesktop?: boolean;
+}
+
+const {
+  tag,
+  title,
+  description,
+  attributes,
+  cols = 2,
+  colsMd = 2,
+  colsLg = 4,
+  carouselMobile = false,
+  carouselTablet = false,
+  carouselDesktop = false,
+  arrowsMobile = false,
+  arrowsTablet = false,
+  arrowsDesktop = false,
+} = Astro.props;
+
+const iconsMap = icons as Record<string, any>;
+
+const resolvedAttributes = attributes.map((attr, i) => ({
+  ...attr,
+  IconComponent: iconsMap[attr.icon] || null,
+  delayClass: `delay-${i + 1}`,
+}));
+
+const ChevronLeft = iconsMap["ChevronLeft"];
+const ChevronRight = iconsMap["ChevronRight"];
+---
+
+<Section id="overview"
+  tag={tag}
+  title={title}
+  description={description}>
+
+  <div
+    class="carousel-wrapper relative"
+    data-arrows-mobile={arrowsMobile ? "true" : "false"}
+    data-arrows-tablet={arrowsTablet ? "true" : "false"}
+    data-arrows-desktop={arrowsDesktop ? "true" : "false"}
+  >
+    <button
+      class="carousel-arrow carousel-arrow-prev
+             absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10
+             w-10 h-10 flex items-center justify-center
+             rounded-full bg-white border border-stone-200 shadow-md
+             text-stone-600 hover:text-primary hover:border-primary/30
+             transition-all duration-200
+             opacity-0 pointer-events-none"
+      aria-label="Anterior"
+    >
+      {ChevronLeft && <ChevronLeft class="w-5 h-5" />}
+    </button>
+
+    <div
+      class:list={[
+        "custom-attribute-grid fade-up delay-1",
+        carouselMobile && "is-carousel-mobile",
+        carouselTablet && "is-carousel-tablet",
+        carouselDesktop && "is-carousel-desktop",
+      ]}
+      style={`--cols-mobile: ${cols}; --cols-tablet: ${colsMd}; --cols-desktop: ${colsLg};`}
+    >
+      {
+        resolvedAttributes.map((attr) => (
+          <div
+            class:list={[
+              "attribute-card group flex flex-col items-start p-6 md:p-8 rounded-sm",
+              "border border-stone-100",
+              "hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20",
+              "transition-all duration-300",
+              attr.delayClass,
+            ]}
+          >
+            <div class="w-12 h-12 flex items-center justify-center rounded-sm bg-primary mb-16">
+              {attr.IconComponent && (
+                <attr.IconComponent class="w-6 h-6 text-white" />
+              )}
+            </div>
+
+            <h3 class="font-bold text-dark text-base text-lg lg:text-xl mb-2">{attr.label}</h3>
+            <p class="text-sm lg:text-base text-stone-600 leading-relaxed">{attr.detail}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <button
+      class="carousel-arrow carousel-arrow-next
+             absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10
+             w-10 h-10 flex items-center justify-center
+             rounded-full bg-white border border-stone-200 shadow-md
+             text-stone-600 hover:text-primary hover:border-primary/30
+             transition-all duration-200
+             opacity-0 pointer-events-none"
+      aria-label="Próximo"
+    >
+      {ChevronRight && <ChevronRight class="w-5 h-5" />}
+    </button>
+  </div>
+</Section>
+
+<style>
+  .custom-attribute-grid {
+    display: grid;
+    gap: 1.5rem;
+    width: 100%;
+    grid-template-columns: repeat(var(--cols-mobile, 2), minmax(0, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    .custom-attribute-grid {
+      grid-template-columns: repeat(var(--cols-tablet, 2), minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .custom-attribute-grid {
+      grid-template-columns: repeat(var(--cols-desktop, 4), minmax(0, 1fr));
+    }
+  }
+
+  .custom-attribute-grid.is-carousel-active {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.5rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .custom-attribute-grid.is-carousel-active::-webkit-scrollbar {
+    display: none;
+  }
+
+  .custom-attribute-grid.is-carousel-active .attribute-card {
+    flex-shrink: 0;
+  }
+
+  .custom-attribute-grid.is-carousel-active {
+    cursor: grab;
+  }
+
+  .custom-attribute-grid.is-carousel-active.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  .custom-attribute-grid.is-carousel-active.is-dragging .attribute-card {
+    pointer-events: none;
+  }
+
+  .carousel-arrow {
+    transition:
+      opacity 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  .carousel-arrow.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .carousel-arrow.is-visible.is-disabled {
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .custom-attribute-grid.is-carousel-active {
+    scroll-snap-type: x mandatory;
+  }
+
+  .attribute-card {
+    scroll-snap-align: start;
+  }
+</style>
+
+<script is:inline>
+  function initCarousels() {
+    document.querySelectorAll(".custom-attribute-grid").forEach((grid) => {
+      const wrapper = grid.closest(".carousel-wrapper");
+      const btnPrev = wrapper?.querySelector(".carousel-arrow-prev");
+      const btnNext = wrapper?.querySelector(".carousel-arrow-next");
+
+      let cachedGridWidth = 0;
+      let cachedScrollWidth = 0;
+      let cachedCardWidth = 0;
+
+      let isDragging = false;
+      let startMouseX = 0;
+      let startScrollX = 0;
+      let targetScroll = 0;
+      let currentScroll = 0;
+      let rafId = null;
+
+      const lerp = (a, b, t) => a + (b - a) * t;
+
+      const stopRaf = () => {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      };
+
+      const syncArrowState = () => {
+        if (!btnPrev || !btnNext) return;
+        btnPrev.classList.toggle("is-disabled", currentScroll <= 2);
+        btnNext.classList.toggle(
+          "is-disabled",
+          currentScroll + cachedGridWidth >= cachedScrollWidth - 5,
+        );
+      };
+
+      // Loop de animação — único ponto que move o scrollLeft
+      const startLoop = () => {
+        stopRaf();
+        const loop = () => {
+          // Interpola suavemente em direção ao target
+          currentScroll = lerp(currentScroll, targetScroll, 0.12);
+          grid.scrollLeft = currentScroll;
+          syncArrowState();
+
+          if (Math.abs(targetScroll - currentScroll) < 0.5) {
+            // Chegou: seta o valor exato e para
+            currentScroll = targetScroll;
+            grid.scrollLeft = targetScroll;
+            syncArrowState();
+            return;
+          }
+
+          rafId = requestAnimationFrame(loop);
+        };
+        rafId = requestAnimationFrame(loop);
+      };
+
+      const scrollToTarget = (value) => {
+        targetScroll = value;
+        currentScroll = value;
+
+        grid.scrollTo({
+          left: value,
+          behavior: "smooth",
+        });
+
+        syncArrowState();
+      };
+
+      // Snap para o card mais próximo usando posições reais do DOM
+      const snapToNearest = (direction, useSmooth = false) => {
+        const cards = Array.from(grid.querySelectorAll(".attribute-card"));
+        const maxScroll = cachedScrollWidth - cachedGridWidth;
+
+        const offsets = cards.map((card) => card.offsetLeft);
+
+        let snapTo;
+
+        if (direction >= 0) {
+          snapTo = offsets.find((o) => o > currentScroll + 2) ?? maxScroll;
+        } else {
+          snapTo =
+            [...offsets].reverse().find((o) => o < currentScroll - 2) ?? 0;
+        }
+
+        snapTo = Math.max(0, Math.min(maxScroll, snapTo));
+
+        scrollToTarget(snapTo);
+      };
+
+      // ─── Drag ───────────────────────────────────────────────────────────────
+      grid.addEventListener("mousedown", (e) => {
+        if (!grid.classList.contains("is-carousel-active")) return;
+        stopRaf();
+        isDragging = true;
+        startMouseX = e.pageX;
+        startScrollX = grid.scrollLeft;
+        currentScroll = startScrollX;
+        targetScroll = startScrollX;
+        grid.classList.add("is-dragging");
+        startLoop();
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        targetScroll = startScrollX - (e.pageX - startMouseX);
+      });
+
+      const stopDrag = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        grid.classList.remove("is-dragging");
+        // Snap direcional baseado em para onde arrastou
+        const direction = targetScroll - startScrollX;
+        snapToNearest(direction);
+      };
+
+      window.addEventListener("mouseup", stopDrag);
+
+      // ─── Setas ──────────────────────────────────────────────────────────────
+      // Sincroniza currentScroll com o DOM antes de iniciar para garantir
+      // que o lerp começa do ponto certo
+      btnPrev?.addEventListener("click", () => {
+        currentScroll = grid.scrollLeft;
+        snapToNearest(-1, true);
+      });
+
+      btnNext?.addEventListener("click", () => {
+        currentScroll = grid.scrollLeft;
+        snapToNearest(1, true);
+      });
+
+      // ─── Layout ─────────────────────────────────────────────────────────────
+      const update = () => {
+        const w = window.innerWidth;
+        const isMobile = w < 768;
+        const isTablet = w >= 768 && w < 1024;
+
+        const carouselMobile = grid.classList.contains("is-carousel-mobile");
+        const carouselTablet = grid.classList.contains("is-carousel-tablet");
+        const carouselDesktop = grid.classList.contains("is-carousel-desktop");
+
+        const shouldCarousel =
+          (isMobile && carouselMobile) ||
+          (isTablet && carouselTablet) ||
+          (!isMobile && !isTablet && carouselDesktop);
+
+        if (shouldCarousel) {
+          grid.classList.add("is-carousel-active");
+
+          const computed = getComputedStyle(grid);
+          const colsMobile =
+            parseFloat(computed.getPropertyValue("--cols-mobile")) || 2;
+          const colsTablet =
+            parseFloat(computed.getPropertyValue("--cols-tablet")) || 2;
+          const colsDesktop =
+            parseFloat(computed.getPropertyValue("--cols-desktop")) || 4;
+          const colCount = isMobile
+            ? colsMobile
+            : isTablet
+              ? colsTablet
+              : colsDesktop;
+          const gap = 24;
+          const parentW = grid.parentElement?.offsetWidth ?? window.innerWidth;
+          const cardWidth = (parentW - gap * (colCount - 1)) / colCount;
+
+          grid.querySelectorAll(".attribute-card").forEach((card) => {
+            card.style.width = cardWidth + "px";
+            card.style.minWidth = cardWidth + "px";
+          });
+
+          cachedCardWidth = cardWidth + gap;
+          cachedGridWidth = grid.clientWidth;
+          cachedScrollWidth = grid.scrollWidth;
+
+          currentScroll = 0;
+          targetScroll = 0;
+          grid.scrollLeft = 0;
+
+          const showArrows =
+            (isMobile && wrapper?.dataset.arrowsMobile === "true") ||
+            (isTablet && wrapper?.dataset.arrowsTablet === "true") ||
+            (!isMobile &&
+              !isTablet &&
+              wrapper?.dataset.arrowsDesktop === "true");
+
+          btnPrev?.classList.toggle("is-visible", showArrows);
+          btnNext?.classList.toggle("is-visible", showArrows);
+          syncArrowState();
+        } else {
+          grid.classList.remove("is-carousel-active");
+          grid.querySelectorAll(".attribute-card").forEach((card) => {
+            card.style.width = "";
+            card.style.minWidth = "";
+          });
+          btnPrev?.classList.remove("is-visible");
+          btnNext?.classList.remove("is-visible");
+        }
+      };
+
+      update();
+
+      let timer;
+      window.addEventListener("resize", () => {
+        clearTimeout(timer);
+        timer = setTimeout(update, 150);
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initCarousels);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCarousels);
+  } else {
+    initCarousels();
+  }
+</script>

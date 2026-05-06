@@ -1,0 +1,89 @@
+---
+import { Image } from "astro:assets";
+import { Section, SectionContent } from "@/components/ui/Section";
+
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+
+
+type AspectRatio = "auto" | "square" | "video" | "4/3" | "3/2" | "3/4" | "4/5";
+
+interface Props extends SectionBaseProps {
+  imageSrc: string | any;
+  imageAlt: string;
+  desktopImagePosition?: "left" | "right";
+  mobileImagePosition?: "top" | "bottom";
+  imageAspect?: AspectRatio;
+  size?: "compact" | "content" | "container" | "full";
+  stickyImage?: boolean;
+}
+
+const {
+  imageSrc,
+  imageAlt,
+  desktopImagePosition = "right", 
+  mobileImagePosition = "top",
+  imageAspect = "4/3",
+  theme = "white",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+  margin = "none",
+  size = "container",
+  stickyImage = false,
+} = Astro.props;
+
+const aspectClasses: Record<AspectRatio, string> = {
+  auto: "aspect-auto",
+  square: "aspect-square",
+  video: "aspect-video",
+  "4/3": "aspect-[4/3]",
+  "3/2": "aspect-[3/2]",
+  "3/4": "aspect-[3/4]",
+  "4/5": "aspect-[4/5]",
+};
+
+const mobileClasses =
+  mobileImagePosition === "top" ? "flex-col-reverse" : "flex-col";
+const desktopClasses =
+  desktopImagePosition === "left" ?  "md:flex-row-reverse" : "md:flex-row" ;
+const isRemoteImage = typeof imageSrc === "string";
+const imageBaseClasses = `rounded-lg w-full object-cover ${aspectClasses[imageAspect]}`;
+
+---
+
+<Section theme={theme} paddingTop={paddingTop} paddingBottom={paddingBottom} margin={margin} size={size} class="relative">
+  <SectionContent
+    direction="row"
+    align="center"
+    gap="xl"
+    class={`${mobileClasses} ${desktopClasses}`}
+  >
+    <div class="flex-1 w-full">
+      <div class="max-w-xl">
+        <slot name="header" />
+        <slot name="content" />
+      </div>
+    </div>
+
+    <div
+      class:list={[
+        "flex-1 w-full",
+        stickyImage && "md:sticky md:top-36 md:self-start",
+      ]}
+    >
+      {
+        isRemoteImage ? (
+          <img src={imageSrc} alt={imageAlt} class={imageBaseClasses} />
+        ) : (
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            class={imageBaseClasses}
+            width={800}
+            height={600}
+          />
+        )
+      }
+    </div>
+  </SectionContent>
+</Section>

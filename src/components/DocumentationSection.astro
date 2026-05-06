@@ -1,0 +1,220 @@
+---
+import {
+  Section,
+  SectionHeader,
+  SectionEyebrow,
+  SectionTitle,
+  SectionSubtitle,
+  SectionContent,
+} from "@/components/ui/Section";
+import { getTheme } from "@/lib/section-themes";
+import type { SectionBaseProps } from "@/lib/section-props";
+import { FileText, FileSpreadsheet, File, Image, Download } from "@lucide/astro";
+
+export interface Document {
+  title: string;
+  url: string;
+  type: "pdf" | "doc" | "xls" | "image" | "other";
+  size?: string;
+  updatedAt?: string;
+}
+
+interface Props extends SectionBaseProps {
+  documents: Document[];
+  layout?: "list" | "grid";
+  highlightPrimary?: boolean;
+  columns?: number
+}
+
+const {
+  eyebrow = "Downloads",
+  title = "Documentação Técnica",
+  subtitle = "Acesse fichas técnicas, catálogos e manuais completos do produto.",
+  documents = [],
+  layout = "grid",
+  highlightPrimary = false,
+  theme = "white",
+  titleSize = "4xl",
+  headerAlign = "left",
+  margin = "none",
+  paddingTop = "xl",
+  paddingBottom = "xl",
+  size = "container",
+  columns = 3,
+} = Astro.props;
+
+if (documents.length === 0) return null;
+
+const themeColor = getTheme(theme);
+
+const getIcon = (type: string) => {
+  switch (type) {
+    case "pdf": return FileText;
+    case "xls": return FileSpreadsheet;
+    case "image": return Image;
+    default: return File;
+  }
+};
+
+const colsMap: Record<number, string> = {
+  1: "lg:grid-cols-1",
+  2: "lg:grid-cols-2",
+  3: "lg:grid-cols-3",
+  4: "lg:grid-cols-4",
+};
+
+const lgCols = colsMap[columns];
+
+/* ── Card theme tokens ─────────────────────────────────────────── */
+const lightCard = {
+  card:         "bg-white border-border-subtle hover:border-primary/40 hover:bg-surface shadow-sm",
+  cardPrimary:  "bg-primary/10 border-primary/40 ring-1 ring-primary/20 scale-[1.02] shadow-xl shadow-primary/5",
+  iconBg:       "bg-primary/10 text-primary",
+  iconBgPrimary:"bg-primary text-white",
+  downloadIcon: "bg-surface text-foreground-subtle group-hover:text-primary group-hover:bg-primary/10",
+  title:        "text-foreground group-hover:text-primary",
+  meta:         "text-foreground-subtle",
+  metaDot:      "bg-foreground-subtle/40",
+  divider:      "border-border-subtle",
+  typeLabel:    "text-foreground-subtle group-hover:text-primary/70",
+  downloadText: "text-primary",
+  listButton:   "bg-surface text-foreground-muted border-border-subtle group-hover:bg-primary group-hover:text-white group-hover:border-primary",
+};
+
+const darkCard = {
+  card:         "bg-white/5 border-white/10 hover:border-primary/40 hover:bg-white/10",
+  cardPrimary:  "bg-primary/10 border-primary/40 ring-1 ring-primary/20 scale-[1.02] shadow-xl shadow-primary/5",
+  iconBg:       "bg-primary/10 text-primary",
+  iconBgPrimary:"bg-primary text-white",
+  downloadIcon: "bg-white/5 text-white/40 group-hover:text-primary group-hover:bg-primary/10",
+  title:        "text-white group-hover:text-primary",
+  meta:         "text-white/50",
+  metaDot:      "bg-white/20",
+  divider:      "border-white/5",
+  typeLabel:    "text-white/40 group-hover:text-primary/70",
+  downloadText: "text-primary",
+  listButton:   "bg-white/5 text-white/70 border-white/10 group-hover:bg-primary group-hover:text-white group-hover:border-primary",
+};
+
+const cardTheme = (theme === "primary" || theme === "secondary") ? darkCard : lightCard;
+---
+
+<Section theme={theme} size="full" paddingTop={paddingTop} paddingBottom={paddingBottom} margin={margin}>
+  <SectionHeader align={headerAlign} size={size}>
+    <SectionEyebrow color={themeColor.eyebrow}>{eyebrow}</SectionEyebrow>
+    <SectionTitle size={titleSize} color={themeColor.title}>{title}</SectionTitle>
+    <SectionSubtitle color={themeColor.subtitle}>{subtitle}</SectionSubtitle>
+  </SectionHeader>
+
+  <SectionContent direction="col" gap="sm" align="center" size={size}>
+<div class:list={[
+  layout === "grid"
+    ? `grid grid-cols-1  ${lgCols} gap-6 w-full`
+    : "flex flex-col gap-4 max-w-4xl w-full",
+]}>
+      {documents.map((doc, index) => {
+        const Icon = getIcon(doc.type);
+        const isPrimary = highlightPrimary && index === 0;
+
+        if (layout === "grid") {
+          return (
+            <a  href={doc.url}
+              target="_blank"
+              rel="noopener"
+              class:list={[
+                "group block p-6 rounded-xl border transition-all duration-300",
+                isPrimary ? cardTheme.cardPrimary : cardTheme.card,
+              ]}
+            >
+              <div class="flex flex-col h-full">
+                <div class="flex items-start justify-between mb-6">
+                  <div class:list={[
+                    "w-12 h-12 flex items-center justify-center rounded-lg",
+                    isPrimary ? cardTheme.iconBgPrimary : cardTheme.iconBg,
+                  ]}>
+                    <Icon size={24} />
+                  </div>
+                  <div class:list={[
+                    "p-2 rounded-full transition-all",
+                    cardTheme.downloadIcon,
+                  ]}>
+                    <Download size={20} />
+                  </div>
+                </div>
+
+                <div class="flex-grow">
+                  <h3 class:list={[
+                    "text-lg font-bold mb-2 transition-colors",
+                    cardTheme.title,
+                    isPrimary && "text-xl",
+                  ]}>
+                    {doc.title}
+                  </h3>
+                  <div class:list={["flex flex-wrap gap-3 text-xs", cardTheme.meta]}>
+                    {doc.size && <span>{doc.size}</span>}
+                    {doc.updatedAt && (
+                      <span class="flex items-center gap-1">
+                        <span class:list={["w-1 h-1 rounded-full", cardTheme.metaDot]} />
+                        {doc.updatedAt}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div class:list={["mt-6 pt-6 border-t flex items-center justify-between", cardTheme.divider]}>
+                  <span class:list={["text-[10px] uppercase font-bold tracking-widest", cardTheme.typeLabel]}>
+                    {doc.type}
+                  </span>
+                  <span class:list={["text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity", cardTheme.downloadText]}>
+                    Baixar {doc.type.toUpperCase()} →
+                  </span>
+                </div>
+              </div>
+            </a>
+          );
+        } else {
+          return (
+            <a  href={doc.url}
+              target="_blank"
+              rel="noopener"
+              class:list={[
+                "group flex items-center gap-4 md:gap-6 p-4 rounded-xl border transition-all duration-300",
+                isPrimary ? cardTheme.cardPrimary : cardTheme.card,
+              ]}
+            >
+              <div class:list={[
+                "w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-lg",
+                isPrimary ? cardTheme.iconBgPrimary : cardTheme.iconBg,
+              ]}>
+                <Icon size={24} />
+              </div>
+
+              <div class="flex-grow min-w-0">
+                <h3 class:list={[
+                  "font-bold truncate transition-colors",
+                  cardTheme.title,
+                  isPrimary ? "text-lg md:text-xl" : "text-base md:text-lg",
+                ]}>
+                  {doc.title}
+                </h3>
+                <div class:list={["flex flex-wrap gap-x-4 gap-y-1 text-xs", cardTheme.meta]}>
+                  {doc.size && <span>{doc.size}</span>}
+                  {doc.updatedAt && <span>{doc.updatedAt}</span>}
+                  <span class="uppercase tracking-wider">{doc.type}</span>
+                </div>
+              </div>
+
+              <div class:list={[
+                "flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm border transition-all",
+                cardTheme.listButton,
+              ]}>
+                <span class="hidden md:inline">Baixar</span>
+                <Download size={18} />
+              </div>
+            </a>
+          );
+        }
+      })}
+    </div>
+  </SectionContent>
+</Section>
