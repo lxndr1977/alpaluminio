@@ -1,323 +1,145 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import HeroSection from "../components/HeroSection.astro";
-import DifferentialsSection from "../components/DifferentialsSection.astro";
-import { Image } from "astro:assets";
-import heroImg from "../assets/alpa-aluminio-hero-home_02.webp";
-import ContentSection from "@/components/ContentSection.astro";
-import CtaSection from "@/components/CtaSection.astro";
-import { Recycle, Ruler, BadgeCheck, MessageCircleMore } from "@lucide/astro";
+// src/pages/index.astro
+import "../styles/global.css";
 import business from "@/data/business.json";
-import SocialProofSection from "@/components/SocialProofSection.astro";
-import PhotoGallery from "@/components/PhotoGallery.astro";
-import InfoBar from "@/components/InfoBar.astro";
 
-import VideoSection2 from "@/components/VideoSection2.astro";
+const contacts = {
+  phone: "(54) 3226-8000",
+  whatsapp: business.whatsappNumber,
+  email: "alpa@alpaaluminio.com.br",
+};
 
-const ctaTarget = business.whatsappNumber;
-
-import img1 from "../assets/alpa-aluminio-sobre_01.webp";
-import RelatedProductsSection from "@/components/RelatedProductsSection.astro";
-import Categories from "@/components/Categories.astro";
-
-const differentials = [
-  {
-    icon: BadgeCheck,
-    title: "Qualidade e durabilidade",
-    description:
-      "Produtos resistentes, com excelente acabamento e longa vida útil.",
-  },
-  {
-    icon: Ruler,
-
-    title: "Soluções sob medida",
-    description:
-      "Perfis e acabamentos ideais para projetos residenciais, comerciais e industriais.",
-  },
-  {
-    icon: Recycle,
-
-    title: "Sustentabilidade",
-    description:
-      "Processos de fabricação sustentáveis e alumínio 100% reciclável",
-  },
-  {
-    icon: MessageCircleMore,
-
-    title: "Atendimento personalizado",
-    description:
-      "Soluções pensadas conforme a necessidade específica de cada projeto.",
-  },
-];
-
-const featuredProducts = [
-  {
-    name: "Sistema Camarão Cremona",
-    image: "/images/produtos/sistema-camarao-cremona_main.webp",
-    link: "/produtos/sistema-camarao-cremona",
-  },
-
-  {
-    name: "Porta Dual",
-    image: "/images/produtos/porta-dual_main.webp",
-    link: "/produtos/porta-dual",
-  },
-  {
-    name: "Linha Exclusive",
-    image: "/images/produtos/linha-exclusive_main.webp",
-    link: "/produtos/linha-exclusive",
-  },
-  {
-    name: "Linha Grand Mundiale 125",
-    image: "/images/produtos/linha-grand-mundiale-125_main.webp",
-    link: "/produtos/linha-grand-mundiale-125",
-  },
-  {
-    name: "Linha Mundiale",
-    image: "/images/produtos/linha-mundiale_main.webp",
-    link: "/produtos/linha-mundiale",
-  },
-  {
-    name: "Linha Official",
-    image: "/images/produtos/linha-official_main.webp",
-    link: "/produtos/linha-official",
-  },
-];
-
-const categoriesComImagem = [
-  {
-    name: "Perfis",
-    link: "#",
-    image: "/images/produtos/product-placeholder.webp",
-  },
-  {
-    name: "Lambris",
-    link: "#",
-    image: "/images/produtos/product-placeholder.webp",
-  },
-  {
-    name: "Ripados",
-    link: "#",
-    image: "/images/produtos/product-placeholder.webp",
-  },
-  {
-    name: "Componentes",
-    link: "#",
-    image: "/images/produtos/product-placeholder.webp",
-  },
-];
-
-const testimonials = [
-  {
-    quote: "Ótimo atendimento e material de excelente qualidade.",
-    author: "Eduardo Mainardi",
-    rating: 5,
-  },
-  {
-    quote: "Melhor produto e atendimento! Recomendo!",
-    author: "Lis Rodrigues",
-    rating: 5,
-  },
-  {
-    quote: "Ótimo atendimento e produto diferenciado",
-    author: "Michel Bedin",
-    rating: 5,
-  },
-  {
-    quote: "Trabalho de excelência ",
-    author: "Letícia Rosetto",
-    role: "Arquiteta",
-    rating: 5,
-  },
-];
-
-const photos = [
-  {
-    src: "/images/projetos/projeto-alpa-aluminio_04.webp",
-    alt: "porta dual com acabamento diferente em cada lado em projeto arquitetonico",
-    caption: "Acabamentos distintos em cada face da porta",
-  },
-  {
-    src: "/images/projetos/projeto-alpa-aluminio_08.webp",
-    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
-    caption: "Uso em fachada comercial moderna",
-  },
-  {
-    src: "/images/projetos/projeto-alpa-aluminio_01.webp",
-    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
-    caption: "Uso em fachada comercial moderna",
-  },
-  {
-    src: "/images/projetos/projeto-alpa-aluminio_02.webp",
-    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
-    caption: "Uso em fachada comercial moderna",
-  },
-  {
-    src: "/images/projetos/projeto-alpa-aluminio_03.webp",
-    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
-    caption: "Uso em fachada comercial moderna",
-  },
-  {
-    src: "/images/projetos/projeto-alpa-aluminio_05.webp",
-    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
-    caption: "Uso em fachada comercial moderna",
-  },
-  {
-    src: "/images/projetos/projeto-alpa-aluminio_06.webp",
-    alt: "porta de aluminio moderna para fachada comercial com design personalizado",
-    caption: "Uso em fachada comercial moderna",
-  },
-];
-
-import { Headset, Package, Clock, Award } from "@lucide/astro";
-
-const infoItems = [
-  {
-    icon: Headset,
-    title: "Suporte Especializado",
-    description: "Em projetos de alumínio",
-  },
-  {
-    icon: Package,
-    title: "Estoque Imediato",
-    description: "Produtos para pronta entrega",
-  },
-  {
-    icon: Clock,
-    title: "Agilidade na Entrega",
-    description: "Para todo o Brasil",
-  },
-  {
-    icon: Award,
-    title: "Qualidade Garantida",
-    description: "Alumínio de alta durabilidade",
-  },
-];
+const whatsappLink = `https://wa.me/55${contacts.whatsapp}`;
 ---
 
-<Layout>
-  <HeroSection
-    subtitle="Alpa Alumínio"
-    title="Soluções em alumínio para diferentes aplicações"
-    titleSize="7xl"
-    description="Desenvolvemos sistemas em alumínio que unem resistência, versatilidade e alto padrão de acabamento. Encontre a solução ideal para projetos de todos os portes."
-    image={heroImg}
-    ctaText="Fale com um especialista"
-  />
-  
-  <InfoBar items={infoItems} theme="secondary" />
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Alpa Alumínio — Site em atualização</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <main class="wrapper">
+      <img src="/logo-alpa-aluminio.svg" alt="Alpa Alumínio" class="logo" />
 
-  <RelatedProductsSection
-    eyebrow="Nossos Produtos"
-    title="Soluções em alumínio"
-    subtitle="Dispomos em nosso catálogo soluções inteligentes e inovadoras para projetos residenciais, comerciais e industriais."
-    products={featuredProducts}
-    cols={4}
-    theme="white"
-    titleSize="6xl"
-    showMoreButton
-    moreProductsLink="/produtos"
-    moreProductsLabel="Ver catálogo completo"
-  />
+      <h1>Estamos atualizando nosso site</h1>
+      <p class="subtitle">
+        Em breve, novidades. Enquanto isso, fale com a gente:
+      </p>
 
-  <Categories
-    eyebrow="Categorias"
-    title="Explore nossa linha em alumínio"
-    subtitle="Descubra produtos em alumínio com qualidade, design e durabilidade para cada necessidade do seu projeto."
-    categories={categoriesComImagem}
-    theme="white"
-  />
+      <div class="contacts">
+        <a href={whatsappLink} target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="icon">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12.014 2C6.486 2 2 6.487 2 12.014c0 2.118.658 4.083 1.78 5.703L2.5 22l4.406-1.245a9.96 9.96 0 0 0 5.108 1.393h.004c5.528 0 10.014-4.487 10.014-10.014C22.032 6.607 17.542 2 12.014 2zm0 18.126h-.003a8.09 8.09 0 0 1-4.126-1.13l-.296-.176-3.06.864.82-2.982-.193-.306a8.078 8.078 0 0 1-1.238-4.35c0-4.474 3.642-8.116 8.1-8.116 2.164 0 4.198.842 5.727 2.372a8.043 8.043 0 0 1 2.372 5.73c-.002 4.474-3.644 8.094-8.103 8.094z"/>
+          </svg>
+          Fale no WhatsApp
+        </a>
 
-  <PhotoGallery
-    galleryId={`gallery-${Math.random().toString(36).slice(2)}`}
-    eyebrow="Projetos que usam Alpa Alumínio"
-    title="Sofisticação e funcionalidade para seus projetos"
-    subtitle="Nossos produtos oferecem o que há de melhor no mercado de alumínio para todos os padrões de arquitetura. Confira alguns casos de sucesso."
-    titleSize="5xl"
-    cols={2}
-    aspect="16/9"
-    headerAlign="center"
-    photos={photos}
-    theme="surface"
-  />
+        <a href={`tel:+55${contacts.phone.replace(/\D/g, "")}`} class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          {contacts.phone}
+        </a>
 
-  <VideoSection2
-    theme="white"
-    eyebrow="O que fazemos"
-    title="Conectamos boas escolhas a bons projetos"
-    subtitle="A Alpa Alumínio conecta as melhores escolhas em perfis de alumínio para esquadrias, fachadas e revestimentos, garantindo mais qualidade e fluidez na execução do seu projeto."
-    titleSize="6xl"
-    size="large"
-    mp4Src="/videos/apresentacao-alpa.mp4"
-    posterSrc="/images/capa-video-alpa.webp"
-    aspectRatio="9/16"
-    desktopVideoPosition="left"
-  />
+        <a href={`mailto:${contacts.email}`} class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <path d="m22 6-10 7L2 6"/>
+          </svg>
+          {contacts.email}
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
 
-  <DifferentialsSection
-    theme="secondary"
-    title="Por que escolher a Alpa Alumínio?"
-    titleSize="6xl"
-    eyebrow="Por que escolher a Alpa Alumínio?"
-    subtitle="Comprometidos com a excelência, inovação e sustentabilidade, oferecemos soluções em alumínio que se destacam pela qualidade, durabilidade e design."
-    items={differentials}
-  />
+<style>
+  html,
+  body {
+    margin: 0;
+    height: 100%;
+  }
 
-  <SocialProofSection
-    title="Depoimentos de clientes"
-    subtitle="Confira relatos de clientes que confiam nos produtos da Alpa Alumínio"
-    eyebrow="Depoimentos"
-    titleSize="5xl"
-    testimonials={testimonials}
-    layout="grid"
-    highlightFirst={false}
-    theme="surface"
-    colsMobile={1}
-  />
+  .wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+  }
 
-  <CtaSection
-    eyebrow="Fale conosco"
-    title="Pronto para transformar seus projetos com soluções em alumínio de alta qualidade?"
-    description="Nossa equipe de especialistas está pronta para oferecer consultoria personalizada e soluções sob medida para atender às suas necessidades."
-    ctaText="Fale com um especialista"
-    whatsappNumber={ctaTarget}
-    productName="Alpa Alumínio"
-  />
+  .logo {
+    width: 100%;
+    max-width: 220px;
+    margin-bottom: 32px;
+  }
 
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0 0 12px;
+  }
 
-  <ContentSection
-    headerAlign="left"
-    size="content"
-    eyebrow="Alpa Alumínio"
-    title="Inovação e Qualidade em Soluções de Alumínio"
-    titleSize="6xl"
-    subtitle="Há mais de 20 anos atuando no mercado de alumíinio, oferecemos soluções inteligentes e inovadoras para projetos residenciais, comerciais e industriais, sendo capaz de oferecer o que há de melhor para todos os padrões de projetos"
-  >
-    <div
-      class="mt-8 relative aspect-[4/3] md:aspect-[16/9] md:rounded-2xl overflow-hidden group"
-    >
-      <Image
-        src={img1}
-        alt="Imagem de um projeto utilizando soluções em alumínio da Alpa Alumínio"
-        class="block w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-      />
-    </div>
-  </ContentSection>
+  .subtitle {
+    color: #666;
+    margin: 0 0 32px;
+    font-size: 1.05rem;
+  }
 
-</Layout>
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>("section[data-bg]"),
-    );
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    min-width: 220px;
+    justify-content: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
 
-    sections.forEach((section, i) => {
-      const prev = sections[i - 1];
-      if (prev && prev.dataset.bg === section.dataset.bg) {
-        section.style.paddingTop = "64px";
-        prev.style.paddingBottom = "64px";
-      }
-    });
-  });
-</script>
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .btn-whatsapp {
+    background: #1ebe5a;
+    color: #fff;
+  }
+
+  .btn-whatsapp:hover {
+    background: #25d366;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #333;
+    border: 1px solid #ddd;
+  }
+
+  .btn-outline:hover {
+    background: #f5f5f5;
+  }
+</style>
