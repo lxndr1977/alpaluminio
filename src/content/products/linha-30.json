@@ -2,12 +2,12 @@
   "name": "Linha 30",
   "slug": "linha-30",
   "segments": ["industrial"],
-  "mainPhoto": "/images/produtos/product-placeholder.webp",
+  "mainPhoto": "/images/produtos/linha-30.webp",
 
   "seo": {
     "title": "Perfil de Alumínio Linha 30 | Alpa Alumínio",
     "description": "Perfil de alumínio Linha 30 disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
-    "ogImage": "/images/produtos/product-placeholder.webp"
+    "ogImage": "/images/produtos/linha-30.webp"
   },
 
   "stickyBar": {
@@ -22,7 +22,7 @@
       "enabled": true,
       "title": "Perfil de Alumínio Linha 30",
       "description": "Disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
-      "image": "/images/produtos/product-placeholder.webp"
+      "image": "/images/produtos/linha-30_hero.webp"
     },
 
     {

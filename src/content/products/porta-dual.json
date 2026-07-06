@@ -4,7 +4,6 @@
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/porta-dual_main.webp",
 
-
   "seo": {
     "title": "Porta Dual em Alumínio | Perfis com Acabamento Duplo até 6m | ALPA",
     "description": "Conheça a Porta Dual: perfil de alumínio com acabamentos diferentes em cada face. Ideal para projetos industriais e arquitetônicos. Até 6m. Solicite orçamento.",
@@ -307,7 +306,6 @@
       "body": "<p>Este é um bloco do tipo <strong>Media + Texto</strong>. Substitua este conteúdo com informações do seu produto ou serviço.</p><p>Você pode usar este espaço para descrever benefícios, aplicações, diferenciais ou qualquer informação relevante.</p>"
     },
 
-
     {
       "id": "video",
       "enabled": false,
@@ -375,6 +373,7 @@
       "title": "Conheça outras soluções em alumínio",
       "subtitle": "Explore nossa linha produtos desenvolvidos para diferentes tipos de projetos e aplicações.",
       "productSlugs": [
+        "porta-dual-vision",
         "linha-exclusive",
         "linha-nobile",
         "linha-mundiale",

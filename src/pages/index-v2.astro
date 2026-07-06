@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroSection from "../components/HeroSection.astro";
 import DifferentialsSection from "../components/DifferentialsSection.astro";
 import { Image } from "astro:assets";
-import heroImg from "../assets/alpa-aluminio-hero-home_02.webp";
+import heroImg from "../assets/alpa-aluminio-hero-home_02a.webp";
 import ContentSection from "@/components/ContentSection.astro";
 import CtaSection from "@/components/CtaSection.astro";
 import { Recycle, Ruler, BadgeCheck, MessageCircleMore } from "@lucide/astro";
@@ -219,14 +219,14 @@ const infoItems = [
     moreProductsLink="/produtos"
     moreProductsLabel="Ver catálogo completo"
   />
-
+<!-- 
   <Categories
     eyebrow="Categorias"
     title="Explore nossa linha em alumínio"
     subtitle="Descubra produtos em alumínio com qualidade, design e durabilidade para cada necessidade do seu projeto."
     categories={categoriesComImagem}
     theme="white"
-  />
+  /> -->
 
   <PhotoGallery
     galleryId={`gallery-${Math.random().toString(36).slice(2)}`}

@@ -1,0 +1,84 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { FileText, Download } from "@lucide/astro";
+
+const catalogos = [
+  {
+    title: "Catálogo Acessório Alpa Alumínio",
+    description: "Acessórios completos da linha Alpa Alumínio.",
+    file: "catalogo-acessorios.pdf",
+  },
+  {
+    title: "Catálogo Perfis e Componentes para Vidro Temperado",
+    description: "Perfis e componentes para aplicações em vidro temperado.",
+    file: "catalogo-perfis-componentes-vidro-temperado.pdf.pdf",
+  },
+  {
+    title: "Catálogo Perfis para Esquadrias",
+    description: "Linha completa de perfis para esquadrias.",
+    file: "catalogo-perfis-esquadrias.pdf",
+  },
+  {
+    title: "Lançamentos 2025 - 2026",
+    description: "Novidades e lançamentos Alpa Alumínio.",
+    file: "lançamentos-2025-2026.pdf",
+  },
+];
+---
+
+<Layout title="Catálogo de Produtos" description="Catálogo de Produtos">
+  <section>
+    <div class="bg-primary">
+      <div class="max-w-5xl mx-auto px-4 py-20 pt-42 text-center space-y-6">
+        <h1
+          class="text-4xl lg:text-6xl font-medium tracking-tighter text-white text-balance"
+        >
+          Catálogo de Produtos
+        </h1>
+        <p class="text-lg xl:text-xl text-white max-w-3xl mx-auto">
+          Baixe nossos catálogos em PDF e confira toda a nossa linha de produtos.
+        </p>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-20 lg:py-28">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {
+          catalogos.map((catalogo) => (
+            
+            <a href={encodeURI(`/catalogos/${catalogo.file}`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              class="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-200 bg-white p-8 lg:p-10 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl"
+            >
+              <div class="flex items-start justify-between">
+                <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                  <FileText size={30} stroke-width={1.75} />
+                </div>
+
+                <span class="rounded-full border border-neutral-200 px-3 py-1 text-xs font-medium text-muted">
+                  PDF
+                </span>
+              </div>
+
+              <div class="mt-8 space-y-2">
+                <h3 class="text-xl lg:text-2xl font-medium tracking-tight text-neutral-900">
+                  {catalogo.title}
+                </h3>
+                <p class="text-sm lg:text-base text-muted">
+                  {catalogo.description}
+                </p>
+              </div>
+
+              <div class="mt-10 flex items-center gap-2 text-sm font-medium text-primary">
+                <Download size={18} stroke-width={2} />
+                <span>Baixar catálogo</span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

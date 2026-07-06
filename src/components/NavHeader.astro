@@ -15,7 +15,8 @@ const sanitizedNumber = whatsappNumber.replace(/\D/g, '');
 const whatsappUrl = `https://wa.me/${sanitizedNumber}?text=${encodeURIComponent(message)}`;
 
 const navLinks = [
-  { name: "Catálogo de Produtos", href: "/produtos" },
+  { name: "Catálogos", href: "/catalogos" },
+  { name: "Produtos", href: "/produtos" },
   { name: "Sobre nós", href: "/sobre" },
   { name: "Fale Conosco", href: "/contato" },
 ];
