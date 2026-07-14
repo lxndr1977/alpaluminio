@@ -4,7 +4,16 @@ import Layout from "@/layouts/Layout.astro";
 import ProductCard from "@/components/ProductCard.astro";
 
 // Busca TODOS os produtos, sem filtro de categoria
-const products = await getCollection("products");
+const products = (await getCollection("products")).sort((a, b) => {
+  const orderA = a.data.displayOrder ?? Number.MAX_SAFE_INTEGER;
+  const orderB = b.data.displayOrder ?? Number.MAX_SAFE_INTEGER;
+
+  if (orderA !== orderB) {
+    return orderA - orderB;
+  }
+
+  return a.data.name.localeCompare(b.data.name, "pt-BR");
+});
 ---
 
 <Layout
@@ -32,9 +41,6 @@ const products = await getCollection("products");
       <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           products.map((product) => {
-            const sections = product.data.sections ?? [];
-            const hero = sections.find((s: any) => s.id === "hero") as any;
-
             return (
               <ProductCard
                 name={product.data.name}

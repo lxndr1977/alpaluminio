@@ -1,18 +1,18 @@
 {
-  "name": "Linha Official",
-  "slug": "linha-official",
-  "displayOrder": 4,
+  "name": "Sistema Camarão Cremona Veneziana Japonesa",
+  "slug": "sistema-camarao-cremona-veneziana-japonesa",
+  "displayOrder": 9,
   "segments": ["industrial"],
-  "mainPhoto": "/images/produtos/linha-official_main.webp",
+  "mainPhoto": "/images/produtos/sistema-camarao-cremona-japonesa_main.webp",
 
   "seo": {
-    "title": "Linha Official 32x60: Design moderno, versatilidade e resistência | ALPA",
-    "description": "Sistema com perfil único que permite acabamentos diferentes em cada face. Até 6 metros de altura.",
-    "ogImage": "/images/produtos/linha-official_main.webp"
+    "title": "Esquadria de Alumínio Sistema Camarão Cremona Veneziana Japonesa | Alpa Alumínio",
+    "description": "A esquadria Sistema Camarão Cremona Veneziana Japonesa é desenvolvida com perfis de alumínio e fechamento com trava modelo cremona.",
+    "ogImage": "/images/produtos/sistema-camarao-cremona-japonesa_main.webp"
   },
 
   "stickyBar": {
-    "message": "Linha Official",
+    "message": "Sistema Camarão Cremona Veneziana Japonesa",
     "subMessage": "Solicite um orçamento",
     "ctaLabel": "Falar com vendedor"
   },
@@ -21,15 +21,16 @@
     {
       "id": "hero",
       "enabled": true,
-      "title": "Linha Official",
-      "description": "Sistema com perfil único que permite acabamentos diferentes em cada face. Até 6 metros de altura.",
-      "image": "/images/produtos/linha-official_hero.webp"
+      "subtitle": "Esquadria de alumínio",
+      "title": "Sistema Camarão Cremona Veneziana Japonesa",
+      "description": "A esquadria Sistema Camarão Cremona Veneziana Japonesa é desenvolvida com perfis de alumínio e fechamento com trava modelo cremona, atendendo a qualquer padrão de obra.",
+      "image": "/images/produtos/sistema-camarao-cremona-japonesa_hero.webp"
     },
 
     {
       "id": "differentials",
       "enabled": false,
-      "tag": "Diferenciais",
+      "eyebrow": "Diferenciais",
       "title": "Diferenciais da Porta Dual",
       "theme": "secondary",
       "subtitle": "A Porta Dual foi desenvolvida para atender arquitetos, engenheiros e indústrias que precisam unir design e qualidade.",
@@ -55,93 +56,82 @@
 
     {
       "id": "content",
-      "theme": "white",
       "enabled": true,
+      "theme": "surface",
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
-      "image": "/images/produtos/product-placeholder.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "title": "Tradição que evolui com a tecnologia",
+      "subtitle": "A esquadria Sistema Camarão Veneziana Japonesa é desenvolvida com perfis de alumínio e fechamento com trava modelo cremona, atendendo a qualquer padrão de obra.",
+      "body": "<p>O modelo proporciona ventilação permanente, preserva a nobreza da madeira, além de ser uma esquadria de alta segurança. O Sistema Camarão Cremona é disponibilizado em diversos padrões de acabamento</p>"
     },
 
     {
       "id": "photoGallery",
-      "enabled": false,
-      "eyebrow": "Aplicações",
-      "title": "Integração perfeita entre design e resistência",
-      "subtitle": "Veja como a Porta Dual pode ser integrada em seus projetos.",
+      "enabled": true,
+      "eyebrow": "Detalhes",
+      "title": "Detalhes do Sistema Camarão Cremona Veneziana Japonesa",
+      "subtitle": "Confira os detalhes do Sistema Camarão Cremona Veneziana Japonesa.",
       "theme": "white",
       "cols": 3,
       "aspect": "3/4",
       "photos": [
         {
-          "src": "/images/produtos/linha-official_01.webp",
-          "alt": "Porta Dual aplicação 1",
-          "caption": "Aplicação residencial"
+          "src": "/images/produtos/sistema-camarao-cremona-japonesa-01.webp",
+          "alt": "Sistema Camarão Cremona Veneziana Japonesa",
+          "caption": "Sistema Camarão Cremona Veneziana Japonesa"
         },
-        {
-          "src": "/images/produtos/linha-official_02.webp",
-          "alt": "Porta Dual aplicação 2",
-          "caption": "Aplicação comercial"
+         {
+          "src": "/images/produtos/sistema-camarao-cremona-japonesa-02.webp",
+          "alt": "Sistema Camarão Cremona Veneziana Japonesa",
+          "caption": "Sistema Camarão Cremona Veneziana Japonesa"
         },
-        {
-          "src": "/images/produtos/linha-official_03.webp",
-          "alt": "Porta Dual aplicação 3",
-          "caption": "Aplicação industrial"
+         {
+          "src": "/images/produtos/sistema-camarao-cremona-japonesa-03.webp",
+          "alt": "Sistema Camarão Cremona Veneziana Japonesa",
+          "caption": "Sistema Camarão Cremona Veneziana Japonesa"
         },
-          {
-          "src": "/images/produtos/linha-official_04.webp",
-          "alt": "Porta Dual aplicação 3",
-          "caption": "Aplicação industrial"
+         {
+          "src": "/images/produtos/sistema-camarao-cremona-japonesa-04.webp",
+          "alt": "Sistema Camarão Cremona Veneziana Japonesa",
+          "caption": "Sistema Camarão Cremona Veneziana Japonesa"
         },
-        {
-          "src": "/images/produtos/linha-official_05.webp",
-          "alt": "Porta Dual aplicação 3",
-          "caption": "Aplicação industrial"
+         {
+          "src": "/images/produtos/sistema-camarao-cremona-japonesa-05.webp",
+          "alt": "Sistema Camarão Cremona Veneziana Japonesa",
+          "caption": "Sistema Camarão Cremona Veneziana Japonesa"
         }
       ]
     },
-   
+
     {
       "id": "finishesGallery",
       "enabled": false,
       "eyebrow": "Acabamentos",
       "title": "Confira a variedade de acabamentos para personalizar seu projeto",
       "subtitle": "Escolha o acabamento ideal para seu projeto.",
+      "colsMobile": 1,
+      "colsTablet": 2,
+      "colsDesktop": 4,
       "photos": [
         {
-          "title": "Branco Brilhante",
-          "subtitle": "RAL 9003",
-          "image": "/images/custom-branco-brilhante.png"
+          "title": "Detalhes do Sistema Camarão Cremona",
+          "image": "/images/produtos/sistema-camarao-cremona_06.webp"
         },
         {
-          "title": "Branco Fosco",
-          "subtitle": "RAL 9003",
-          "image": "/images/custom-branco-fosco.png"
+          "title": "Detalhes do Sistema Camarão Cremona",
+          "image": "/images/produtos/sistema-camarao-cremona_07.webp"
         },
         {
-          "title": "Cinza Metálico",
-          "subtitle": "VXS 15026",
-          "image": "/images/custom-cinza-metalico.png"
+          "title": "Detalhes do Sistema Camarão Cremona",
+          "image": "/images/produtos/sistema-camarao-cremona_08.webp"
         },
         {
-          "title": "Preto Fosco",
-          "subtitle": "RAL 9005",
-          "image": "/images/custom-preto-fosco.png"
-        },
-        {
-          "title": "Vermelho Brilhante",
-          "subtitle": "RAL 3002",
-          "image": "/images/custom-vermelho-brilhante.png"
-        },
-        {
-          "title": "Amarelo Brilhante",
-          "subtitle": "RAL 1003",
-          "image": "/images/custom-amarelo-brilhante.png"
+          "title": "Detalhes do Sistema Camarão Cremona",
+          "image": "/images/produtos/sistema-camarao-cremona_09.webp"
         }
       ]
     },
-      {
+
+    {
       "id": "techSpecs",
       "enabled": false,
       "eyebrow": "Especificações Técnicas",
@@ -156,21 +146,6 @@
             { "param": "781308", "value": "1,902 kg/m" },
             { "param": "781352", "value": "0,094 kg/m" }
           ]
-        },
-        {
-          "category": "Dimensões Máximas",
-          "rows": [
-            { "param": "Altura", "value": "6 metros" },
-            { "param": "Largura", "value": "2 metros" }
-          ]
-        },
-        {
-          "category": "Acessórios",
-          "rows": [
-            { "param": "Puxador 1000x800 - PUX-1000", "value": "Preto / Inox" },
-            { "param": "Cilindro CIL100", "value": "Não incluso multiponto" },
-            { "param": "Dobradiça", "value": "DOB-751" }
-          ]
         }
       ]
     },
@@ -183,6 +158,7 @@
       "eyebrow": "Vídeo",
       "subtitle": "Descrição do vídeo"
     },
+
     {
       "id": "socialProof",
       "enabled": false,
@@ -198,21 +174,14 @@
           "company": "AutoParts Brasil",
           "avatar": "https://i.pravatar.cc/150?u=ricardo",
           "rating": 5
-        },
-        {
-          "quote": "A flexibilidade do hardware ALPA superou todas as nossas expectativas iniciais.",
-          "author": "Sofia Oliveira",
-          "role": "Gestora de Manutenção",
-          "company": "LogiTech S.A.",
-          "avatar": "https://i.pravatar.cc/150?u=sofia",
-          "rating": 5
         }
       ]
     },
+
     {
       "id": "faq",
       "enabled": false,
-      "tag": "Dúvidas comuns",
+      "eyebrow": "Dúvidas comuns",
       "title": "Perguntas frequentes",
       "subtitle": "Encontre respostas para as perguntas mais comuns",
       "faqs": [
@@ -236,10 +205,10 @@
       "enabled": true,
       "eyebrow": "Fale Conosco",
       "size": "container",
-      "title": "Solicite um orçamento da Linha Official",
+      "title": "Solicite um orçamento do Sistema Camarão Cremona Veneziana Japonesa",
       "description": "Fale com nossa equipe técnica e conte com suporte especializado e atendimento personalizado conforme as necessidades do seu projeto.",
       "ctaText": "Solicitar orçamento",
-      "productName": "Linha Official"
+      "productName": "Sistema Camarão Cremona Veneziana Japonesa"
     },
 
     {
@@ -254,30 +223,11 @@
           "type": "pdf",
           "size": "4.2 MB",
           "updatedAt": "Março 2026"
-        },
-        {
-          "title": "Manual de Instalação e Operação",
-          "url": "#",
-          "type": "pdf",
-          "size": "8.5 MB",
-          "updatedAt": "Fevereiro 2026"
-        },
-        {
-          "title": "Catálogo de Peças de Reposição",
-          "url": "#",
-          "type": "pdf",
-          "size": "12.1 MB",
-          "updatedAt": "Janeiro 2026"
-        },
-        {
-          "title": "Planilha de Cálculos de Eficiência",
-          "url": "#",
-          "type": "xls",
-          "size": "1.2 MB"
         }
       ]
     },
-   {
+
+    {
       "id": "relatedProducts",
       "enabled": true,
       "eyebrow": "Outros Produtos",
@@ -285,8 +235,8 @@
       "subtitle": "Explore nossa linha produtos desenvolvidos para diferentes tipos de projetos e aplicações.",
       "productSlugs": [
         "linha-mundiale",
+        "linha-official",
         "linha-nobile",
-        "sistema-camarao-cremona",
         "linha-grand-mundiale-125"
       ]
     }

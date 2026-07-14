@@ -1,6 +1,7 @@
 {
-  "name": "Sistema Camarão Cremona",
-  "slug": "sistema-camarao-cremona",
+  "name": "Sistema Camarão Cremona Veneziana Tripla",
+  "slug": "sistema-camarao-cremona-veneziana-tripla",
+  "displayOrder": 8,
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/sistema-camarao-cremona_main.webp",
 
@@ -11,7 +12,7 @@
   },
 
   "stickyBar": {
-    "message": "Sistema Camarão Cremona",
+    "message": "Sistema Camarão Cremona Veneziana Tripla",
     "subMessage": "Solicite um orçamento",
     "ctaLabel": "Falar com vendedor"
   },
@@ -21,8 +22,8 @@
       "id": "hero",
       "enabled": true,
       "subtitle": "Esquadria de alumínio",
-      "title": "Sistema Camarão Cremona",
-      "description": "A esquadria Sistema Camarão é desenvolvida com perfis de alumínio e fechamento com trava modelo cremona, atendendo a qualquer padrão de obra.",
+      "title": "Sistema Camarão Cremona Veneziana Tripla",
+      "description": "A esquadria Sistema Camarão Cremona Veneziana Tripla é desenvolvida com perfis de alumínio e fechamento com trava modelo cremona, atendendo a qualquer padrão de obra.",
       "image": "/images/produtos/sistema-camarao-cremona_hero.webp"
     },
 
@@ -184,10 +185,10 @@
       "enabled": true,
       "eyebrow": "Fale Conosco",
       "size": "container",
-      "title": "Solicite um orçamento do Sistema Camarão Cremona",
+      "title": "Solicite um orçamento do Sistema Camarão Cremona Veneziana Tripla",
       "description": "Fale com nossa equipe técnica e conte com suporte especializado e atendimento personalizado conforme as necessidades do seu projeto.",
       "ctaText": "Solicitar orçamento",
-      "productName": "Linha Nobile"
+      "productName": "Sistema Camarão Cremona Veneziana Tripla"
     },
 
     {

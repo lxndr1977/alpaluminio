@@ -1,6 +1,7 @@
 {
   "name": "Linha Mundiale",
   "slug": "linha-mundiale",
+  "displayOrder": 6,
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/linha-mundiale_main.webp",
 

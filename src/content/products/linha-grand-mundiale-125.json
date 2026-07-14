@@ -1,6 +1,7 @@
 {
   "name": "Linha Grand Mundiale 125",
   "slug": "linha-grand-mundiale-125",
+  "displayOrder": 7,
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/linha-grand-mundiale-125_main.webp",
 

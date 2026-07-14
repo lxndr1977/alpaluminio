@@ -1,6 +1,7 @@
 {
   "name": "Linha 42",
   "slug": "linha-42",
+  "displayOrder": 12,
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/linha-42.webp",
 

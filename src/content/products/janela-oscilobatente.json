@@ -1,18 +1,18 @@
 {
-  "name": "Suprema 40",
-  "slug": "suprema-40",
-  "displayOrder": 13,
+  "name": "Janela Oscilobatente",
+  "slug": "janela-oscilobatente",
+  "displayOrder": 3,
   "segments": ["industrial"],
-  "mainPhoto": "/images/produtos/product-placeholder.webp",
+  "mainPhoto": "/images/produtos/janela-oscilobatente_main.webp",
 
   "seo": {
-    "title": "Perfil de Alumínio Suprema 40 | Alpa Alumínio",
-    "description": "Perfil de alumínio Suprema 40 disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
-    "ogImage": "/images/produtos/product-placeholder.webp"
+    "title": "Janela Oscilobatente | ALPA Alumínio",
+    "description": "Janela Oscilobatente, disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
+    "ogImage": "/images/produtos/janela-oscilobatente_main.webp"
   },
 
   "stickyBar": {
-    "message": "Suprema 40",
+    "message": "Janela Oscilobatente",
     "subMessage": "Solicite um orçamento",
     "ctaLabel": "Falar com vendedor"
   },
@@ -21,16 +21,16 @@
     {
       "id": "hero",
       "enabled": true,
-      "title": "Perfil de Alumínio Suprema 40",
-      "description": "Disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
-      "image": "/images/produtos/product-placeholder.webp"
+      "title": "Janela Oscilobatente",
+      "description": "Apresentação do produto.",
+      "image": "/images/produtos/janela-oscilobatente_hero.webp"
     },
 
     {
       "id": "differentials",
       "enabled": false,
       "eyebrow": "Diferenciais",
-      "title": "Principais diferenciais do Perfil Suprema 40",
+      "title": "Principais diferenciais do Perfil Linha 25",
       "subtitle": "Liste aqui até 4 principais benefícios competitivos desta linha.",
       "items": [
         {
@@ -54,7 +54,7 @@
 
     {
       "id": "content",
-      "theme": "surface",
+      "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
       "title": "Apresente o produto de forma clara e atrativa",
@@ -65,35 +65,40 @@
 
     {
       "id": "photoGallery",
-      "enabled": false,
-      "eyebrow": "Aplicações",
-      "title": "Exemplos de aplicação do produto",
-      "subtitle": "Mostre imagens reais ou conceituais de uso.",
+      "enabled": true,
+      "eyebrow": "Detalhes",
+      "title": "Detalhes da Janela Oscilobatente",
+      "subtitle": "Confira detalhes da Janela Oscilobatente.",
       "photos": [
         {
-          "src": "/images/produtos/product-placeholder.webp",
-          "alt": "Aplicação do produto",
-          "caption": "Descreva a aplicação"
+          "src": "/images/produtos/janela-oscilobatente-01.webp",
+          "alt": "Janela Oscilobatente",
+          "caption": "Janela Oscilobatente"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
-          "alt": "Aplicação do produto",
-          "caption": "Descreva a aplicação"
+          "src": "/images/produtos/janela-oscilobatente-02.webp",
+          "alt": "Janela Oscilobatente",
+          "caption": "Janela Oscilobatente"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
-          "alt": "Aplicação do produto",
-          "caption": "Descreva a aplicação"
+          "src": "/images/produtos/janela-oscilobatente-03.webp",
+          "alt": "Janela Oscilobatente",
+          "caption": "Janela Oscilobatente"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
-          "alt": "Aplicação do produto",
-          "caption": "Descreva a aplicação"
+          "src": "/images/produtos/janela-oscilobatente-04.webp",
+          "alt": "Janela Oscilobatente",
+          "caption": "Janela Oscilobatente"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
-          "alt": "Aplicação do produto",
-          "caption": "Descreva a aplicação"
+          "src": "/images/produtos/janela-oscilobatente-05.webp",
+          "alt": "Janela Oscilobatente",
+          "caption": "Janela Oscilobatente"
+        },
+        {
+          "src": "/images/produtos/janela-oscilobatente-06.webp",
+          "alt": "Janela Oscilobatente",
+          "caption": "Janela Oscilobatente"
         }
       ]
     },
@@ -181,7 +186,7 @@
       "subtitle": "Subtítulo curto explicando para quem é ou o que resolve",
       "image": "/images/produtos/product-placeholder.webp",
       "imageAlt": "Imagem ilustrativa do produto",
-      "stickyImage": false,
+      "stickyImage": true,
       "desktopImagePosition": "left",
       "mobileImagePosition": "top",
       "body": "<p>Este é um bloco do tipo <strong>Media + Texto</strong>. Substitua este conteúdo com informações do seu produto ou serviço.</p><p>Você pode usar este espaço para descrever benefícios, aplicações, diferenciais ou qualquer informação relevante.</p>"
@@ -194,12 +199,11 @@
       "subtitle": "Use para complementar a apresentação do produto",
       "image": "/images/produtos/product-placeholder.webp",
       "imageAlt": "Imagem ilustrativa do produto",
-      "stickyImage": false,
+      "stickyImage": true,
       "desktopImagePosition": "right",
       "mobileImagePosition": "top",
       "body": "<p>Você pode duplicar este módulo para criar seções alternadas com imagem e texto.</p><p>Edite este conteúdo livremente para adaptar à sua comunicação.</p>"
     },
-
 
     {
       "id": "video",
@@ -279,24 +283,24 @@
       "enabled": true,
       "eyebrow": "Fale Conosco",
       "size": "container",
-      "title": "Solicite um orçamento do Perfil Suprema 40",
+      "title": "Solicite um orçamento da Janela Oscilobatente",
       "description": "Fale com nossa equipe técnica e conte com suporte especializado e atendimento personalizado conforme as necessidades do seu projeto.",
       "ctaText": "Solicitar orçamento",
-      "productName": "Perfil Suprema 40"
+      "productName": "Oscilobatente"
     },
 
     {
       "id": "relatedProducts",
       "enabled": true,
-      "eyebrow": "Produtos relacionados",
-      "title": "Veja também",
-      "subtitle": "Sugira outros produtos da linha.",
+      "eyebrow": "Outros Produtos",
+      "title": "Conheça outras soluções em alumínio",
+      "subtitle": "Explore nossa linha produtos desenvolvidos para diferentes tipos de projetos e aplicações.",
       "productSlugs": [
-        "suprema-65",
-        "modulo-pratico",
-        "linha-25",
         "linha-30",
-        "linha-32"
+        "linha-32",
+        "linha-42",
+        "suprema-40",
+        "suprema-65"
       ]
     }
   ]

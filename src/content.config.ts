@@ -269,6 +269,8 @@ const products = defineCollection({
   schema: z.object({
     name: z.string(),
     slug: z.string(),
+    /** Ordem manual de exibição no index de produtos. Menor valor aparece primeiro. */
+    displayOrder: z.number().int().nonnegative().optional(),
     mainPhoto: z.string(),
     /** Meta para SEO */
     seo: z

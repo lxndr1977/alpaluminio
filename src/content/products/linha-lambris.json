@@ -1,6 +1,7 @@
 {
   "name": "Linha Lambris",
   "slug": "linha-lambris",
+  "displayOrder": 8,
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/lambris_main.webp",
 

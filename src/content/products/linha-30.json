@@ -1,6 +1,7 @@
 {
   "name": "Linha 30",
   "slug": "linha-30",
+  "displayOrder": 10,
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/linha-30.webp",
 

@@ -1,6 +1,7 @@
 {
   "name": "Porta Dual",
   "slug": "porta-dual",
+  "displayOrder": 1,
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/porta-dual_main.webp",
 

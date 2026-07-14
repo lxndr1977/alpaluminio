@@ -1,6 +1,7 @@
 {
   "name": "Porta Dual Vision",
   "slug": "porta-dual-vision",
+  "displayOrder": 2,
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/porta-dual-vision.webp",
 

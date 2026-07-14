@@ -1,6 +1,7 @@
 {
   "name": "Kit Portão Contrapeso",
   "slug": "kit-portao-contrapeso",
+  "displayOrder": 15,
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/kit-portao-contrapeso_main.webp",
 

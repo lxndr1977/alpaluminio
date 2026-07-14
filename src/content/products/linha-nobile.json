@@ -1,6 +1,7 @@
 {
   "name": "Linha Nobile",
   "slug": "linha-nobile",
+  "displayOrder": 5,
   "segments": ["industrial"],
   "mainPhoto": "/images/produtos/linha-nobile_main.webp",
 
