@@ -3,6 +3,7 @@
   "slug": "linha-32",
   "displayOrder": 11,
   "segments": ["industrial"],
+  "categories": ["linhas"],
   "mainPhoto": "/images/produtos/product-placeholder.webp",
 
   "seo": {

@@ -3,6 +3,7 @@
   "slug": "janela-oscilobatente",
   "displayOrder": 3,
   "segments": ["industrial"],
+  "categories": ["linhas"],
   "mainPhoto": "/images/produtos/janela-oscilobatente_main.webp",
 
   "seo": {

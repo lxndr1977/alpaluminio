@@ -3,6 +3,7 @@
   "slug": "linha-42",
   "displayOrder": 12,
   "segments": ["industrial"],
+  "categories": ["linhas"],
   "mainPhoto": "/images/produtos/linha-42.webp",
 
   "seo": {

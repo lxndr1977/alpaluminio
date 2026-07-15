@@ -1,22 +1,47 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import ProductCard from "@/components/ProductCard.astro";
 
-const categories = await getCollection("categories");
+const categories = (await getCollection("categories")).sort((a, b) =>
+  a.data.name.localeCompare(b.data.name, "pt-BR"),
+);
 ---
 
-<Layout title="Categorias">
-  <section class="container mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold">Categorias</h1>
-    <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-      {categories.map((cat) => (
-        <a href={`/categorias/${cat.id}`} class="rounded-xl border p-6 hover:shadow transition text-center">
-          {cat.data.image && (
-            <img src={cat.data.image} alt={cat.data.name} class="mx-auto mb-3 h-12 w-12 object-contain" />
-          )}
-          <span class="font-medium">{cat.data.name}</span>
-        </a>
-      ))}
+<Layout
+  title="Categorias"
+  description="Conheça as categorias de produtos da Alpa Alumínio"
+>
+  <section>
+    <div class="bg-primary">
+      <div class="max-w-5xl mx-auto px-4 py-20 pt-42 text-center space-y-6">
+        <h1
+          class="text-4xl lg:text-6xl font-medium tracking-tighter text-white text-balance"
+        >
+          Categorias de produtos em alumínio
+        </h1>
+
+        <p class="text-lg xl:text-xl text-white max-w-3xl mx-auto">
+          Navegue pelas categorias da Alpa Alumínio e encontre linhas,
+          lambris e ripados desenvolvidos para diferentes tipos de projeto.
+        </p>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-16">
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          categories.map((category) => (
+            <ProductCard
+              name={category.data.name}
+              image={category.data.image ?? "/images/produtos/product-placeholder.webp"}
+              link={`/categorias/${category.id}`}
+              theme="light"
+              cta="Ver Categoria"
+            />
+          ))
+        }
+      </div>
     </div>
   </section>
 </Layout>

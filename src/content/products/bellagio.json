@@ -1,19 +1,19 @@
 {
-  "name": "Suprema 40",
-  "slug": "suprema-40",
-  "displayOrder": 13,
+  "name": "Lambri Ripado Bellagio",
+  "slug": "bellagio",
+  "displayOrder": 10,
   "segments": ["industrial"],
-  "categories": ["linhas"],
+  "categories": ["lambris-ripados"],
   "mainPhoto": "/images/produtos/product-placeholder.webp",
 
   "seo": {
-    "title": "Perfil de Alumínio Suprema 40 | Alpa Alumínio",
-    "description": "Perfil de alumínio Suprema 40 disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
+    "title": "Lambri Ripado Bellagio | Alpa Alumínio",
+    "description": "Bellagio",
     "ogImage": "/images/produtos/product-placeholder.webp"
   },
 
   "stickyBar": {
-    "message": "Suprema 40",
+    "message": "Lambri Ripado Bellagio",
     "subMessage": "Solicite um orçamento",
     "ctaLabel": "Falar com vendedor"
   },
@@ -22,8 +22,8 @@
     {
       "id": "hero",
       "enabled": true,
-      "title": "Perfil de Alumínio Suprema 40",
-      "description": "Disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
+      "title": "Lambri Ripado Bellagio",
+      "description": "Apresente o produto de forma clara e atrativa.",
       "image": "/images/produtos/product-placeholder.webp"
     },
 
@@ -31,7 +31,7 @@
       "id": "differentials",
       "enabled": false,
       "eyebrow": "Diferenciais",
-      "title": "Principais diferenciais do Perfil Suprema 40",
+      "title": "Principais diferenciais do Lambri Ripado Bellagio",
       "subtitle": "Liste aqui até 4 principais benefícios competitivos desta linha.",
       "items": [
         {
@@ -55,7 +55,7 @@
 
     {
       "id": "content",
-      "theme": "surface",
+      "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
       "title": "Apresente o produto de forma clara e atrativa",
@@ -182,7 +182,7 @@
       "subtitle": "Subtítulo curto explicando para quem é ou o que resolve",
       "image": "/images/produtos/product-placeholder.webp",
       "imageAlt": "Imagem ilustrativa do produto",
-      "stickyImage": false,
+      "stickyImage": true,
       "desktopImagePosition": "left",
       "mobileImagePosition": "top",
       "body": "<p>Este é um bloco do tipo <strong>Media + Texto</strong>. Substitua este conteúdo com informações do seu produto ou serviço.</p><p>Você pode usar este espaço para descrever benefícios, aplicações, diferenciais ou qualquer informação relevante.</p>"
@@ -195,7 +195,7 @@
       "subtitle": "Use para complementar a apresentação do produto",
       "image": "/images/produtos/product-placeholder.webp",
       "imageAlt": "Imagem ilustrativa do produto",
-      "stickyImage": false,
+      "stickyImage": true,
       "desktopImagePosition": "right",
       "mobileImagePosition": "top",
       "body": "<p>Você pode duplicar este módulo para criar seções alternadas com imagem e texto.</p><p>Edite este conteúdo livremente para adaptar à sua comunicação.</p>"
@@ -280,24 +280,24 @@
       "enabled": true,
       "eyebrow": "Fale Conosco",
       "size": "container",
-      "title": "Solicite um orçamento do Perfil Suprema 40",
+      "title": "Solicite um orçamento do Lambri Ripado Bellagio",
       "description": "Fale com nossa equipe técnica e conte com suporte especializado e atendimento personalizado conforme as necessidades do seu projeto.",
       "ctaText": "Solicitar orçamento",
-      "productName": "Perfil Suprema 40"
+      "productName": "Lambri Ripado Bellagio"
     },
 
     {
       "id": "relatedProducts",
       "enabled": true,
-      "eyebrow": "Produtos relacionados",
-      "title": "Veja também",
-      "subtitle": "Sugira outros produtos da linha.",
+      "eyebrow": "Outros Produtos",
+      "title": "Conheça outras soluções em alumínio",
+      "subtitle": "Explore nossa linha produtos desenvolvidos para diferentes tipos de projetos e aplicações.",
       "productSlugs": [
-        "suprema-65",
-        "modulo-pratico",
         "linha-25",
-        "linha-30",
-        "linha-32"
+        "linha-32",
+        "linha-42",
+        "suprema-40",
+        "suprema-65"
       ]
     }
   ]

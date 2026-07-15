@@ -3,6 +3,7 @@
   "slug": "linha-30",
   "displayOrder": 10,
   "segments": ["industrial"],
+  "categories": ["linhas"],
   "mainPhoto": "/images/produtos/linha-30.webp",
 
   "seo": {

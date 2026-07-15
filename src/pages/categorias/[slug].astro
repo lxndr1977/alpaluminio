@@ -6,14 +6,27 @@ import ProductCard from "@/components/ProductCard.astro";
 export async function getStaticPaths() {
   const categories = await getCollection("categories");
   const products = await getCollection("products");
+  const getReferenceId = (ref: string | { id: string }) =>
+    typeof ref === "string" ? ref : ref.id;
+  const sortProducts = (items: typeof products) =>
+    items.sort((a, b) => {
+      const orderA = a.data.displayOrder ?? Number.MAX_SAFE_INTEGER;
+      const orderB = b.data.displayOrder ?? Number.MAX_SAFE_INTEGER;
+
+      if (orderA !== orderB) {
+        return orderA - orderB;
+      }
+
+      return a.data.name.localeCompare(b.data.name, "pt-BR");
+    });
 
   return categories.map((category) => {
     const categoryProducts = products.filter((product) =>
-      product.data.categories?.some((ref) => ref.id === category.id)
+      product.data.categories?.some((ref) => getReferenceId(ref) === category.id)
     );
     return {
       params: { slug: category.id },
-      props: { category, products: categoryProducts },
+      props: { category, products: sortProducts(categoryProducts) },
     };
   });
 }
@@ -26,25 +39,41 @@ const { name, description } = category.data;
 ---
 
 <Layout title={name} description={description}>
-  <section class="container mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold">{name}</h1>
-    {description && <p class="mt-4 text-muted">{description}</p>}
+  <section>
+    <div class="bg-primary">
+      <div class="max-w-5xl mx-auto px-4 py-20 pt-42 text-center space-y-6">
+        <h1
+          class="text-4xl lg:text-6xl font-medium tracking-tighter text-white text-balance"
+        >
+          {name}
+        </h1>
 
-    <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {products.map((product) => {
-        const sections = product.data.sections ?? [];
-        const hero = sections.find((s: any) => s.id === "hero") as any;
+        {
+          description && (
+            <p class="text-lg xl:text-xl text-white max-w-3xl mx-auto">
+              {description}
+            </p>
+          )
+        }
+      </div>
+    </div>
 
-        return (
-          <ProductCard
-            name={product.data.name}
-            image={hero?.image ?? ""}
-            link={`/produtos/${product.id}`}
-            theme="light"
-            cta="Ver Produto"
-          />
-        );
-      })}
+    <div class="container mx-auto px-4 py-16">
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          products.map((product) => {
+            return (
+              <ProductCard
+                name={product.data.name}
+                image={product.data.mainPhoto ?? ""}
+                link={`/produtos/${product.id}`}
+                theme="light"
+                cta="Ver Produto"
+              />
+            );
+          })
+        }
+      </div>
     </div>
   </section>
 </Layout>

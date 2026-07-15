@@ -3,6 +3,7 @@
   "slug": "linha-exclusive",
   "displayOrder": 3,
   "segments": ["industrial"],
+  "categories": ["linhas"],
   "mainPhoto": "/images/produtos/linha-exclusive_main.webp",
 
 

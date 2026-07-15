@@ -3,6 +3,7 @@
   "slug": "porta-dual",
   "displayOrder": 1,
   "segments": ["industrial"],
+  "categories": ["linhas"],
   "mainPhoto": "/images/produtos/porta-dual_main.webp",
 
   "seo": {

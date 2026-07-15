@@ -1,6 +1,6 @@
 ---
 import Button from "./ui/Button.astro";
-import { TextAlignEnd, X } from "@lucide/astro";
+import { ChevronDown, TextAlignEnd, X } from "@lucide/astro";
 
 import business from "@/data/business.json";
 
@@ -16,7 +16,14 @@ const whatsappUrl = `https://wa.me/${sanitizedNumber}?text=${encodeURIComponent(
 
 const navLinks = [
   { name: "Catálogos", href: "/catalogos" },
-  { name: "Produtos", href: "/produtos" },
+  {
+    name: "Produtos",
+    href: "/produtos",
+    children: [
+      { name: "Linhas", href: "/categorias/linhas" },
+      { name: "Lambris/Ripados", href: "/categorias/lambris-ripados" },
+    ],
+  },
   { name: "Sobre nós", href: "/sobre" },
   { name: "Fale Conosco", href: "/contato" },
 ];
@@ -35,9 +42,32 @@ const navLinks = [
     <!-- Desktop Menu -->
     <nav class="hidden lg:flex items-center gap-8">
       {navLinks.map((link) => (
-        <a href={link.href} class="font-medium text-dark hover:text-primary transition-colors text-base">
-          {link.name}
-        </a>
+        link.children ? (
+          <div class="relative group py-7">
+            <a
+              href={link.href}
+              class="flex items-center gap-1 font-medium text-dark hover:text-primary transition-colors text-base"
+            >
+              {link.name}
+              <ChevronDown class="w-4 h-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
+            </a>
+
+            <div class="absolute left-0 top-full hidden min-w-52 flex-col rounded-sm border border-stone-100 bg-white py-2 shadow-lg shadow-black/10 group-hover:flex group-focus-within:flex">
+              {link.children.map((child) => (
+                <a
+                  href={child.href}
+                  class="px-4 py-3 text-sm font-medium text-dark hover:bg-stone-50 hover:text-primary transition-colors"
+                >
+                  {child.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a href={link.href} class="font-medium text-dark hover:text-primary transition-colors text-base">
+            {link.name}
+          </a>
+        )
       ))}
     </nav>
 
@@ -85,12 +115,35 @@ const navLinks = [
   <!-- Nav Links -->
   <nav class="flex flex-col flex-1 px-4 sm:px-6 pt-4 overflow-y-auto">
     {navLinks.map((link) => (
-      
-      <a  href={link.href}
-        class="text-xl font-semibold text-dark hover:text-primary transition-colors py-5 border-b border-stone-100 mobile-link"
-      >
-        {link.name}
-      </a>
+      link.children ? (
+        <div class="border-b border-stone-100">
+          <a
+            href={link.href}
+            class="flex items-center justify-between text-xl font-semibold text-dark hover:text-primary transition-colors py-5 mobile-link"
+          >
+            {link.name}
+            <ChevronDown class="w-5 h-5" />
+          </a>
+
+          <div class="flex flex-col pb-4">
+            {link.children.map((child) => (
+              <a
+                href={child.href}
+                class="py-3 pl-4 text-lg font-medium text-dark/80 hover:text-primary transition-colors mobile-link"
+              >
+                {child.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a
+          href={link.href}
+          class="text-xl font-semibold text-dark hover:text-primary transition-colors py-5 border-b border-stone-100 mobile-link"
+        >
+          {link.name}
+        </a>
+      )
     ))}
   </nav>
 

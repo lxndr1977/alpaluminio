@@ -3,6 +3,7 @@
   "slug": "linha-lambris",
   "displayOrder": 8,
   "segments": ["industrial"],
+  "categories": ["lambris-ripados"],
   "mainPhoto": "/images/produtos/lambris_main.webp",
 
   "seo": {

@@ -3,6 +3,7 @@
   "slug": "linha-official",
   "displayOrder": 4,
   "segments": ["industrial"],
+  "categories": ["linhas"],
   "mainPhoto": "/images/produtos/linha-official_main.webp",
 
   "seo": {

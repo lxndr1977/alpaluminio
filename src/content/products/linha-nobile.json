@@ -3,6 +3,7 @@
   "slug": "linha-nobile",
   "displayOrder": 5,
   "segments": ["industrial"],
+  "categories": ["linhas"],
   "mainPhoto": "/images/produtos/linha-nobile_main.webp",
 
   "seo": {
