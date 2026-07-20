@@ -4,12 +4,12 @@
   "displayOrder": 10,
   "segments": ["industrial"],
   "categories": ["lambris-ripados"],
-  "mainPhoto": "/images/produtos/product-placeholder.webp",
+  "mainPhoto": "/images/produtos/lambri-ripado-domo.webp",
 
   "seo": {
     "title": "Domo | Alpa Alumínio",
     "description": "Domo",
-    "ogImage": "/images/produtos/product-placeholder.webp"
+    "ogImage": "/images/produtos/lambri-ripado-domo.webp"
   },
 
   "stickyBar": {
@@ -24,7 +24,7 @@
       "enabled": true,
       "title": "Domo",
       "description": "Apresente o produto de forma clara e atrativa.",
-      "image": "/images/produtos/product-placeholder.webp"
+      "image": "/images/produtos/lambri-ripado-domo.webp"
     },
 
     {
@@ -60,7 +60,7 @@
       "eyebrow": "Sobre o produto",
       "title": "Apresente o produto de forma clara e atrativa",
       "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
-      "image": "/images/produtos/product-placeholder.webp",
+      "image": "/images/produtos/lambri-ripado-domo.webp",
       "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
     },
 
@@ -72,27 +72,27 @@
       "subtitle": "Mostre imagens reais ou conceituais de uso.",
       "photos": [
         {
-          "src": "/images/produtos/product-placeholder.webp",
+          "src": "/images/produtos/lambri-ripado-domo.webp",
           "alt": "Aplicação do produto",
           "caption": "Descreva a aplicação"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
+          "src": "/images/produtos/lambri-ripado-domo.webp",
           "alt": "Aplicação do produto",
           "caption": "Descreva a aplicação"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
+          "src": "/images/produtos/lambri-ripado-domo.webp",
           "alt": "Aplicação do produto",
           "caption": "Descreva a aplicação"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
+          "src": "/images/produtos/lambri-ripado-domo.webp",
           "alt": "Aplicação do produto",
           "caption": "Descreva a aplicação"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
+          "src": "/images/produtos/lambri-ripado-domo.webp",
           "alt": "Aplicação do produto",
           "caption": "Descreva a aplicação"
         }
@@ -109,22 +109,22 @@
         {
           "title": "Nome do acabamento",
           "subtitle": "Descrição opcional",
-          "image": "/images/produtos/product-placeholder.webp"
+          "image": "/images/produtos/lambri-ripado-domo.webp"
         },
         {
           "title": "Nome do acabamento",
           "subtitle": "Descrição opcional",
-          "image": "/images/produtos/product-placeholder.webp"
+          "image": "/images/produtos/lambri-ripado-domo.webp"
         },
         {
           "title": "Nome do acabamento",
           "subtitle": "Descrição opcional",
-          "image": "/images/produtos/product-placeholder.webp"
+          "image": "/images/produtos/lambri-ripado-domo.webp"
         },
         {
           "title": "Nome do acabamento",
           "subtitle": "Descrição opcional",
-          "image": "/images/produtos/product-placeholder.webp"
+          "image": "/images/produtos/lambri-ripado-domo.webp"
         }
       ]
     },

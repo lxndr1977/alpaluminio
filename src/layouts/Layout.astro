@@ -35,6 +35,33 @@ const footerContacts = {
 <!doctype html>
 <html lang="pt-BR">
   <head>
+
+    <style>
+html {
+    visibility: hidden;
+}
+</style>
+
+<script>
+(() => {
+    const senha = "@Alpa2026";
+
+    if (sessionStorage.getItem("preview") === "ok") {
+        document.documentElement.style.visibility = "visible";
+        return;
+    }
+
+    const digitada = prompt("Área em desenvolvimento.\n\nInforme a senha:");
+
+    if (digitada === senha) {
+        sessionStorage.setItem("preview", "ok");
+        document.documentElement.style.visibility = "visible";
+    } else {
+        window.location.replace("/");
+    }
+})();
+</script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -138,3 +165,5 @@ const footerContacts = {
 
   document.addEventListener("astro:after-swap", initAnimations);
 </script>
+
+
