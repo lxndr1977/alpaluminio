@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Ripado Aqua",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Solução projetada para aplicações de maior exigência técnica.",
       "image": "/images/produtos/lambri-ripado-aqua.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça o Ripado Aqua",
+      "subtitle": "Solução projetada para aplicações de maior exigência técnica.",
       "image": "/images/produtos/lambri-ripado-aqua.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>O Ripado Aqua foi desenvolvido para projetos que buscam um revestimento contemporâneo com excelente resistência. Seu desenho cria movimento e profundidade nas superfícies, proporcionando fachadas e ambientes elegantes, com toda a durabilidade e praticidade do alumínio.</p>"
     },
 
     {

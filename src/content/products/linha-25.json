@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Perfil de Alumínio Linha 25",
-      "description": "Disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
+      "description": "Solução versátil para esquadrias de alumínio, desenvolvida para projetos residenciais e comerciais.",
       "image": "/images/produtos/product-placeholder.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça a Linha 25",
+      "subtitle": "Solução versátil para esquadrias de alumínio, desenvolvida para projetos residenciais e comerciais.",
       "image": "/images/produtos/product-placeholder.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>A Linha 25 é uma solução versátil para esquadrias de alumínio, desenvolvida para projetos residenciais e comerciais que buscam praticidade, qualidade e excelente custo-benefício. Seu sistema permite a fabricação de portas e janelas com ótimo desempenho, acabamento refinado e facilidade de montagem, oferecendo resistência e durabilidade para o uso diário. Elegante, contribuindo para projetos modernos que valorizam cada detalhe..</p>"
     },
 
     {

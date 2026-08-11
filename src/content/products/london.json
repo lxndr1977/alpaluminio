@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Lambri Ripado London",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Solução para renovar portas e janelas existentes com praticidade, elegância e excelente custo-benefício.",
       "image": "/images/produtos/lambri-ripado-london.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça o Lambril Ripado London",
+      "subtitle": "Solução para renovar portas e janelas existentes com praticidade, elegância e excelente custo-benefício.",
       "image": "/images/produtos/lambri-ripado-london.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>O Lambril Ripado London transforma o primeiro contato com o ambiente em uma experiência de sofisticação. Seu design cria composições elegantes e acolhedoras, destacando a arquitetura com um acabamento moderno e de alto padrão.</p>"
     },
 
     {

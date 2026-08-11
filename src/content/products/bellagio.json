@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Lambri Ripado Bellagio",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Perfis para fachadas que buscam personalidade e sofisticação.",
       "image": "/images/produtos/lambri-ripado-bellagio.webp"
     },
 
@@ -55,13 +55,13 @@
 
     {
       "id": "content",
-      "theme": "white",
+      "theme": "surface",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça o Lambri Ripado Bellagio",
+      "subtitle": "Perfis para fachadas que buscam personalidade e sofisticação.",
       "image": "/images/produtos/lambri-ripado-bellagio.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>Desenvolvido para fachadas que buscam personalidade e sofisticação, o Lambril Ripado Bellagio valoriza a arquitetura com um marcante acabamento de alto padrão. Sua composição proporciona um visual contemporâneo, aliando durabilidade, baixa manutenção e a versatilidade do alumínio.</p>"
     },
 
     {

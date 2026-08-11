@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Muxarabi Vita",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Sistema de esquadrias que combina desempenho técnico e estética contemporânea.",
       "image": "/images/produtos/lambri-muxarabi-vitta.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça o Muxarabi Vita",
+      "subtitle": "Sistema de esquadrias que combina desempenho técnico e estética contemporânea.",
       "image": "/images/produtos/lambri-muxarabi-vitta.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>Com traços modernos e visual leve, o Muxarabi Vita proporciona ventilação natural e privacidade sem comprometer a estética do projeto. É uma solução versátil para fachadas e ambientes internos, agregando personalidade e sofisticação em cada composição.</p>"
     },
 
     {

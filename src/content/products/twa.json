@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Lambri Ripado TWA",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Solução para revestir portões com visual ripado moderno, alta resistência e baixa manutenção.",
       "image": "/images/produtos/lambri-ripado-twa.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça o Lambril Ripado TWA",
+      "subtitle": "Solução para revestir portões com visual ripado moderno, alta resistência e baixa manutenção.",
       "image": "/images/produtos/lambri-ripado-twa.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>Ideal para revestimento de portões, o Lambril Ripado 781394 proporciona um acabamento moderno e uniforme, agregando sofisticação ao projeto. Além da estética diferenciada, oferece alta resistência às intempéries e baixa necessidade de manutenção.</p>"
     },
 
     {

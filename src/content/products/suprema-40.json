@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Perfil de Alumínio Suprema 40",
-      "description": "Disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
+      "description": "Sistema de esquadrias que combina desempenho técnico e estética contemporânea.",
       "image": "/images/produtos/product-placeholder.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "surface",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça a Suprema 40",
+      "subtitle": "Sistema de esquadrias que combina desempenho técnico e estética contemporânea.",
       "image": "/images/produtos/product-placeholder.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>A Suprema 40 é um sistema de esquadrias que combina desempenho técnico e estética contemporânea. Desenvolvida para portas e janelas de correr, giro e demais aplicações da linha, oferece excelente vedação, suavidade no funcionamento e perfis que garantem precisão na fabricação, proporcionando soluções seguras e duráveis para diferentes tipos de projeto.</p>"
     },
 
     {

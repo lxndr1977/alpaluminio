@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Muxarabi",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Sistema de esquadrias que combina desempenho técnico e estética contemporânea.",
       "image": "/images/produtos/muxarabi.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
-      "image": "/images/produtos/product-placeholder.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "title": "Conheça o Muxarabi",
+      "subtitle": "Sistema de esquadrias que combina desempenho técnico e estética contemporânea.",
+      "image": "/images/produtos/muxarabi.webp",
+      "body": "<p>Inspirado na arquitetura contemporânea, o Muxarabi Alpa combina privacidade, ventilação e design em um único sistema. Sua composição cria efeitos de luz e sombra que valorizam fachadas, divisórias e revestimentos, oferecendo um visual marcante aliado à resistência e baixa manutenção do alumínio.</p>"
     },
 
     {

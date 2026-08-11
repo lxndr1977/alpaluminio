@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Ripado para Aplicação de LED",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Solução projetada para aplicações que exigem integração de iluminação e arquitetura",
       "image": "/images/produtos/ripado-para-led.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça o Ripado para Aplicação de LED",
+      "subtitle": "Solução projetada para aplicações que exigem integração de iluminação e arquitetura.",
       "image": "/images/produtos/product-placeholder.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>Mais do que um revestimento, o Ripado para Aplicação de LED integra iluminação e arquitetura em uma única solução. Desenvolvido para utilizar com fitas de LED, permite criar efeitos de luz indireta que valorizam ambientes, destacam detalhes e proporcionam uma atmosfera sofisticada e contemporânea. </p>"
     },
 
     {

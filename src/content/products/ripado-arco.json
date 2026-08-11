@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Ripado Arco",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Solução projetada para aplicações que exigem design diferenciado.",
       "image": "/images/produtos/lambri-ripado-arco.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça o Ripado Arco",
+      "subtitle": "Solução projetada para aplicações que exigem design diferenciado.",
       "image": "/images/produtos/lambri-ripado-arco.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>Com  curvatura e design diferenciado, o Ripado Arco transforma superfícies em elementos arquitetônicos de destaque. Seu perfil cria um efeito visual marcante, agregando personalidade, sofisticação e um acabamento exclusivo para ambientes internos e externos.</p>"
     },
 
     {

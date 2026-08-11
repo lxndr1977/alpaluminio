@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Perfil de Alumínio Linha 32",
-      "description": "Disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
+      "description": "Solução robusta e versátil para esquadrias de alumínio, desenvolvida para projetos que exigem alto desempenho estrutural.",
       "image": "/images/produtos/product-placeholder.webp"
     },
 
@@ -55,13 +55,13 @@
 
     {
       "id": "content",
-      "theme": "white",
+      "theme": "surface",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça a Linha 32",
+      "subtitle": "Solução robusta e versátil para esquadrias de alumínio, desenvolvida para projetos que exigem alto desempenho estrutural.",
       "image": "/images/produtos/product-placeholder.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>Reconhecida pela sua robustez e versatilidade, a Linha 32 atende projetos que exigem maior desempenho estrutural sem renunciar à estética. Seus perfis possibilitam a criação de esquadrias modernas, com excelente acabamento e alto padrão de qualidade, adaptando-se às mais diversas aplicações arquitetônicas.</p>"
     },
 
     {

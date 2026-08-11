@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Lambri Ripado Sky",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Solução para renovar portas e janelas existentes com praticidade, elegância e excelente custo-benefício.",
       "image": "/images/produtos/lambri-ripado-sky.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça o Lambril Ripado Sky",
+      "subtitle": "Solução para renovar portas e janelas existentes com praticidade, elegância e excelente custo-benefício.",
       "image": "/images/produtos/lambri-ripado-sky.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>Pensado para aplicação sobre esquadrias já existentes, o Lambril Ripado 781365 utiliza o exclusivo sistema de acople da Alpa, permitindo renovar portas e janelas sem a necessidade de substituição. Uma solução prática que transforma a fachada com rapidez, elegância e excelente custo-benefício.</p>"
     },
 
     {

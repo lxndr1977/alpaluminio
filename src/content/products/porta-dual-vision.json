@@ -22,7 +22,7 @@
   },
 
   "stickyBar": {
-    "message": "Porta Dual",
+    "message": "Porta Dual Vision",
     "subMessage": "Solicite um orçamento",
     "ctaLabel": "Falar com vendedor"
   },
@@ -32,7 +32,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Porta Dual Vision",
-      "description": "A Porta Dual Vision é um sistema com perfil de alumínio único que combina design moderno, versatilidade e resistência.",
+      "description": "Perfis para portas em ACM que combinam robustez, design minimalista e acabamento sofisticado.",
       "image": "/images/produtos/porta-dual-vision_hero.webp"
     },
 
@@ -65,12 +65,12 @@
     {
       "id": "content",
       "theme": "surface",
-      "enabled": false,
+      "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça a Porta Dual Vision",
+      "subtitle": "Perfis para portas em ACM que combinam robustez, design minimalista e acabamento sofisticado.",
       "image": "/images/produtos/product-placeholder.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>A Linha Dual Vision foi desenvolvida para a fabricação de portas em ACM que unem imponência, funcionalidade e acabamento impecável. Seu sistema de perfis oferece liberdade para criar portas contemporâneas, com visual minimalista e integração harmoniosa entre alumínio e ACM.</p><p>Com montantes robustos e puxador cava incorporado ao próprio sistema, a Dual Vision proporciona um resultado sofisticado, valorizando fachadas residenciais e comerciais com resistência, durabilidade e design atemporal.</p>"
     },
 
     {

@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Ripado Sublime",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Solução projetada para aplicações que exigem design diferenciado.",
       "image": "/images/produtos/lambri-ripado-sublime.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça o Ripado Sublime",
+      "subtitle": "Solução projetada para aplicações que exigem design diferenciado.",
       "image": "/images/produtos/lambri-ripado-sublime.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>O Ripado Sublime foi criado para projetos que valorizam linhas um acabamento impecável. Seu design curvo e elegante proporciona uma composição harmoniosa para fachadas e revestimentos, unindo estética contemporânea, resistência e a qualidade do alumínio em uma solução de alto padrão.</p>"
     },
 
     {

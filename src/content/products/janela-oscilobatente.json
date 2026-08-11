@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Janela Oscilobatente",
-      "description": "Apresentação do produto.",
+      "description": "Um sistema versátil que combina ventilação controlada, praticidade e segurança em uma única janela.",
       "image": "/images/produtos/janela-oscilobatente_hero.webp"
     },
 
@@ -55,13 +55,13 @@
 
     {
       "id": "content",
-      "theme": "white",
+      "theme": "surface",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça a Janela Oscilobatente",
+      "subtitle": "Um sistema versátil que combina ventilação controlada, praticidade e segurança em uma única janela.",
       "image": "/images/produtos/product-placeholder.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>Versátil e funcional, a janela oscilobatente permite duas formas de abertura em um único sistema: lateral ou basculante. Essa solução oferece maior controle da ventilação, praticidade na limpeza e mais segurança para o ambiente. Ideal para projetos que valorizam conforto, desempenho e um acabamento elegante, adaptando-se perfeitamente à arquitetura contemporânea.</p>"
     },
 
     {

@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Perfil de Alumínio Linha 42",
-      "description": "Disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
+      "description": "Solução projetada para aplicações de maior exigência técnica.",
       "image": "/images/produtos/linha-42_hero.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "white",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
-      "image": "/images/produtos/product-placeholder.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "title": "Conheça a Linha 42",
+      "subtitle": "Solução projetada para aplicações de maior exigência técnica.",
+      "image": "/images/produtos/linha-42_content.webp",
+      "body": "<p>Projetada para aplicações de maior exigência técnica, a Linha 42 oferece elevada resistência estrutural e excelente desempenho em esquadrias de grandes dimensões. Seu sistema proporciona maior estabilidade, vedação eficiente e precisão construtiva, atendendo projetos residenciais e comerciais que buscam segurança, durabilidade e um acabamento de alto padrão.</p>"
     },
 
     {

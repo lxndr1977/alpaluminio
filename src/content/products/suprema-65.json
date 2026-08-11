@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Perfil de Alumínio Suprema 40",
-      "description": "Disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
+      "description": "Solução projetada para aplicações de maior exigência técnica.",
       "image": "/images/produtos/product-placeholder.webp"
     },
 
@@ -58,10 +58,10 @@
       "theme": "surface",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
-      "image": "/images/produtos/product-placeholder.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "title": "Conheça a Suprema 65",
+      "subtitle": "Solução projetada para aplicações de maior exigência técnica.",
+      "image": "/images/produtos/suprema-65_content.webp",
+      "body": "<p>A Suprema 65 foi desenvolvida para atender projetos de alto padrão que exigem maior capacidade estrutural e grandes vãos. Seus perfis robustos oferecem excelente desempenho mecânico, estabilidade e vedação, permitindo a fabricação de esquadrias amplas com alto nível de segurança, funcionalidade e acabamento premium.</p>"
     },
 
     {

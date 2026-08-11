@@ -23,7 +23,7 @@
       "id": "hero",
       "enabled": true,
       "title": "Domo",
-      "description": "Apresente o produto de forma clara e atrativa.",
+      "description": "Solução versátil para decoração de ambientes internos e externos.",
       "image": "/images/produtos/lambri-ripado-domo.webp"
     },
 
@@ -55,13 +55,13 @@
 
     {
       "id": "content",
-      "theme": "white",
+      "theme": "surface",
       "enabled": true,
       "eyebrow": "Sobre o produto",
-      "title": "Apresente o produto de forma clara e atrativa",
-      "subtitle": "Explique em poucas palavras para quem é e qual problema resolve.",
+      "title": "Conheça o Lambril Ripado Domo",
+      "subtitle": "Solução versátil para decoração de ambientes internos e externos.",
       "image": "/images/produtos/lambri-ripado-domo.webp",
-      "body": "<p>Utilize este espaço para detalhar o produto, suas aplicações e vantagens. Você pode incluir informações técnicas, diferenciais e exemplos de uso.</p>"
+      "body": "<p>O Lambril Ripado DOMO é uma solução versátil para decoração de ambientes internos e externos. Seu desenho proporciona aconchego, textura e sofisticação, permitindo criar espaços modernos com um acabamento refinado e versátil. </p>"
     },
 
     {
