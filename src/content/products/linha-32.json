@@ -4,12 +4,12 @@
   "displayOrder": 11,
   "segments": ["industrial"],
   "categories": ["linhas"],
-  "mainPhoto": "/images/produtos/product-placeholder.webp",
+  "mainPhoto": "/images/produtos/linha-nobile-32.webp",
 
   "seo": {
     "title": "Perfil de Alumínio Linha 32 | Alpa Alumínio",
     "description": "Perfil de alumínio linha 32 disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
-    "ogImage": "/images/produtos/product-placeholder.webp"
+    "ogImage": "/images/produtos/linha-nobile-32.webp"
   },
 
   "stickyBar": {
@@ -24,7 +24,7 @@
       "enabled": true,
       "title": "Perfil de Alumínio Linha 32",
       "description": "Solução robusta e versátil para esquadrias de alumínio, desenvolvida para projetos que exigem alto desempenho estrutural.",
-      "image": "/images/produtos/product-placeholder.webp"
+      "image": "/images/produtos/linha-nobile-32_hero.webp"
     },
 
     {

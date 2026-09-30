@@ -4,12 +4,12 @@
   "displayOrder": 10,
   "segments": ["industrial"],
   "categories": ["linhas"],
-  "mainPhoto": "/images/produtos/product-placeholder.webp",
+  "mainPhoto": "/images/produtos/linha-25.webp",
 
   "seo": {
     "title": "Perfil de Alumínio Linha 25 | Alpa Alumínio",
     "description": "Perfil de alumínio Linha 25, disponível em acabamentos natural, pintura branca e amadeirado, oferecendo soluções versáteis e duráveis para diferentes aplicações.",
-    "ogImage": "/images/produtos/product-placeholder.webp"
+    "ogImage": "/images/produtos/linha-25.webp"
   },
 
   "stickyBar": {
@@ -24,7 +24,7 @@
       "enabled": true,
       "title": "Perfil de Alumínio Linha 25",
       "description": "Solução versátil para esquadrias de alumínio, desenvolvida para projetos residenciais e comerciais.",
-      "image": "/images/produtos/product-placeholder.webp"
+      "image": "/images/produtos/linha-25_hero.webp"
     },
 
     {
@@ -60,7 +60,7 @@
       "eyebrow": "Sobre o produto",
       "title": "Conheça a Linha 25",
       "subtitle": "Solução versátil para esquadrias de alumínio, desenvolvida para projetos residenciais e comerciais.",
-      "image": "/images/produtos/product-placeholder.webp",
+      "image": "/images/produtos/linha-25.webp",
       "body": "<p>A Linha 25 é uma solução versátil para esquadrias de alumínio, desenvolvida para projetos residenciais e comerciais que buscam praticidade, qualidade e excelente custo-benefício. Seu sistema permite a fabricação de portas e janelas com ótimo desempenho, acabamento refinado e facilidade de montagem, oferecendo resistência e durabilidade para o uso diário. Elegante, contribuindo para projetos modernos que valorizam cada detalhe..</p>"
     },
 
@@ -72,27 +72,27 @@
       "subtitle": "Mostre imagens reais ou conceituais de uso.",
       "photos": [
         {
-          "src": "/images/produtos/product-placeholder.webp",
+          "src": "/images/produtos/linha-25.webp",
           "alt": "Aplicação do produto",
           "caption": "Descreva a aplicação"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
+          "src": "/images/produtos/linha-25.webp",
           "alt": "Aplicação do produto",
           "caption": "Descreva a aplicação"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
+          "src": "/images/produtos/linha-25.webp",
           "alt": "Aplicação do produto",
           "caption": "Descreva a aplicação"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
+          "src": "/images/produtos/linha-25.webp",
           "alt": "Aplicação do produto",
           "caption": "Descreva a aplicação"
         },
         {
-          "src": "/images/produtos/product-placeholder.webp",
+          "src": "/images/produtos/linha-25.webp",
           "alt": "Aplicação do produto",
           "caption": "Descreva a aplicação"
         }
@@ -109,22 +109,22 @@
         {
           "title": "Nome do acabamento",
           "subtitle": "Descrição opcional",
-          "image": "/images/produtos/product-placeholder.webp"
+          "image": "/images/produtos/linha-25.webp"
         },
         {
           "title": "Nome do acabamento",
           "subtitle": "Descrição opcional",
-          "image": "/images/produtos/product-placeholder.webp"
+          "image": "/images/produtos/linha-25.webp"
         },
         {
           "title": "Nome do acabamento",
           "subtitle": "Descrição opcional",
-          "image": "/images/produtos/product-placeholder.webp"
+          "image": "/images/produtos/linha-25.webp"
         },
         {
           "title": "Nome do acabamento",
           "subtitle": "Descrição opcional",
-          "image": "/images/produtos/product-placeholder.webp"
+          "image": "/images/produtos/linha-25.webp"
         }
       ]
     },
@@ -180,7 +180,7 @@
       "eyebrow": "Módulo Media + Texto",
       "title": "Título do bloco (ex: benefício principal do produto)",
       "subtitle": "Subtítulo curto explicando para quem é ou o que resolve",
-      "image": "/images/produtos/product-placeholder.webp",
+      "image": "/images/produtos/linha-25.webp",
       "imageAlt": "Imagem ilustrativa do produto",
       "stickyImage": true,
       "desktopImagePosition": "left",
@@ -193,7 +193,7 @@
       "eyebrow": "Módulo Media + Texto",
       "title": "Outro bloco de conteúdo (ex: segundo destaque)",
       "subtitle": "Use para complementar a apresentação do produto",
-      "image": "/images/produtos/product-placeholder.webp",
+      "image": "/images/produtos/linha-25.webp",
       "imageAlt": "Imagem ilustrativa do produto",
       "stickyImage": true,
       "desktopImagePosition": "right",
