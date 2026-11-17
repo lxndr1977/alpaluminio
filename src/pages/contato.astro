@@ -4,8 +4,21 @@ import Layout from "@/layouts/Layout.astro";
 const contacts = {
   phone: "(54) 3226-8000",
   whatsapp: "(54) 3226-8000",
-  email: "alpa@alpaaluminio.com.br",
-  address: "Rua Beethoven, 2259 - São José, Caxias do Sul - RS, 95032-320",
+  email: "alpaaluminio@alpaaluminio.com.br",
+addresses: [
+  {
+    label: "Matriz",
+    address: "Rua Beethoven, 2259 - São José, Caxias do Sul - RS, 95032-320",
+    mapUrl: "https://maps.google.com/?q=Rua+Beethoven,+2259,+Caxias+do+Sul",
+  },
+  {
+    label: "Filial",
+    address:
+      "Rodovia RS-135, Km 76, nº 250 (Condomínio Santa Rita) - Santo Antônio, Erechim - RS, 99710-557",
+    mapUrl:
+      "https://maps.google.com/?q=Rodovia+RS-135,+Km+76,+250,+Erechim,+RS,+99710-557",
+  },
+],
   businessHours: "Seg - Sex: 08:00 - 18:00",
   instagram: "https://instagram.com/alpaaluminio",
   facebook: "https://www.facebook.com/alpaaluminio",
@@ -129,48 +142,47 @@ const contacts = {
           </div>
 
           <!-- Endereço -->
-          <div class="px-8 lg:px-10 py-8 border-b border-stone-200">
-            <div
-              class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6"
-            >
-              <div>
-                <p
-                  class="text-xs uppercase tracking-[0.18em] text-foreground-subtle mb-3"
-                >
-                  Endereço
-                </p>
+         <!-- Endereços -->
+{
+  contacts.addresses.map((item) => (
+    <div class="px-8 lg:px-10 py-8 border-b border-stone-200">
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+        <div>
+          <p class="text-xs uppercase tracking-[0.18em] text-foreground-subtle mb-3">
+            Endereço · {item.label}
+          </p>
 
-                <p
-                  class="text-lg leading-relaxed text-foreground max-w-md font-medium"
-                >
-                  {contacts.address}
-                </p>
-              </div>
+          <p class="text-lg leading-relaxed text-foreground max-w-md font-medium">
+            {item.address}
+          </p>
+        </div>
 
-              <a
-                href="https://maps.google.com/?q=Rua+Beethoven,+2259,+Caxias+do+Sul"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-70 transition-opacity whitespace-nowrap"
-              >
-                Ver no mapa
+        <a
+          href={item.mapUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-70 transition-opacity whitespace-nowrap"
+        >
+          Ver no mapa
 
-                <svg
-                  class="size-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-          </div>
+          <svg
+            class="size-3.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  ))
+}
 
           <!-- Horário -->
           <div class="px-8 lg:px-10 py-8">
