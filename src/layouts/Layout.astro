@@ -26,8 +26,17 @@ const footerInstitutionalLinks = [
 const footerContacts = {
   phone: "(54) 3226-8000",
   whatsapp: "(54) 3226-8000",
-  email: "alpa@alpaaluminio.com.br",
-  address: "Rua Beethoven, 2259 - São José, Caxias do Sul - RS, 95032-320",
+  email: "alpaaluminio@alpaaluminio.com.br",
+  addresses: [
+    {
+      label: "Matriz",
+      address: "Rua Beethoven, 2259, São José, Caxias do Sul, RS, CEP 95032-320",
+    },
+    {
+      label: "Filial",
+      address: "Rodovia RS-135, Km 76, nº 250 (Condomínio Santa Rita), Santo Antônio, Erechim, RS, CEP 99710-557"
+    },
+  ],
   businessHours: "Seg - Sex: 08:00 - 18:00",
 };
 ---
@@ -36,32 +45,7 @@ const footerContacts = {
 <html lang="pt-BR">
   <head>
 
-    <style>
-html {
-    visibility: hidden;
-}
-</style>
-
-<script>
-(() => {
-    const senha = "@Alpa2026";
-
-    if (sessionStorage.getItem("preview") === "ok") {
-        document.documentElement.style.visibility = "visible";
-        return;
-    }
-
-    const digitada = prompt("Área em desenvolvimento.\n\nInforme a senha:");
-
-    if (digitada === senha) {
-        sessionStorage.setItem("preview", "ok");
-        document.documentElement.style.visibility = "visible";
-    } else {
-        window.location.replace("/");
-    }
-})();
-</script>
-
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

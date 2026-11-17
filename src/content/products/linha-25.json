@@ -98,33 +98,104 @@
         }
       ]
     },
-
     {
       "id": "finishesGallery",
-      "enabled": false,
-      "eyebrow": "Acabamentos",
-      "title": "Opções de acabamento disponíveis",
-      "subtitle": "Liste os acabamentos que o cliente pode escolher.",
+      "enabled": true,
+      "eyebrow": "Desenhos Técnicos",
+      "title": "Desenhos técnicos",
+      "subtitle": "Confira os desenhos técnicos de cada perfil da Linha 25",
+      "showPhotoTitle": true,
+      "showPhotoSubtitle": true,
       "photos": [
         {
-          "title": "Nome do acabamento",
-          "subtitle": "Descrição opcional",
-          "image": "/images/produtos/linha-25.webp"
+          "title": "25-001",
+          "subtitle": "0,322kg/m",
+          "image": "/images/produtos/linha-25/25-001.png"
         },
         {
-          "title": "Nome do acabamento",
-          "subtitle": "Descrição opcional",
-          "image": "/images/produtos/linha-25.webp"
+          "title": "25-002",
+          "subtitle": "0,351kg/m",
+          "image": "/images/produtos/linha-25/25-002.png"
         },
         {
-          "title": "Nome do acabamento",
-          "subtitle": "Descrição opcional",
-          "image": "/images/produtos/linha-25.webp"
+          "title": "25-005",
+          "subtitle": "0,422kg/m",
+          "image": "/images/produtos/linha-25/25-005.png"
         },
         {
-          "title": "Nome do acabamento",
-          "subtitle": "Descrição opcional",
-          "image": "/images/produtos/linha-25.webp"
+          "title": "25-027",
+          "subtitle": "0,271kg/m",
+          "image": "/images/produtos/linha-25/25-027.png"
+        },
+        {
+          "title": "BG-001",
+          "subtitle": "0,108kg/m",
+          "image": "/images/produtos/linha-25/BG-001.png"
+        },
+        {
+          "title": "CL-015",
+          "subtitle": "0,210kg/m",
+          "image": "/images/produtos/linha-25/CL-015.png"
+        },
+        {
+          "title": "25-026",
+          "subtitle": "0,488kg/m",
+          "image": "/images/produtos/linha-25/25-026.png"
+        },
+        {
+          "title": "25-508",
+          "subtitle": "0,756kg/m",
+          "image": "/images/produtos/linha-25/25-508.png"
+        },
+        {
+          "title": "25-669",
+          "subtitle": "0,634kg/m",
+          "image": "/images/produtos/linha-25/25-669.png"
+        },
+        {
+          "title": "25-554",
+          "subtitle": "0,290kg/m",
+          "image": "/images/produtos/linha-25/25-554.png"
+        },
+        {
+          "title": "25-514",
+          "subtitle": "0,472kg/m",
+          "image": "/images/produtos/linha-25/25-514.png"
+        },
+        {
+          "title": "FC-070",
+          "subtitle": "0,984kg/m",
+          "image": "/images/produtos/linha-25/FC-070.png"
+        },
+        {
+          "title": "25-540",
+          "subtitle": "0,560kg/m",
+          "image": "/images/produtos/linha-25/25-540.png"
+        },
+        {
+          "title": "25-542",
+          "subtitle": "0,704kg/m",
+          "image": "/images/produtos/linha-25/25-542.png"
+        },
+        {
+          "title": "25-016",
+          "subtitle": "0,428kg/m",
+          "image": "/images/produtos/linha-25/25-016.png"
+        },
+        {
+          "title": "25-548",
+          "subtitle": "0,281kg/m",
+          "image": "/images/produtos/linha-25/25-548.png"
+        },
+        {
+          "title": "CL-050",
+          "subtitle": "0,154kg/m",
+          "image": "/images/produtos/linha-25/CL-050.png"
+        },
+        {
+          "title": "25-677",
+          "subtitle": "0,211kg/m",
+          "image": "/images/produtos/linha-25/25-677.png"
         }
       ]
     },
